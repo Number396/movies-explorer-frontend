@@ -1,2 +1,12 @@
 .header__register-link {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: white;
+  text-decoration: none;
+  transition: opacity 100ms ease-in-out;
+}
+
+.header__register-link:hover {
+  opacity: 0.8;
 }

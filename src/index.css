@@ -4,3 +4,5 @@
 @import url(./components/Header/header.css);
 @import url(./components/Header/__logo/header__logo.css);
 @import url(./components/Header/__login/header__content.css);
+@import url(./components/Header/__register-link/header__register-link.css);
+@import url(./components/Header/__signin/header__signin.css);

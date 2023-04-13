@@ -1,3 +1,5 @@
 .header__content {
   display: flex;
+  align-items: center;
+  margin: 21px 70px 21px 0;
 }
