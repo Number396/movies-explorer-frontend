@@ -11,3 +11,5 @@
 @import url(./components/PageNotFoud/__title/pageNotFound__title.css);
 @import url(./components/PageNotFoud/__text/pageNotFound__text.css);
 @import url(./components/PageNotFoud/__back-button/pageNotFound__back-button.css);
+@import url(./components/AuthPage/authpage.css);
+@import url(./components/AuthPage/__logo/authpage__logo.css);

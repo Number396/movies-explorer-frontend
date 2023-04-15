@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import Signup from "../Signup/Signup";
-import Signin from "../Signin/Signin";
+import Register from "../Register/Register";
 import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../Saved-movies/Saved-movies";
 import { useState } from "react";
 import Navigation from "../Navigation/Navigation";
 import PageNotFound from "../PageNotFoud/PageNotFound";
+import Login from "../Login/Login";
 
 function App() {
   const [logedIn, setLogedIn] = useState(false);
@@ -26,11 +26,11 @@ function App() {
         />
         <Route
           path="/signup"
-          element={<Signup />}
+          element={<Register />}
         />
         <Route
           path="/signin"
-          element={<Signin />}
+          element={<Login />}
         />
         <Route
           path="/profile"

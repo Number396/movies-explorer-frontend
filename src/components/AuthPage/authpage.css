@@ -1,0 +1,6 @@
+.authpage {
+  display: flex;
+  flex-direction: column;
+  max-width: 396px;
+  margin: 232px auto auto;
+}
