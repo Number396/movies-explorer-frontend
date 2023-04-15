@@ -3,6 +3,7 @@ import logo from "../../images/header-logo.svg"
 
 function AuthPage({ title, name, btnText, loggedIn, isRegister, onSubmit, children }) {
     const navigate = useNavigate();
+
     return (
         <section className="authpage">
             <img
@@ -11,7 +12,6 @@ function AuthPage({ title, name, btnText, loggedIn, isRegister, onSubmit, childr
                 onClick={() => navigate('/')}
                 alt="логотип"
             />
-
             <h2 className="authpage__title">{title}</h2>
             <form name={name}
                 className="authpage__form"
@@ -27,7 +27,13 @@ function AuthPage({ title, name, btnText, loggedIn, isRegister, onSubmit, childr
                             to="/signin"
                             className="register__link">Войти
                         </NavLink>
-                    </p> : ""
+                    </p> :
+                    <p className="authpage__suggestion">Ещё не зарегистрированы?
+                        <NavLink
+                            to="/signup"
+                            className="authpage__link">Регистрация
+                        </NavLink>
+                    </p>
                 }
             </form>
         </section>

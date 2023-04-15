@@ -1,0 +1,13 @@
+.authpage__link {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #3456f3;
+  text-decoration: none;
+  padding-left: 6px;
+  transition: opacity 100ms ease-in-out;
+}
+
+.authpage__link:hover {
+  opacity: 0.8;
+}

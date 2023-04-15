@@ -11,12 +11,16 @@ import PageNotFound from "../PageNotFoud/PageNotFound";
 import Login from "../Login/Login";
 
 function App() {
-  const [logedIn, setLogedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  function handleLogin() {
+
+  }
 
   return (
     <div className='App'>
       <Header>
-        <Navigation logedIn={logedIn} />
+        <Navigation logedIn={loggedIn} />
       </Header>
 
       <Routes>
@@ -30,7 +34,7 @@ function App() {
         />
         <Route
           path="/signin"
-          element={<Login />}
+          element={<Login loggedIn={loggedIn} handleLogin={handleLogin} />}
         />
         <Route
           path="/profile"

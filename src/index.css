@@ -13,3 +13,10 @@
 @import url(./components/PageNotFoud/__back-button/pageNotFound__back-button.css);
 @import url(./components/AuthPage/authpage.css);
 @import url(./components/AuthPage/__logo/authpage__logo.css);
+@import url(./components/AuthPage/__title/authpage__title.css);
+@import url(./components/AuthPage/__form/authpage__form.css);
+@import url(./components/AuthPage/__submit-button/authpage__submit-button.css);
+@import url(./components/AuthPage/__suggestion/authpage__suggestion.css);
+@import url(./components/AuthPage/__link/authpage__link.css);
+@import url(./components/Login/__label/login__label.css);
+@import url(./components/Login/__input/login__input.css);
