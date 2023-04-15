@@ -6,3 +6,8 @@
 @import url(./components/Header/__login/header__content.css);
 @import url(./components/Header/__register-link/header__register-link.css);
 @import url(./components/Header/__signin/header__signin.css);
+@import url(./components/Header/_active/header_active.css);
+@import url(./components/PageNotFoud/PageNotFound.css);
+@import url(./components/PageNotFoud/__title/pageNotFound__title.css);
+@import url(./components/PageNotFoud/__text/pageNotFound__text.css);
+@import url(./components/PageNotFoud/__back-button/pageNotFound__back-button.css);

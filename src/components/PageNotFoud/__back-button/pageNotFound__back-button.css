@@ -1,0 +1,15 @@
+.pageNotFound__back-button {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  color: #3456f3;
+  cursor: pointer;
+  margin-top: 179px;
+}
+
+.pageNotFound__back-button:hover {
+  opacity: 0.8;
+}
