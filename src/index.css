@@ -20,3 +20,4 @@
 @import url(./components/AuthPage/__link/authpage__link.css);
 @import url(./components/Login/__label/login__label.css);
 @import url(./components/Login/__input/login__input.css);
+@import url(./components/Login/__input-error/login__input-error.css);

@@ -5,9 +5,16 @@
   border: none;
   border-bottom: 1px solid #e8e8e8;
   box-sizing: border-box;
-  padding: 0 0 17px 0;
+  padding: 0 0 10px 0;
   margin-top: 5px;
   width: 100%;
-  /* background-color: black; */
-  /* color: rgb(204, 204, 204); */
 }
+
+.login__input:focus {
+  border-color: #3456f3;
+  outline: none;
+}
+
+/* .login__input:last-child {
+  margin: 200px;
+} */

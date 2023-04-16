@@ -16,7 +16,7 @@ function Login({ loggedIn, handleLogin }) {
             loggedIn={loggedIn}
             onSubmit={handleSubmit}
         >
-            <label className="login__label" for="email">E-mail</label>
+            <label className="login__label" htmlFor="email">E-mail</label>
             <input
                 type="email"
                 name="email"
@@ -29,7 +29,8 @@ function Login({ loggedIn, handleLogin }) {
             // onChange={handleChange}
             // value={values.email || ''}
             />
-            <label className="login__label" for="password">Пароль</label>
+            <span className="login__input-error email-input-error">Что-то пошло не так</span>
+            <label className="login__label" htmlFor="password">Пароль</label>
             <input
                 type="password"
                 name="password"
@@ -42,6 +43,7 @@ function Login({ loggedIn, handleLogin }) {
             // onChange={handleChange}
             // value={values.password || ''}
             />
+            <span className="login__input-error password-input-error">Что-то пошло не так</span>
         </AuthPage>
     );
 }
