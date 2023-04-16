@@ -7,3 +7,11 @@
   margin: 16px 0 0;
   padding: 0;
 }
+
+@media screen and (max-width: 320px) {
+  .authpage__suggestion {
+    margin: 14px 0 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

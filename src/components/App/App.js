@@ -16,6 +16,9 @@ function App() {
   function handleLogin() {
 
   }
+  function handleRegister() {
+
+  }
 
   return (
     <div className='App'>
@@ -30,7 +33,7 @@ function App() {
         />
         <Route
           path="/signup"
-          element={<Register />}
+          element={<Register loggedIn={loggedIn} handleRegister={handleRegister} />}
         />
         <Route
           path="/signin"

@@ -2,7 +2,17 @@
   display: flex;
   flex-direction: column;
   max-width: 396px;
-  margin: 232px auto auto;
+  margin: 70px auto auto;
 }
 
-/* .authpage:last-of-type */
+@media screen and (max-width: 768px) {
+  .authpage {
+    margin: 232px auto;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .authpage {
+    margin: 56px 30px auto;
+  }
+}

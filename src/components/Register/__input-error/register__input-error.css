@@ -13,3 +13,9 @@
 .register__input-error:last-of-type {
   margin: 6px 0 134px;
 }
+
+@media screen and (max-width: 320px) {
+  .register__input-error:last-of-type {
+    margin: 6px 0 222px;
+  }
+}

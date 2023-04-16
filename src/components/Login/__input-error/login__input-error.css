@@ -13,3 +13,9 @@
 .login__input-error:last-of-type {
   margin: 6px 0 203px;
 }
+
+@media screen and (max-width: 320px) {
+  .login__input-error:last-of-type {
+    margin: 6px 0 291px;
+  }
+}

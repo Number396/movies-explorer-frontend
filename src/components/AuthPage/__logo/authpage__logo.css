@@ -3,3 +3,9 @@
   height: 38px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 320px) {
+  .authpage__logo {
+    align-self: center;
+  }
+}

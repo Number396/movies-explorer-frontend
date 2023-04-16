@@ -5,3 +5,10 @@
   max-width: 396px;
   margin: 40px 0 0;
 }
+
+@media screen and (max-width: 320px) {
+  .authpage__title {
+    margin: 50px 0 0;
+    align-self: center;
+  }
+}

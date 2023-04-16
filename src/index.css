@@ -21,3 +21,6 @@
 @import url(./components/Login/__label/login__label.css);
 @import url(./components/Login/__input/login__input.css);
 @import url(./components/Login/__input-error/login__input-error.css);
+@import url(./components/Register/__label/register__label.css);
+@import url(./components/Register/__input/register__input.css);
+@import url(./components/Register/__input-error/register__input-error.css);
