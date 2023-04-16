@@ -25,7 +25,7 @@ function AuthPage({ title, name, btnText, loggedIn, isRegister, onSubmit, childr
                     <p className="authpage__suggestion">Уже зарегистрированы?
                         <NavLink
                             to="/signin"
-                            className="register__link">Войти
+                            className="authpage__link">Войти
                         </NavLink>
                     </p> :
                     <p className="authpage__suggestion">Ещё не зарегистрированы?

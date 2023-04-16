@@ -12,8 +12,8 @@ function Login({ loggedIn, handleLogin }) {
             title="Рады видеть!"
             name="login"
             btnText="Войти"
-            isRegister={false}
             loggedIn={loggedIn}
+            isRegister={false}
             onSubmit={handleSubmit}
         >
             <label className="login__label" htmlFor="email">E-mail</label>
