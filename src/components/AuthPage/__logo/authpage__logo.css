@@ -4,6 +4,12 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 428px) {
+  .authpage__logo {
+    align-self: center;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .authpage__logo {
     align-self: center;
