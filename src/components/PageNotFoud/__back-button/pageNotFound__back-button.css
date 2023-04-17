@@ -13,3 +13,21 @@
 .pageNotFound__back-button:hover {
   opacity: 0.8;
 }
+
+@media screen and (max-width: 768px) {
+  .pageNotFound__back-button {
+    margin-top: 184px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .pageNotFound__back-button {
+    margin-top: 284px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .pageNotFound__back-button {
+    margin-top: 284px;
+  }
+}
