@@ -38,3 +38,6 @@
 @import url(./components/Profile/__button-container/profile__button-container.css);
 @import url(./components/Promo/promo.css);
 @import url(./components/Promo/__title/promo__title.css);
+@import url(./components/About/about.css);
+@import url(./components/About/__header/about__header.css);
+@import url(./components/About/__border/about__border.css);
