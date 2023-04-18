@@ -1,0 +1,16 @@
+.profile__input-border {
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 11px;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__input-border {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .profile__input-border {
+    margin-bottom: 11px;
+  }
+}

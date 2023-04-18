@@ -1,0 +1,13 @@
+.profile__label {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  display: inline-block;
+  width: 141px;
+}
+
+@media screen and (max-width: 428px) {
+  .profile__label {
+    width: 130px;
+  }
+}

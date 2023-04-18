@@ -1,0 +1,12 @@
+.profile__input-error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ff3055;
+  text-align: end;
+  opacity: 1;
+  min-height: 12px;
+  max-width: 410px;
+  display: block;
+  margin: 2px 0 2px;
+}

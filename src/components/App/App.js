@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Register from "../Register/Register";
@@ -12,12 +12,21 @@ import Login from "../Login/Login";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({ name: "Виталий" });
+  const navigate = useNavigate();
 
   function handleLogin() {
 
   }
   function handleRegister() {
 
+  }
+  function handleProfile() {
+
+  }
+  function onSignoutClick() {
+
+    navigate("/", { replace: true });
   }
 
   return (
@@ -41,7 +50,10 @@ function App() {
         />
         <Route
           path="/profile"
-          element={<Profile />}
+          element={<Profile
+            currentUser={currentUser}
+            handleProfile={handleProfile}
+            onSignoutClick={onSignoutClick} />}
         />
         <Route
           path="/movies"

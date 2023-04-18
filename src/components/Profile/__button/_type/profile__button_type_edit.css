@@ -1,0 +1,18 @@
+.profile__button_type_edit {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  background-color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+  .rofile__button_type_edit {
+    margin: 197px auto 16px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .rofile__button_type_edit {
+    margin: 364px auto 16px;
+  }
+}

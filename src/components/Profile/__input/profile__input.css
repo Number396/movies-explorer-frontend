@@ -1,0 +1,23 @@
+.profile__input {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: end;
+  border: none;
+  box-sizing: border-box;
+  width: 122px;
+  margin-left: 147px;
+  padding: 0;
+}
+
+.profile__input:focus {
+  border-bottom: 1px solid #3456f3;
+  outline: none;
+}
+
+@media screen and (max-width: 428px) {
+  .profile__input {
+    width: 120px;
+    margin-left: 10px;
+  }
+}

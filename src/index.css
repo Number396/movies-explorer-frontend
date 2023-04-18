@@ -24,3 +24,15 @@
 @import url(./components/Register/__label/register__label.css);
 @import url(./components/Register/__input/register__input.css);
 @import url(./components/Register/__input-error/register__input-error.css);
+@import url(./components/Profile/profile.css);
+@import url(./components/Profile/__title/profile__title.css);
+@import url(./components/Profile/__form/profile__form.css);
+@import url(./components/Profile/__label/profile__label.css);
+@import url(./components/Profile/__input/profile__input.css);
+@import url(./components/Profile/__input-error/profile__input-error.css);
+@import url(./components/Profile/__input-border/profile__input-border.css);
+@import url(./components/Profile/__button/profile__button.css);
+@import url(./components/Profile/__button/_type/profile__button_type_submit.css);
+@import url(./components/Profile/__button/_type/profile__button_type_signout.css);
+@import url(./components/Profile/__button/_type/profile__button_type_edit.css);
+@import url(./components/Profile/__button-container/profile__button-container.css);
