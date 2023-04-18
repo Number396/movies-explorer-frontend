@@ -13,7 +13,8 @@ function AuthPage({ title, name, btnText, loggedIn, isRegister, onSubmit, childr
                 alt="логотип"
             />
             <h2 className="authpage__title">{title}</h2>
-            <form name={name}
+            <form
+                name={name}
                 className="authpage__form"
                 onSubmit={onSubmit}
             >
