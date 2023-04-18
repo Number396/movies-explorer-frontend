@@ -1,0 +1,36 @@
+.promo {
+  width: 100%;
+  background-color: #073042;
+  color: white;
+  padding: 50px 70px 0;
+  /* padding-top: 50px; */
+  /* padding-bottom: 60px; */
+  box-sizing: border-box;
+  display: flex;
+  background-image: url(../../images/text__COLOR_landing-logo.svg);
+  background-size: 722px 244px;
+  background-repeat: no-repeat;
+  background-position: right 70px bottom 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .promo {
+    padding: 300px 44px 0;
+    background-size: 680px 230px;
+    background-position: right 44px bottom 70px;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .promo {
+    padding: 183px 10px 0;
+    justify-content: center;
+    background-position: right 44px bottom 40px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .promo {
+    background-position: right -83px bottom 40px;
+  }
+}

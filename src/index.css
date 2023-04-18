@@ -36,3 +36,5 @@
 @import url(./components/Profile/__button/_type/profile__button_type_signout.css);
 @import url(./components/Profile/__button/_type/profile__button_type_edit.css);
 @import url(./components/Profile/__button-container/profile__button-container.css);
+@import url(./components/Promo/promo.css);
+@import url(./components/Promo/__title/promo__title.css);
