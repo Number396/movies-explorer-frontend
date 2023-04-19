@@ -41,3 +41,16 @@
 @import url(./components/About/about.css);
 @import url(./components/About/__header/about__header.css);
 @import url(./components/About/__border/about__border.css);
+@import url(./components/AboutProject/aboutProject.css);
+@import url(./components/AboutProject/__info/aboutProject__info.css);
+@import url(./components/AboutProject/__item/aboutProject__item.css);
+@import url(./components/AboutProject/__title/aboutProject__title.css);
+@import url(./components/AboutProject/__text/aboutProject__text.css);
+@import url(./components/AboutProject/__meter/aboutProject__meter.css);
+@import url(./components/AboutProject/__meterContainer/aboutProject__meterContainer.css);
+@import url(./components/AboutProject/__meter-background/aboutProject__meter-background.css);
+@import url(./components/AboutProject/__meter-lable/aboutProject__meter-lable.css);
+@import url(./components/AboutProject/__labelContainer/aboutProject__labelContainer.css);
+@import url(./components/AboutProject/__lable/aboutProject__lable.css);
+@import url(./components/AboutProject/__lable/_type/aboutProject__lable_type_back.css);
+@import url(./components/AboutProject/__lable/_type/aboutProject__lable_type_front.css);

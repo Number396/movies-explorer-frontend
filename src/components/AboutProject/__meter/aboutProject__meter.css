@@ -1,0 +1,25 @@
+.aboutProject__meter {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  width: 20%;
+  height: 36px;
+  background-color: #2be080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProject__meter {
+    width: 21%;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .aboutProject__meter {
+    font-size: 11px;
+    line-height: 13px;
+    width: 35%;
+  }
+}

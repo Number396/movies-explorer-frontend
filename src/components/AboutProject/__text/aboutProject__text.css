@@ -1,0 +1,21 @@
+.aboutProject__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  max-width: 500px;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProject__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .aboutProject__text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}

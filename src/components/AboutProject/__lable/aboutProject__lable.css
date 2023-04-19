@@ -1,0 +1,16 @@
+.aboutProject__lable {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 428px) {
+  .aboutProject__lable {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+  }
+}

@@ -1,4 +1,11 @@
 .about__border {
-  border: 0.25px solid black;
-  margin-top: 25px;
+  /* border: 0.25px solid black; */
+  border-bottom: 1px solid black;
+  margin-top: 23px;
+}
+
+@media screen and (max-width: 428px) {
+  .about__border {
+    margin-top: 28px;
+  }
 }
