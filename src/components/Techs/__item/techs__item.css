@@ -1,0 +1,13 @@
+.techs__item {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  list-style-type: none;
+  width: 90px;
+  height: 60px;
+  background-color: #e8e8e8;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

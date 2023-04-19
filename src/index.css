@@ -54,3 +54,10 @@
 @import url(./components/AboutProject/__lable/aboutProject__lable.css);
 @import url(./components/AboutProject/__lable/_type/aboutProject__lable_type_back.css);
 @import url(./components/AboutProject/__lable/_type/aboutProject__lable_type_front.css);
+@import url(./components/Techs/techs.css);
+@import url(./components/Techs/__header/techs__header.css);
+@import url(./components/Techs/__border/techs__border.css);
+@import url(./components/Techs/__title/techs__title.css);
+@import url(./components/Techs/__text/techs__text.css);
+@import url(./components/Techs/__items/techs__items.css);
+@import url(./components/Techs/__item/techs__item.css);
