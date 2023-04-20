@@ -1,0 +1,8 @@
+.portfolio__item {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 20px;
+}

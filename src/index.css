@@ -69,3 +69,9 @@
 @import url(./components/AboutMe/__text/aboutMe__text.css);
 @import url(./components/AboutMe/__link/aboutMe__link.css);
 @import url(./components/AboutMe/__avatar/aboutMe__avatar.css);
+@import url(./components/Portfolio/portfolio.css);
+@import url(./components/Portfolio/__title/portfolion__title.css);
+@import url(./components/Portfolio/__items/portfolio__items.css);
+@import url(./components/Portfolio/__item/portfolio__item.css);
+@import url(./components/Portfolio/__text/portfolio__text.css);
+@import url(./components/Portfolio/__link/portfolio__link.css);

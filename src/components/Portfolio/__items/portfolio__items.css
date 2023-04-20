@@ -1,0 +1,7 @@
+.portfolio__items {
+  row-gap: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  padding: 0;
+}

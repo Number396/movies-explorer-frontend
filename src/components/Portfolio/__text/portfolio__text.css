@@ -1,0 +1,8 @@
+.portfolio__text {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+  display: flex;
+  margin: 0;
+}
