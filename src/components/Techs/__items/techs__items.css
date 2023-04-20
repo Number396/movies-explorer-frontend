@@ -1,9 +1,22 @@
 .techs__items {
   display: flex;
   flex-wrap: wrap;
+  row-gap: 10px;
   /* column-gap: 10px; */
   justify-content: space-between;
   margin: 0 auto;
   padding: 0;
   max-width: 690px;
+}
+
+@media screen and (max-width: 768px) {
+  .techs__items {
+    max-width: 648px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .techs__items {
+    max-width: 178px;
+  }
 }
