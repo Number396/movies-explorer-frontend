@@ -9,19 +9,19 @@ function Portfolio() {
                 <li className="portfolio__item">
                     <p className="portfolio__text">Статичный сайт</p>
                     <a className="portfolio__link" href="https://number396.github.io/how-to-learn/" target="_blank" rel="noreferrer" >
-                        <img src={arrow} alt="стрелка" />
+                        <img className="portfolio__link-logo" src={arrow} alt="стрелка" />
                     </a>
                 </li>
                 <li className="portfolio__item">
                     <p className="portfolio__text">Адаптивный сайт</p>
                     <a className="portfolio__link" href="https://number396.github.io/russian-travel/" target="_blank" rel="noreferrer" >
-                        <img src={arrow} alt="стрелка" />
+                        <img className="portfolio__link-logo" src={arrow} alt="стрелка" />
                     </a>
                 </li>
                 <li className="portfolio__item">
                     <p className="portfolio__text">Одностраничное приложение</p>
                     <a className="portfolio__link" href="https://mesto.number396.nomoredomains.work" target="_blank" rel="noreferrer" >
-                        <img src={arrow} alt="стрелка" />
+                        <img className="portfolio__link-logo" src={arrow} alt="стрелка" />
                     </a>
                 </li>
 

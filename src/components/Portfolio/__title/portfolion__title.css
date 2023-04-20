@@ -5,3 +5,10 @@
   color: #a0a0a0;
   margin: 0;
 }
+
+@media screen and (max-width: 428px) {
+  .portfolion__title {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

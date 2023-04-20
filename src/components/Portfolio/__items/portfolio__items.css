@@ -5,3 +5,15 @@
   margin-top: 50px;
   padding: 0;
 }
+
+@media screen and (max-width: 768px) {
+  .portfolio__items {
+    row-gap: 19px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .portfolio__items {
+    margin-top: 40px;
+  }
+}
