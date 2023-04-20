@@ -61,3 +61,11 @@
 @import url(./components/Techs/__text/techs__text.css);
 @import url(./components/Techs/__items/techs__items.css);
 @import url(./components/Techs/__item/techs__item.css);
+@import url(./components/AboutMe/aboutMe.css);
+@import url(./components/AboutMe/__container/aboutMe__container.css);
+@import url(./components/AboutMe/__container/__info/aboutMe__info.css);
+@import url(./components/AboutMe/_title/aboutMe__title.css);
+@import url(./components/AboutMe/__subtitle/aboutMe__subtitle.css);
+@import url(./components/AboutMe/__text/aboutMe__text.css);
+@import url(./components/AboutMe/__link/aboutMe__link.css);
+@import url(./components/AboutMe/__avatar/aboutMe__avatar.css);
