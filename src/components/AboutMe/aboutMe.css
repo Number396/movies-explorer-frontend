@@ -1,3 +1,15 @@
 .aboutMe {
   padding: 66px 70px 100px;
 }
+
+@media screen and (max-width: 768px) {
+  .aboutMe {
+    padding: 66px 50px 90px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .aboutMe {
+    padding: 20px 14px 70px;
+  }
+}

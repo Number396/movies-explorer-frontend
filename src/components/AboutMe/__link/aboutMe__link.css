@@ -2,12 +2,24 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  margin-top: 99px;
   text-decoration: none;
   color: black;
   transition: opacity 100ms ease-in-out;
+  margin-top: 99px;
 }
 
 .aboutMe__link:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutMe__link {
+    margin-top: 87px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .aboutMe__link {
+    margin-top: 40px;
+  }
 }

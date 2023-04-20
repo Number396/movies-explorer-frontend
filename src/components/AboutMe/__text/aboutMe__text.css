@@ -5,3 +5,17 @@
   margin: 0;
   padding: 0;
 }
+
+@media screen and (max-width: 768px) {
+  .aboutMe__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .aboutMe__text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
