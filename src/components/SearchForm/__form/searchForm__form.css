@@ -3,3 +3,9 @@
   padding-bottom: 15px;
   display: flex;
 }
+
+@media screen and (max-width: 428px) {
+  .searchForm__form {
+    padding-bottom: 9px;
+  }
+}

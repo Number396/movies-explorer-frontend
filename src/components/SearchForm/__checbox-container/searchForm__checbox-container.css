@@ -3,3 +3,9 @@
   justify-content: center;
   margin-top: 29px;
 }
+
+@media screen and (max-width: 428px) {
+  .searchForm__checbox-container {
+    margin-top: 42px;
+  }
+}

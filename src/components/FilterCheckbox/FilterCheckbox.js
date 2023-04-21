@@ -1,12 +1,13 @@
 
 function FilterCheckbox() {
     return (
-        <label className="checkbox">
+        <label className="checkbox" htmlFor="checkboxId">
             <input
                 type="checkbox"
+                name="checkbox"
                 id="checkboxId"
             />
-            <span class="checkbox__slider"></span>
+            <span className="checkbox__slider"></span>
         </label>
     );
 }

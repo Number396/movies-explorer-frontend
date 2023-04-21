@@ -10,7 +10,14 @@ function SearchForm() {
         <section className="searchForm">
             <form className="searchForm__form" >
                 <img className="searchForm__searchIcon" src={searchIcon} alt="иконнка поиска" />
-                <input className="searchForm__input" type="search" />
+                <label htmlFor="search" />
+                <input
+                    className="searchForm__input"
+                    type="search"
+                    name="search"
+                    id="search"
+                    placeholder="Фильм"
+                />
                 <button
                     className="searchForm__button"
                     type="submit"
