@@ -76,3 +76,13 @@
 @import url(./components/Portfolio/__text/portfolio__text.css);
 @import url(./components/Portfolio/__link/portfolio__link.css);
 @import url(./components/Portfolio/__link-logo/portfolio__link-logo.css);
+@import url(./components/Movies/movies.css);
+@import url(./components/SearchForm/searchForm.css);
+@import url(./components/SearchForm/__form/searchForm__form.css);
+@import url(./components/SearchForm/__input/searchForm__input.css);
+@import url(./components/SearchForm/__button/searchForm__button.css);
+
+@import url(./components/FilterCheckbox/checkbox/checkbox.css);
+@import url(./components/FilterCheckbox/checkbox/__slider/checkbox__slider.css);
+@import url(./components/SearchForm/__checbox-container/searchForm__checbox-container.css);
+@import url(./components/SearchForm/__checbox-text/searchForm__checbox-text.css);

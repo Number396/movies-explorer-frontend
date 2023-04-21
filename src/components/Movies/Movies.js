@@ -1,6 +1,13 @@
+import SearchForm from "../SearchForm/SearchForm";
+
 function Movies() {
     return (
-        <div>Movies</div>
+        <main>
+            <SearchForm />
+
+        </main>
+
+
     );
 }
 
