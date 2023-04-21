@@ -81,9 +81,16 @@
 @import url(./components/SearchForm/__form/searchForm__form.css);
 @import url(./components/SearchForm/__input/searchForm__input.css);
 @import url(./components/SearchForm/__button/searchForm__button.css);
-
 @import url(./components/FilterCheckbox/checkbox/checkbox.css);
 @import url(./components/FilterCheckbox/checkbox/__slider/checkbox__slider.css);
 @import url(./components/SearchForm/__checbox-container/searchForm__checbox-container.css);
 @import url(./components/SearchForm/__checbox-text/searchForm__checbox-text.css);
 @import url(./components/SearchForm/__searchIcon/searchForm__searchIcon.css);
+@import url(./components/MoviesCardList/moviesCardList.css);
+@import url(./components/MoviesCardList/__items/moviesCardList__items.css);
+@import url(./components/MoviesCard/moviesCard.css);
+@import url(./components/MoviesCard/__image/movieCard__image.css);
+@import url(./components/MoviesCard/__description/moviesCard__description.css);
+@import url(./components/MoviesCard/__title/moviesCard__title.css);
+@import url(./components/MoviesCard/__like/moviesCard__like.css);
+@import url(./components/MoviesCard/__time/moviesCard__time.css);

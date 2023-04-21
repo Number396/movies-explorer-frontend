@@ -26,8 +26,6 @@ function Portfolio() {
                 </li>
 
             </ul>
-
-
         </section>
     );
 }

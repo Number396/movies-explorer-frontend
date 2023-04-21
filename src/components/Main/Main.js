@@ -10,6 +10,7 @@ function Main() {
     return (
         <main>
             <Promo />
+            <About about="О проекте" />
             <AboutProject />
             <Techs />
             <About about="Студент" />

@@ -1,0 +1,10 @@
+.moviesCard__description {
+  /* max-width: 241px; */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 29px;
+  border-bottom: 1px solid #e8e8e8;
+  margin: 14px 0 0;
+}
