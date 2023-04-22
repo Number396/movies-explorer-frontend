@@ -1,36 +1,32 @@
-import one from "../../images/1.png"
+import { useState } from "react";
 
-function MoviesCard() {
+function MoviesCard({ img, title, time }) {
+    const [isLiked, setIsLiekd] = useState(false);
 
     function handleLikeClick() {
-
+        setIsLiekd(!isLiked);
     }
 
     return (
         <li className="moviesCard">
             <img
                 className="movieCard__image"
-                src={one}
+                src={img}
                 alt="изображение фильма"
             />
             <div className="moviesCard__description" >
                 <p className="moviesCard__title">
-                    33 слова о дизайне
+                    {title}
                 </p>
                 <button
                     aria-label="кнопка нравится"
                     type="button"
-                    className="moviesCard__like"
+                    className={`moviesCard__like ${isLiked && 'movieCard__like_active'}`}
                     onClick={handleLikeClick}
                 />
             </div>
-            <p className="moviesCard__time">1ч 42м</p>
-
-
+            <p className="moviesCard__time">{time}</p>
         </li>
-
-
-
     );
 }
 

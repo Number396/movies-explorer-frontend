@@ -5,5 +5,20 @@
   display: flex;
   flex-wrap: wrap;
   column-gap: 20px;
-  row-gap: 38px;
+  row-gap: 39px;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+@media screen and (max-width: 849px) {
+  .moviesCardList__items {
+    column-gap: 30px;
+    row-gap: 31px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .moviesCardList__items {
+    row-gap: 34px;
+  }
 }

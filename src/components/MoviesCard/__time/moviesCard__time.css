@@ -4,3 +4,10 @@
   line-height: 13px;
   margin: 6px 0 0;
 }
+
+@media screen and (max-width: 428px) {
+  .moviesCard__time {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}

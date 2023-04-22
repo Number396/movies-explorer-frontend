@@ -2,9 +2,25 @@
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: hidden; */
   margin: 0;
+  padding-top: 13px;
+  height: 32px;
   max-width: 226px;
+}
+
+@media screen and (max-width: 849px) {
+  .moviesCard__title {
+    max-width: 295px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .moviesCard__title {
+    font-size: 12px;
+    line-height: 15px;
+    padding-top: 15px;
+  }
 }

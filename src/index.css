@@ -94,3 +94,5 @@
 @import url(./components/MoviesCard/__title/moviesCard__title.css);
 @import url(./components/MoviesCard/__like/moviesCard__like.css);
 @import url(./components/MoviesCard/__time/moviesCard__time.css);
+@import url(./components/MoviesCard/__like/_active/movieCard__like_active.css);
+@import url(./components/MoviesCardList/__more-button/moviesCardList__more-button.css);
