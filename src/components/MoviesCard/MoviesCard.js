@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function MoviesCard({ img, title, time }) {
+function MoviesCard({ img, title, time, fav }) {
     const [isLiked, setIsLiekd] = useState(false);
 
     function handleLikeClick() {
@@ -21,7 +21,7 @@ function MoviesCard({ img, title, time }) {
                 <button
                     aria-label="кнопка нравится"
                     type="button"
-                    className={`moviesCard__like ${isLiked && 'movieCard__like_active'}`}
+                    className={` ${!fav ? 'moviesCard__like' : 'moviesCard__like_fav'} ${isLiked && 'movieCard__like_active'}`}
                     onClick={handleLikeClick}
                 />
             </div>

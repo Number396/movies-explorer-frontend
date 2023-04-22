@@ -1,0 +1,15 @@
+.moviesCard__like_fav {
+  padding: 0;
+  border-style: none;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url(../../../../images/favorite.svg);
+  transition: opacity 100ms ease-in-out;
+  cursor: pointer;
+}
+
+.moviesCard__like_fav:hover {
+  opacity: 0.7;
+}

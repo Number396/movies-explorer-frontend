@@ -1,6 +1,17 @@
+import { images } from "../../utils/constants";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import SearchForm from "../SearchForm/SearchForm";
+
 function SavedMovies() {
     return (
-        <div>saved-movies</div>
+        <main>
+            <SearchForm />
+            <MoviesCardList
+                images={images.slice(0, 3)}
+                fav={true}
+            />
+        </main>
+
     );
 }
 

@@ -1,5 +1,6 @@
 .moviesCardList {
   max-width: 1140px;
+  width: calc(100vw - 7.8vw);
   margin: 0 auto;
   display: flex;
   padding-top: 70px;
