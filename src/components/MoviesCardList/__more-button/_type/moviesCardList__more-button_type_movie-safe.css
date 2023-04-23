@@ -1,4 +1,5 @@
 .moviesCardList__more-button_type_movie-safe {
+  visibility: hidden;
   margin: 50px auto 144px;
 }
 
