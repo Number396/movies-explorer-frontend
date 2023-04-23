@@ -4,12 +4,13 @@ function MoviesCardList({ images, fav }) {
     return (
         <section className="moviesCardList">
             <ul className="moviesCardList__items">
-                {images.map((items) => (
+                {images.map((items, index) => (
                     <MoviesCard
                         img={items.img}
                         title={items.title}
                         time={items.time}
                         fav={fav}
+                        key={index}
                     />
                 ))}
             </ul>
