@@ -12,6 +12,9 @@
   transition: opacity 100ms ease-in-out;
   text-decoration: none;
   color: black;
+  background-image: url(../../../images/favorite.svg);
+  background-repeat: no-repeat;
+  background-position: right center;
 }
 
 .header__signin:hover {

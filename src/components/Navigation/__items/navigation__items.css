@@ -1,0 +1,7 @@
+.navigation__items {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 21px 0 0;
+  align-items: center;
+}

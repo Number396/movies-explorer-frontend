@@ -31,9 +31,9 @@ function App() {
 
   return (
     <div className='App'>
-      <Header>
-        <Navigation logedIn={loggedIn} />
-      </Header>
+      <Header logedIn={loggedIn} />
+      {/* <Navigation logedIn={loggedIn} /> */}
+      {/* </Header> */}
 
       <Routes>
         <Route
