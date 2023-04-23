@@ -97,3 +97,5 @@
 @import url(./components/MoviesCard/__like/_active/movieCard__like_active.css);
 @import url(./components/MoviesCard/__like/_fav/moviesCard__like_fav.css);
 @import url(./components/MoviesCardList/__more-button/moviesCardList__more-button.css);
+@import url(./components/MoviesCardList/__more-button/_type/moviesCardList__more-button_type_movie.css);
+@import url(./components/MoviesCardList/__more-button/_type/moviesCardList__more-button_type_movie-safe.css);

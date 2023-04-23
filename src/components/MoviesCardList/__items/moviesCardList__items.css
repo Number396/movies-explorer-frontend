@@ -6,15 +6,21 @@
   flex-wrap: wrap;
   column-gap: 20px;
   row-gap: 39px;
-  justify-content: center;
+  /* justify-content: center; */
   /* padding: 0 70px 10px; */
   padding-bottom: 10px;
 }
 
-@media screen and (max-width: 849px) {
+@media screen and (max-width: 921px) {
   .moviesCardList__items {
     column-gap: 30px;
     row-gap: 31px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .moviesCardList__items {
+    justify-content: center;
   }
 }
 

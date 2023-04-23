@@ -1,6 +1,4 @@
 import MoviesCard from "../MoviesCard/MoviesCard";
-// import { images } from "../../utils/constants";
-
 
 function MoviesCardList({ images, fav }) {
     return (
@@ -13,18 +11,20 @@ function MoviesCardList({ images, fav }) {
                         time={items.time}
                         fav={fav}
                     />
-                ))
-                }
+                ))}
             </ul>
-            {!fav && <button
-                className="moviesCardList__more-button"
+            <button
+                className={` moviesCardList__more-button
+                ${fav
+                        ? "moviesCardList__more-button_type_movie-safe"
+                        : "moviesCardList__more-button_type_movie"
+                    }
+                    `}
                 type="button"
-            >Ещё
+            >
+                Ещё
             </button>
-            }
-
-        </section>
-
+        </section >
     );
 }
 

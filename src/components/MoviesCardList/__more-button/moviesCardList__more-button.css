@@ -9,18 +9,11 @@
   height: 36px;
   cursor: pointer;
   transition: opacity 100ms ease-in-out;
-  margin: 50px auto 40px;
   padding: 0;
 }
 
 .moviesCardList__more-button:hover {
   opacity: 0.8;
-}
-
-@media screen and (max-width: 849px) {
-  .moviesCardList__more-button {
-    margin: 50px auto 80px;
-  }
 }
 
 @media screen and (max-width: 428px) {

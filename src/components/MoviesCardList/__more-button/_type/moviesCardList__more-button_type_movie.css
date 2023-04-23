@@ -1,0 +1,9 @@
+.moviesCardList__more-button_type_movie {
+  margin: 50px auto 40px;
+}
+
+@media screen and (max-width: 849px) {
+  .moviesCardList__more-button_type_movie {
+    margin: 50px auto 80px;
+  }
+}
