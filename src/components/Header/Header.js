@@ -31,11 +31,6 @@ function Header({ logedIn }) {
                     <Navigation logedIn={true} />
                 </header >
             } />
-
-
-
-
-
         </Routes>
     );
 }

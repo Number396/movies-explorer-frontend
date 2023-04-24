@@ -1,7 +1,7 @@
 .navigation__profile-link {
-  font-weight: 500;
+  /* font-weight: 500;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 16px; */
   display: flex;
   /* border: 1px solid red; */
   cursor: pointer;
@@ -16,4 +16,20 @@
   padding: 0;
   /* background-repeat: no-repeat; */
   /* background-position: right center; */
+}
+
+.navigation__profile-link:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 852px) {
+  .navigation__profile-link {
+    margin-top: 593px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .navigation__profile-link {
+    margin-top: 420px;
+  }
 }

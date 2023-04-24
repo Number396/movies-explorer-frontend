@@ -99,7 +99,16 @@
 @import url(./components/MoviesCardList/__more-button/moviesCardList__more-button.css);
 @import url(./components/MoviesCardList/__more-button/_type/moviesCardList__more-button_type_movie.css);
 @import url(./components/MoviesCardList/__more-button/_type/moviesCardList__more-button_type_movie-safe.css);
+
+@import url(./components/Navigation/navigation.css);
+@import url(./components/Navigation/_active/navigation_active.css);
 @import url(./components/Navigation/__items/navigation__items.css);
 @import url(./components/Navigation/__movie-link/navigation__movie-link.css);
 @import url(./components/Navigation/__saved-movies-link/navigation__saved-movies-link.css);
 @import url(./components/Navigation/__profile-link/navigation__profile-link.css);
+@import url(./components/Navigation/__main-link/navigation__main-link.css);
+@import url(./components/Navigation/__button/navigation__button.css);
+@import url(./components/Navigation/__button/_active/navigation__button_active.css);
+
+@import url(./components/Navigation/overlay.css);
+@import url(./components/Navigation/enabled.css);

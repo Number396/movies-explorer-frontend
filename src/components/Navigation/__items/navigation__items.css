@@ -2,6 +2,19 @@
   display: flex;
   list-style-type: none;
   padding: 0;
-  margin: 21px 0 0;
+  margin: 0;
   align-items: center;
+}
+
+@media screen and (max-width: 852px) {
+  .navigation__items {
+    flex-direction: column;
+    row-gap: 28px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .navigation__items {
+    row-gap: 24px;
+  }
 }

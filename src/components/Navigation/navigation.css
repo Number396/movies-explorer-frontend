@@ -1,0 +1,19 @@
+.navigation {
+  padding-top: 21px;
+  display: flex;
+}
+
+@media screen and (max-width: 852px) {
+  .navigation {
+    display: none;
+    /* position: fixed;
+    background-color: #f2f2f2;
+    width: 80%;
+    height: 100vh;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    flex-direction: column; */
+  }
+}

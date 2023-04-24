@@ -25,7 +25,7 @@ function App() {
 
   }
   function onSignoutClick() {
-
+    setLoggedIn(false);
     navigate("/", { replace: true });
   }
 
