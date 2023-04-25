@@ -38,7 +38,6 @@ function Navigation({ logedIn }) {
                                 <li>
                                     <NavLink
                                         to="/"
-                                        // className="navigation__main-link"
                                         className={({ isActive }) =>
                                             isActive
                                                 ? "navigation__link_type_active"
@@ -50,8 +49,6 @@ function Navigation({ logedIn }) {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    {/* className="navigation__movie-link" */}
-                                    {/* <NavLink to="/movies" className="navigation__movie-link" onClick={onNavClick}> */}
                                     <NavLink
                                         to="/movies"
                                         className={({ isActive }) =>
@@ -67,7 +64,6 @@ function Navigation({ logedIn }) {
                                 <li>
                                     <NavLink
                                         to="/saved-movies"
-                                        // className="navigation__saved-movies-link" onClick={onNavClick}
                                         className={({ isActive }) =>
                                             isActive
                                                 ? "navigation__link_type_active"
