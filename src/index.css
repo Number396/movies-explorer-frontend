@@ -114,3 +114,11 @@
 @import url(./components/Navigation/__link-active/navigation__link-active.css);
 @import url(./components/Navigation/__link/_type/navigation__link_type_disabled.css);
 @import url(./components/Navigation/__landing/navigation__landing.css);
+
+@import url(./components/Footer/footer.css);
+@import url(./components/Footer/__title/footer__title.css);
+@import url(./components/Footer/__separator/footer__separator.css);
+@import url(./components/Footer/__content/footer__content.css);
+@import url(./components/Footer/__author/footer__author.css);
+@import url(./components/Footer/__links/footer__links.css);
+@import url(./components/Footer/__link/footer__link.css);

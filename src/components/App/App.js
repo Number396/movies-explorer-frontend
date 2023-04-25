@@ -9,7 +9,7 @@ import { useState } from "react";
 import Navigation from "../Navigation/Navigation";
 import PageNotFound from "../PageNotFoud/PageNotFound";
 import Login from "../Login/Login";
-
+import Footer from "../Footer/Footer";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({ name: "Виталий" });
@@ -32,8 +32,6 @@ function App() {
   return (
     <div className='App'>
       <Header logedIn={loggedIn} />
-      {/* <Navigation logedIn={loggedIn} /> */}
-      {/* </Header> */}
 
       <Routes>
         <Route
@@ -67,10 +65,11 @@ function App() {
           path="*"
           element={<PageNotFound />}
         />
-
-
       </Routes>
+
+      <Footer />
     </div>
+
 
 
   );
