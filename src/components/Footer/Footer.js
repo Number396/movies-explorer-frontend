@@ -1,13 +1,16 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 function Footer() {
-    // const navigate = useNavigate();
+    const { pathname } = useLocation();
+    const route = (pathname === "/" || pathname === "/saved-movies" || pathname === "/movies" ? true : false);
+    console.log(pathname);
+    console.log(route);
 
     return (
         <Routes>
             <Route
-                path="/"
-                element={
+                path={pathname}
+                element={route &&
                     <header className="footer">
                         <h4 className="footer__title">
                             Учебный проект Яндекс.Практикум х BeatFilm.
@@ -43,9 +46,6 @@ function Footer() {
                     </header>
                 }
             />
-            <Route path="/movies" element={<header></header>} />
-            <Route path="/saved-movies" element={<header></header>} />
-            <Route path="/profile" element={<header></header>} />
         </Routes>
     );
 }
