@@ -3,15 +3,13 @@ import { Route, Routes, useLocation } from "react-router-dom";
 function Footer() {
     const { pathname } = useLocation();
     const route = (pathname === "/" || pathname === "/saved-movies" || pathname === "/movies" ? true : false);
-    console.log(pathname);
-    console.log(route);
 
     return (
         <Routes>
             <Route
                 path={pathname}
                 element={route &&
-                    <header className="footer">
+                    <footer className="footer">
                         <h4 className="footer__title">
                             Учебный проект Яндекс.Практикум х BeatFilm.
                         </h4>
@@ -21,8 +19,8 @@ function Footer() {
                                 &copy; {new Date().getFullYear()}
                             </p>
                             <nav>
-                                <ul className="footer__links">
-                                    <li>
+                                <ul className="footer__link-container">
+                                    <li className="footer__links">
                                         <a
                                             className="footer__link"
                                             href="https://practicum.yandex.ru"
@@ -43,7 +41,7 @@ function Footer() {
                                 </ul>
                             </nav>
                         </div>
-                    </header>
+                    </footer>
                 }
             />
         </Routes>

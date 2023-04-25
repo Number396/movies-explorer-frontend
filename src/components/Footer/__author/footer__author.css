@@ -5,3 +5,11 @@
   margin: 0;
   padding: 0;
 }
+
+@media screen and (max-width: 428px) {
+  .footer__author {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 18px;
+  }
+}

@@ -11,3 +11,13 @@
 .footer__link:last-of-type {
   margin-right: 0;
 }
+
+@media screen and (max-width: 428px) {
+  .footer__link {
+    font-size: 12px;
+    line-height: 15px;
+    display: flex;
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
+}

@@ -10,3 +10,10 @@
 .portfolio__item:last-of-type {
   border-bottom: 0;
 }
+
+@media screen and (max-width: 428px) {
+  .portfolio__item {
+    align-items: center;
+    padding-bottom: 19px;
+  }
+}

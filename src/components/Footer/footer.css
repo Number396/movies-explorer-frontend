@@ -6,3 +6,15 @@
   color: #a0a0a0;
   margin-top: auto;
 }
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 42px 30px 20px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .footer {
+    padding: 43px 10px 20px;
+  }
+}

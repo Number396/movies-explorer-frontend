@@ -4,12 +4,12 @@
 
 @media screen and (max-width: 768px) {
   .portfolio {
-    padding: 0 50px 125px;
+    padding: 0 50px 91px;
   }
 }
 
 @media screen and (max-width: 428px) {
   .portfolio {
-    padding: 0 14px 125px;
+    padding: 0 14px 70px;
   }
 }
