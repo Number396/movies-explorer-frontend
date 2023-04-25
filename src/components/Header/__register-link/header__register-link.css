@@ -10,3 +10,10 @@
 .header__register-link:hover {
   opacity: 0.8;
 }
+
+@media screen and (max-width: 428px) {
+  .header__register-link {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}

@@ -31,6 +31,7 @@
 }
 @media screen and (max-width: 320px) {
   .promo {
-    background-position: right -83px bottom 40px;
+    /* background-position: right -83px bottom 40px; */
+    background-position: right -180px bottom 40px;
   }
 }

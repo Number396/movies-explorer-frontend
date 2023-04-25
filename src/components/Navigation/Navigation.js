@@ -33,31 +33,36 @@ function Navigation({ logedIn }) {
     return (
         <section >
             <div className={overlayClass} />
-            <nav className={menuClass}>
+            <nav >
                 {logedIn ? (
-                    <ul className="navigation__items">
-                        <li>
-                            <NavLink to="/" className="navigation__main-link" onClick={onNavClick}>
-                                Главная
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/movies" className="navigation__movie-link" onClick={onNavClick}>
-                                Фильмы
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/saved-movies" className="navigation__saved-movies-link" onClick={onNavClick}
-                            >
-                                Сохранённые фильмы
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/profile" className="navigation__profile-link" onClick={onNavClick}
-                            >
-                            </NavLink>
-                        </li>
-                    </ul>
+                    <div className="container">
+                        <div className={menuClass}>
+                            <ul className="navigation__items">
+                                <li>
+                                    <NavLink to="/" className="navigation__main-link" onClick={onNavClick}>
+                                        Главная
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/movies" className="navigation__movie-link" onClick={onNavClick}>
+                                        Фильмы
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/saved-movies" className="navigation__saved-movies-link" onClick={onNavClick}
+                                    >
+                                        Сохранённые фильмы
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/profile" className="navigation__profile-link" onClick={onNavClick}
+                                    >
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        </div>
+                        <button className={btnMenuClass} onClick={handleMenuClick} />
+                    </div>
                 ) : (
                     <div className="header__content">
                         <NavLink to="/signup" className="header__register-link">
@@ -70,7 +75,6 @@ function Navigation({ logedIn }) {
                 )}
                 {/* navigation__button_active */}
             </nav>
-            <button className={btnMenuClass} onClick={handleMenuClick} />
         </section>
     );
 }
