@@ -16,8 +16,8 @@ function Navigation({ logedIn }) {
 
     function handleMenuClick() {
         if (!isMenuClicked) {
-            setBtnMenuClass("navigation__button_active");
-            setMenuClass("navigation__menu_active");
+            setBtnMenuClass("navigation__button navigation__button_active");
+            setMenuClass("navigation__menu navigation__menu_active");
             setOverlayClass("navigation__overlay navigation__overlay_active");
         } else {
             setBtnMenuClass("navigation__button");
@@ -40,7 +40,7 @@ function Navigation({ logedIn }) {
                                         to="/"
                                         className={({ isActive }) =>
                                             isActive
-                                                ? "navigation__link_type_active"
+                                                ? "navigation__link-active"
                                                 : "navigation__link navigation__link_type_disabled"
                                         }
                                         onClick={onNavClick}
@@ -53,7 +53,7 @@ function Navigation({ logedIn }) {
                                         to="/movies"
                                         className={({ isActive }) =>
                                             isActive
-                                                ? "navigation__link_type_active"
+                                                ? "navigation__link-active"
                                                 : "navigation__link"
                                         }
                                         onClick={onNavClick}
@@ -66,7 +66,7 @@ function Navigation({ logedIn }) {
                                         to="/saved-movies"
                                         className={({ isActive }) =>
                                             isActive
-                                                ? "navigation__link_type_active"
+                                                ? "navigation__link-active"
                                                 : "navigation__link"
                                         }
                                         onClick={onNavClick}

@@ -111,6 +111,6 @@
 @import url(./components/Navigation/__link-signin/navigation__link-signin.css);
 
 @import url(./components/Navigation/__link/navigation__link.css);
-@import url(./components/Navigation/__link/_type/navigation__link_type_active.css);
+@import url(./components/Navigation/__link-active/navigation__link-active.css);
 @import url(./components/Navigation/__link/_type/navigation__link_type_disabled.css);
 @import url(./components/Navigation/__landing/navigation__landing.css);

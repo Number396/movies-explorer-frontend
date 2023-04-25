@@ -1,4 +1,4 @@
-.navigation__link_type_active {
+.navigation__link-active {
   font-weight: 500;
   font-size: 13px;
   line-height: 18px;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 852px) {
-  .navigation__link_type_active {
+  .navigation__link-active {
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
@@ -24,7 +24,7 @@
 }
 
 @media screen and (max-width: 428px) {
-  .navigation__link_type_active {
+  .navigation__link-active {
     text-underline-offset: 11px;
     margin: 0;
   }
