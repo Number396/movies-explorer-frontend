@@ -18,9 +18,8 @@ function Navigation({ logedIn }) {
         if (!isMenuClicked) {
             setBtnMenuClass("navigation__button_active");
             setMenuClass("navigation__menu_active");
-            setOverlayClass("navigation__overlay navigation__overlay_active")
-        }
-        else {
+            setOverlayClass("navigation__overlay navigation__overlay_active");
+        } else {
             setBtnMenuClass("navigation__button");
             setMenuClass("navigation__menu");
             setOverlayClass("navigation__overlay");
@@ -31,37 +30,48 @@ function Navigation({ logedIn }) {
     return (
         <section className="navigation">
             <div className={overlayClass} />
-            <nav >
+            <nav>
                 {logedIn ? (
                     <div className="navigation__main">
                         <div className={menuClass}>
                             <ul className="navigation__items">
                                 <li>
-                                    <NavLink to="/"
-                                        // className="navigation__main-link" 
+                                    <NavLink
+                                        to="/"
+                                        // className="navigation__main-link"
                                         className={({ isActive }) =>
-                                            isActive ? "navigation__link_type_active" : "navigation__link navigation__link_type_disabled"
+                                            isActive
+                                                ? "navigation__link_type_active"
+                                                : "navigation__link navigation__link_type_disabled"
                                         }
-                                        onClick={onNavClick}>
+                                        onClick={onNavClick}
+                                    >
                                         Главная
                                     </NavLink>
                                 </li>
                                 <li>
                                     {/* className="navigation__movie-link" */}
                                     {/* <NavLink to="/movies" className="navigation__movie-link" onClick={onNavClick}> */}
-                                    <NavLink to="/movies"
+                                    <NavLink
+                                        to="/movies"
                                         className={({ isActive }) =>
-                                            isActive ? "navigation__link_type_active" : "navigation__link"
+                                            isActive
+                                                ? "navigation__link_type_active"
+                                                : "navigation__link"
                                         }
-                                        onClick={onNavClick}>
+                                        onClick={onNavClick}
+                                    >
                                         Фильмы
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/saved-movies"
+                                    <NavLink
+                                        to="/saved-movies"
                                         // className="navigation__saved-movies-link" onClick={onNavClick}
                                         className={({ isActive }) =>
-                                            isActive ? "navigation__link_type_active" : "navigation__link"
+                                            isActive
+                                                ? "navigation__link_type_active"
+                                                : "navigation__link"
                                         }
                                         onClick={onNavClick}
                                     >
@@ -69,9 +79,11 @@ function Navigation({ logedIn }) {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/profile" className="navigation__profile-link" onClick={onNavClick}
-                                    >
-                                    </NavLink>
+                                    <NavLink
+                                        to="/profile"
+                                        className="navigation__profile-link"
+                                        onClick={onNavClick}
+                                    ></NavLink>
                                 </li>
                             </ul>
                         </div>

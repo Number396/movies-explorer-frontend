@@ -100,10 +100,7 @@
 @import url(./components/Navigation/__menu/navigation__menu.css);
 @import url(./components/Navigation/__menu/_active/navigation__menu_active.css);
 @import url(./components/Navigation/__items/navigation__items.css);
-@import url(./components/Navigation/__movie-link/navigation__movie-link.css);
-@import url(./components/Navigation/__saved-movies-link/navigation__saved-movies-link.css);
 @import url(./components/Navigation/__profile-link/navigation__profile-link.css);
-@import url(./components/Navigation/__main-link/navigation__main-link.css);
 @import url(./components/Navigation/__button/navigation__button.css);
 @import url(./components/Navigation/__button/_active/navigation__button_active.css);
 
@@ -113,7 +110,6 @@
 @import url(./components/Navigation/__link/_type/navigation__link_type_register.css);
 @import url(./components/Navigation/__link/_type/navigation__type_signin.css);
 
-@import url(./components/Navigation/activeClassName.css);
 @import url(./components/Navigation/__link/navigation__link.css);
 @import url(./components/Navigation/__link/_type/navigation__link_type_active.css);
 @import url(./components/Navigation/__link/_type/navigation__link_type_disabled.css);
