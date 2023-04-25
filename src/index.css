@@ -107,8 +107,8 @@
 @import url(./components/Navigation/__overlay/navigation__overlay.css);
 @import url(./components/Navigation/__overlay/_active/navigation__overlay_active.css);
 
-@import url(./components/Navigation/__link/_type/navigation__link_type_register.css);
-@import url(./components/Navigation/__link/_type/navigation__type_signin.css);
+@import url(./components/Navigation/__link-register/navigation__link-register.css);
+@import url(./components/Navigation/__link-signin/navigation__link-signin.css);
 
 @import url(./components/Navigation/__link/navigation__link.css);
 @import url(./components/Navigation/__link/_type/navigation__link_type_active.css);

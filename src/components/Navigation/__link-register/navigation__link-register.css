@@ -1,4 +1,4 @@
-.navigation__link_type_register {
+.navigation__link-register {
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -7,12 +7,12 @@
   transition: opacity 100ms ease-in-out;
 }
 
-.navigation__link_type_register:hover {
+.navigation__link-register:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 428px) {
-  .navigation__link_type_register {
+  .navigation__link-register {
     font-size: 10px;
     line-height: 16px;
   }

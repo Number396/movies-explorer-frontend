@@ -87,10 +87,10 @@ function Navigation({ logedIn }) {
                     </div>
                 ) : (
                     <div className="navigation__landing">
-                        <NavLink to="/signup" className="navigation__link_type_register">
+                        <NavLink to="/signup" className="navigation__link-register">
                             Регистрация
                         </NavLink>
-                        <NavLink to="/signin" className="navigation__type_signin">
+                        <NavLink to="/signin" className="navigation__link-signin">
                             Войти
                         </NavLink>
                     </div>
