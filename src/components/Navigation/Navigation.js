@@ -33,7 +33,7 @@ function Navigation({ logedIn }) {
             <div className={overlayClass} />
             <nav >
                 {logedIn ? (
-                    <div className="navigation__content">
+                    <div className="navigation__main">
                         <div className={menuClass}>
                             <ul className="navigation__items">
                                 <li>
@@ -78,7 +78,7 @@ function Navigation({ logedIn }) {
                         <button className={btnMenuClass} onClick={handleMenuClick} />
                     </div>
                 ) : (
-                    <div className="header__content">
+                    <div className="navigation__landing">
                         <NavLink to="/signup" className="navigation__link_type_register">
                             Регистрация
                         </NavLink>

@@ -11,3 +11,10 @@
 .authpage__link:hover {
   opacity: 0.8;
 }
+
+@media screen and (max-width: 428px) {
+  .authpage__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

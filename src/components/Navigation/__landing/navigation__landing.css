@@ -1,11 +1,11 @@
-.header__content {
+.navigation__landing {
   display: flex;
   align-items: center;
   margin: 20px 0px 21px 0;
 }
 
 @media screen and (max-width: 428px) {
-  .header__content {
+  .navigation__landing {
     margin: 24px 0px 0px 0;
   }
 }

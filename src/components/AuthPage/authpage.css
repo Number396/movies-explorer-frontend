@@ -18,12 +18,6 @@
   .authpage {
     /* margin: 56px 30px auto; */
     padding: 56px 30px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .authpage {
-    /* margin: 56px 30px auto; */
-    padding: 56px 30px;
+    /* align-items: center; */
   }
 }
