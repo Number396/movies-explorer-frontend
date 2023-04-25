@@ -1,4 +1,4 @@
-.header__signin {
+.navigation__type_signin {
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -11,15 +11,14 @@
   color: black;
   margin-left: 30px;
   padding: 8px 20px;
-  /* padding: 0; */
 }
 
-.header__signin:hover {
+.navigation__type_signin:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 428px) {
-  .header__signin {
+  .navigation__type_signin {
     font-size: 10px;
     line-height: 16px;
     margin-left: 14px;

@@ -1,0 +1,9 @@
+.navigation__link_type_disabled {
+  display: none;
+}
+
+@media screen and (max-width: 852px) {
+  .navigation__link_type_disabled {
+    display: flex;
+  }
+}

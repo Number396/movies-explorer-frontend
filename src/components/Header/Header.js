@@ -1,11 +1,10 @@
-import { NavLink, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 
 function Header({ logedIn }) {
-    const { pathname } = useLocation();
+    // const { pathname } = useLocation();
 
     return (
-        // <header className={`header ${logedIn && 'header_active'}`} >
         <Routes>
             <Route path="/" element={
                 <header className="header"  >

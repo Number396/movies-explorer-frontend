@@ -3,53 +3,67 @@ import { NavLink } from "react-router-dom";
 
 function Navigation({ logedIn }) {
     const [btnMenuClass, setBtnMenuClass] = useState("navigation__button");
-    const [menuClass, setMenuClass] = useState("navigation");
-    const [overlayClass, setOverlayClass] = useState("overlay");
+    const [menuClass, setMenuClass] = useState("navigation__menu");
+    const [overlayClass, setOverlayClass] = useState("navigation__overlay");
     const [isMenuClicked, setIsMenuClicked] = useState(false);
 
     function onNavClick() {
         setIsMenuClicked(false);
         setBtnMenuClass("navigation__button");
-        setMenuClass("navigation");
-        setOverlayClass("overlay");
+        setMenuClass("navigation__menu");
+        setOverlayClass("navigation__overlay");
     }
 
     function handleMenuClick() {
         if (!isMenuClicked) {
             setBtnMenuClass("navigation__button_active");
-            setMenuClass("navigation_active");
-            setOverlayClass("overlay enabled")
-
+            setMenuClass("navigation__menu_active");
+            setOverlayClass("navigation__overlay navigation__overlay_active")
         }
         else {
             setBtnMenuClass("navigation__button");
-            setMenuClass("navigation");
-            setOverlayClass("overlay");
+            setMenuClass("navigation__menu");
+            setOverlayClass("navigation__overlay");
         }
         setIsMenuClicked(!isMenuClicked);
     }
 
-
     return (
-        <section >
+        <section className="navigation">
             <div className={overlayClass} />
             <nav >
                 {logedIn ? (
-                    <div className="container">
+                    <div className="navigation__content">
                         <div className={menuClass}>
                             <ul className="navigation__items">
                                 <li>
-                                    <NavLink to="/" className="navigation__main-link" onClick={onNavClick}>
+                                    <NavLink to="/"
+                                        // className="navigation__main-link" 
+                                        className={({ isActive }) =>
+                                            isActive ? "navigation__link_type_active" : "navigation__link navigation__link_type_disabled"
+                                        }
+                                        onClick={onNavClick}>
                                         Главная
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/movies" className="navigation__movie-link" onClick={onNavClick}>
+                                    {/* className="navigation__movie-link" */}
+                                    {/* <NavLink to="/movies" className="navigation__movie-link" onClick={onNavClick}> */}
+                                    <NavLink to="/movies"
+                                        className={({ isActive }) =>
+                                            isActive ? "navigation__link_type_active" : "navigation__link"
+                                        }
+                                        onClick={onNavClick}>
                                         Фильмы
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/saved-movies" className="navigation__saved-movies-link" onClick={onNavClick}
+                                    <NavLink to="/saved-movies"
+                                        // className="navigation__saved-movies-link" onClick={onNavClick}
+                                        className={({ isActive }) =>
+                                            isActive ? "navigation__link_type_active" : "navigation__link"
+                                        }
+                                        onClick={onNavClick}
                                     >
                                         Сохранённые фильмы
                                     </NavLink>
@@ -65,15 +79,14 @@ function Navigation({ logedIn }) {
                     </div>
                 ) : (
                     <div className="header__content">
-                        <NavLink to="/signup" className="header__register-link">
+                        <NavLink to="/signup" className="navigation__link_type_register">
                             Регистрация
                         </NavLink>
-                        <NavLink to="/signin" className="header__signin">
+                        <NavLink to="/signin" className="navigation__type_signin">
                             Войти
                         </NavLink>
                     </div>
                 )}
-                {/* navigation__button_active */}
             </nav>
         </section>
     );

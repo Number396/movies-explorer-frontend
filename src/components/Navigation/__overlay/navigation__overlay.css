@@ -1,4 +1,4 @@
-.overlay {
+.navigation__overlay {
   position: fixed;
   z-index: 1;
   left: 0;
@@ -12,3 +12,9 @@
   transition: visibility 0.33s, opacity 0.3s linear;
   display: flex;
 }
+
+/* @media screen and (max-width: 852px) {
+  .overlay {
+    
+  }
+} */

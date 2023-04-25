@@ -1,0 +1,31 @@
+.navigation__link_type_active {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration: none;
+  color: black;
+  transition: opacity 100ms ease-in-out;
+  margin-right: 16px;
+}
+
+@media screen and (max-width: 852px) {
+  .navigation__link_type_active {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: currentcolor;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .navigation__link_type_active {
+    text-underline-offset: 11px;
+    margin: 0;
+  }
+}
