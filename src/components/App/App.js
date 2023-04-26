@@ -11,7 +11,6 @@ import Login from "../Login/Login";
 import Footer from "../Footer/Footer";
 import Popup from "../Popup/Popup";
 
-
 function App() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
