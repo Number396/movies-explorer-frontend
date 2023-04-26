@@ -18,7 +18,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState({ name: "Виталий" });
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-
   function handleLogin() {
     setIsPopupOpen(true);
   }
