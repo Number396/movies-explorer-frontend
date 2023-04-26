@@ -1,0 +1,12 @@
+.aboutProject__labelContainer {
+  width: 100%;
+  display: flex;
+  margin: 14px auto auto;
+  color: #a0a0a0;
+}
+
+@media screen and (max-width: 428px) {
+  .aboutProject__labelContainer {
+    margin: 9px auto auto;
+  }
+}

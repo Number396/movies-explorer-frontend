@@ -1,0 +1,29 @@
+.navigation__profile-link {
+  line-height: 16px;
+  display: flex;
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  transition: opacity 100ms ease-in-out;
+  text-decoration: none;
+  background-image: url(../../../images/account.svg);
+  padding: 0;
+  margin-left: 348px;
+}
+
+.navigation__profile-link:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 852px) {
+  .navigation__profile-link {
+    margin-top: 593px;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .navigation__profile-link {
+    margin-top: 420px;
+  }
+}

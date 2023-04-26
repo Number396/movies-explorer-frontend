@@ -1,0 +1,10 @@
+.navigation__menu {
+  padding-top: 21px;
+  display: flex;
+}
+
+@media screen and (max-width: 852px) {
+  .navigation__menu {
+    display: none;
+  }
+}

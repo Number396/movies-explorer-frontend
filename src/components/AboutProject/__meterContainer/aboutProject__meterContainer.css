@@ -1,0 +1,17 @@
+.aboutProject__meterContainer {
+  width: 100%;
+  display: flex;
+  margin: 110px auto auto;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProject__meterContainer {
+    margin: 93px auto auto;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .aboutProject__meterContainer {
+    margin: 60px auto auto;
+  }
+}

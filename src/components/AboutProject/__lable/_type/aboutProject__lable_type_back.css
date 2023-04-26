@@ -1,0 +1,15 @@
+.aboutProject__lable_type_back {
+  width: 20%;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProject__lable_type_back {
+    width: 21%;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .aboutProject__lable_type_back {
+    width: 35%;
+  }
+}

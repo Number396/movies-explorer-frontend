@@ -1,0 +1,19 @@
+.authpage {
+  display: flex;
+  flex-direction: column;
+  max-width: 396px;
+  padding: 70px 0;
+  margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .authpage {
+    padding: 232px 30px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .authpage {
+    padding: 56px 30px 30px;
+  }
+}

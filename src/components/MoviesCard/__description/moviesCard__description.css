@@ -1,0 +1,15 @@
+.moviesCard__description {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #e8e8e8;
+  margin: 0 0 0;
+}
+
+@media screen and (max-width: 428px) {
+  .moviesCard__description {
+    padding-bottom: 12px;
+  }
+}

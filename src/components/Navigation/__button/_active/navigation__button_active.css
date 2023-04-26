@@ -1,0 +1,28 @@
+.navigation__button_active {
+  display: none;
+}
+
+@media screen and (max-width: 852px) {
+  .navigation__button_active {
+    top: 21px;
+    left: 6px;
+    width: 30px;
+    height: 34px;
+    background-size: 32px 34px;
+    background-image: url(../../../../images/nav-closebtn.svg);
+    border: none;
+    text-decoration: none;
+    background-color: transparent;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .navigation__button_active {
+    top: 13px;
+    left: -1px;
+  }
+}

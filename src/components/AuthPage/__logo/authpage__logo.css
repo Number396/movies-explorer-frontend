@@ -1,0 +1,11 @@
+.authpage__logo {
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 428px) {
+  .authpage__logo {
+    align-self: center;
+  }
+}

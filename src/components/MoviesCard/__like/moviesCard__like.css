@@ -1,0 +1,15 @@
+.moviesCard__like {
+  padding: 0;
+  border-style: none;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url(../../../images/emptylike.svg);
+  transition: opacity 100ms ease-in-out;
+  cursor: pointer;
+}
+
+.moviesCard__like:hover {
+  opacity: 0.7;
+}

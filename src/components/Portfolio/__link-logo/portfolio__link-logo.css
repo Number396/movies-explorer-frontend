@@ -1,0 +1,11 @@
+.portfolio__link-logo {
+  width: 30px;
+  height: 17px;
+}
+
+@media screen and (max-width: 428px) {
+  .portfolio__link-logo {
+    width: 21px;
+    height: 12px;
+  }
+}

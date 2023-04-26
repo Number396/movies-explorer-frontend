@@ -1,0 +1,13 @@
+.profile__button_type_signout {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #ff3055;
+}
+
+@media screen and (max-width: 428px) {
+  .profile__button_type_signout {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

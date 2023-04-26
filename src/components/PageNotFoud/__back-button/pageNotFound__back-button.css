@@ -1,0 +1,29 @@
+.pageNotFound__back-button {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  color: #3456f3;
+  cursor: pointer;
+  margin-top: 179px;
+}
+
+.pageNotFound__back-button:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 768px) {
+  .pageNotFound__back-button {
+    margin-top: 184px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .pageNotFound__back-button {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 284px;
+  }
+}

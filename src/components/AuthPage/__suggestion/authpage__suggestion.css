@@ -1,0 +1,25 @@
+.authpage__suggestion {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #a0a0a0;
+  text-align: center;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 428px) {
+  .authpage__suggestion {
+    margin: 14px 0 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .authpage__suggestion {
+    margin: 14px 0 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

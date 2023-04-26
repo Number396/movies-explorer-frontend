@@ -1,0 +1,9 @@
+.searchForm__searchIcon {
+  padding-left: 6px;
+}
+
+@media screen and (max-width: 428px) {
+  .searchForm__searchIcon {
+    display: none;
+  }
+}

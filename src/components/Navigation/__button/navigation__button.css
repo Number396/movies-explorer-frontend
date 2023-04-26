@@ -1,0 +1,34 @@
+.navigation__button {
+  background-image: url(../../../images/nav-button.svg);
+  width: 44px;
+  height: 44px;
+  border: none;
+  text-decoration: none;
+  background-color: transparent;
+  padding: 0;
+  position: relative;
+  top: 15px;
+  left: 0;
+  z-index: 1;
+  display: none;
+  transition: opacity 100ms ease-in-out;
+  cursor: pointer;
+}
+
+.navigation__button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 852px) {
+  .navigation__button {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .navigation__button {
+    width: 38px;
+    height: 45px;
+    background-size: 36px 44px;
+  }
+}

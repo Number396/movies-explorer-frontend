@@ -1,0 +1,26 @@
+.navigation__menu_active {
+  display: none;
+}
+
+@media screen and (max-width: 852px) {
+  .navigation__menu_active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: white;
+    width: 67.7%;
+    height: 100vh;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: 159px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .navigation__menu_active {
+    width: 100%;
+    padding-top: 144px;
+  }
+}

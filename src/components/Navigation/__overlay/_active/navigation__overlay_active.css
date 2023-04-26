@@ -1,0 +1,10 @@
+.navigation__overlay_active {
+  visibility: visible;
+  opacity: 0.3;
+}
+
+@media screen and (min-width: 853px) {
+  .navigation__overlay_active {
+    visibility: hidden;
+  }
+}

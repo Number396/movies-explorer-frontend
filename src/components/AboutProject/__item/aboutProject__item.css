@@ -1,0 +1,10 @@
+.aboutProject__item {
+  list-style-type: none;
+  width: 550px;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProject__item {
+    width: 319px;
+  }
+}

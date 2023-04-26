@@ -1,0 +1,25 @@
+.aboutMe__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutMe__container {
+    column-gap: 49px;
+  }
+}
+
+@media screen and (max-width: 603px) {
+  .aboutMe__container {
+    column-gap: 0;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    row-gap: 40px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .aboutMe__container {
+    margin-top: 40px;
+  }
+}

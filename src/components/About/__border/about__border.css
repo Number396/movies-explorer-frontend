@@ -1,0 +1,10 @@
+.about__border {
+  border-bottom: 1px solid black;
+  margin-top: 23px;
+}
+
+@media screen and (max-width: 428px) {
+  .about__border {
+    margin-top: 28px;
+  }
+}

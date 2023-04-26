@@ -1,0 +1,9 @@
+.aboutProject__lable_type_front {
+  width: 80%;
+}
+
+@media screen and (max-width: 428px) {
+  .aboutProject__lable_type_front {
+    width: 65%;
+  }
+}

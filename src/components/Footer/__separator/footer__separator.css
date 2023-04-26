@@ -1,0 +1,11 @@
+.footer__separator {
+  margin: 19px auto;
+  border-bottom: 1px solid #e8e8e8;
+  width: 100%;
+}
+
+@media screen and (max-width: 428px) {
+  .footer__separator {
+    margin: 22px auto 29px;
+  }
+}
