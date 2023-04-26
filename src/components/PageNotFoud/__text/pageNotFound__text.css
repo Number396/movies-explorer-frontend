@@ -5,3 +5,17 @@
   text-align: center;
   margin: 5px auto;
 }
+
+@media screen and (max-width: 768px) {
+  .pageNotFound__text {
+    margin: 5px auto 0;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .pageNotFound__text {
+    font-size: 12px;
+    line-height: 15px;
+    margin: 10px auto 0;
+  }
+}

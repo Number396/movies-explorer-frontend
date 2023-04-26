@@ -5,3 +5,10 @@
   /* text-align: center; */
   margin: 0;
 }
+
+@media screen and (max-width: 428px) {
+  .pageNotFound__title {
+    font-size: 80px;
+    line-height: 97px;
+  }
+}

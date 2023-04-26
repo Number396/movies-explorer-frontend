@@ -16,49 +16,50 @@ function Register({ loggedIn, handleRegister }) {
             onSubmit={handleSubmit}
 
         >
-            <label className="register__label" htmlFor="name">Имя</label>
+            <label className="authpage__label" htmlFor="name">Имя</label>
             <input
                 type="text"
                 name="name"
                 id="name"
                 placeholder="Имя"
-                className="register__input"
+                className="authpage__input"
                 required
                 minLength="1"
                 maxLength="40"
             // onChange={handleChange}
             // value={values.email || ''}
             />
-            <span className="register__input-error email-input-error">Что-то пошло не так</span>
+            {/* <span className="register__input-error email-input-error">Что-то пошло не так</span> */}
+            <span className="authpage__input-error authpage__input-error_type_register email-input-error">Что-то пошло не так</span>
 
-            <label className="register__label" htmlFor="email">E-mail</label>
+            <label className="authpage__label" htmlFor="email">E-mail</label>
             <input
                 type="email"
                 name="email"
                 id="email"
                 placeholder="Email"
-                className="register__input"
+                className="authpage__input"
                 required
                 minLength="2"
                 maxLength="40"
             // onChange={handleChange}
             // value={values.email || ''}
             />
-            <span className="register__input-error email-input-error">Что-то пошло не так</span>
-            <label className="register__label" htmlFor="password">Пароль</label>
+            <span className="authpage__input-error authpage__input-error_type_register email-input-error">Что-то пошло не так</span>
+            <label className="authpage__label" htmlFor="password">Пароль</label>
             <input
                 type="password"
                 name="password"
                 id="password"
                 placeholder="Пароль"
-                className="register__input"
+                className="authpage__input"
                 required
                 minLength="2"
                 maxLength="40"
             // onChange={handleChange}
             // value={values.password || ''}
             />
-            <span className="register__input-error password-input-error">Что-то пошло не так</span>
+            <span className="authpage__input-error authpage__input-error_type_register password-input-error">Что-то пошло не так</span>
         </AuthPage>
     );
 }

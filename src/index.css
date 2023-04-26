@@ -15,12 +15,21 @@
 @import url(./components/AuthPage/__submit-button/authpage__submit-button.css);
 @import url(./components/AuthPage/__suggestion/authpage__suggestion.css);
 @import url(./components/AuthPage/__link/authpage__link.css);
+
+@import url(./components/AuthPage/__label/authpage__label.css);
+@import url(./components/AuthPage/__input/authpage__input.css);
+@import url(./components/AuthPage/__input-error/authpage__input-error.css);
+@import url(./components/AuthPage/__input-error/_type/authpage__input-error_type_register.css);
+@import url(./components/AuthPage/__input-error/_type/authpage__input-error_type_login.css);
+
 @import url(./components/Login/__label/login__label.css);
 @import url(./components/Login/__input/login__input.css);
 @import url(./components/Login/__input-error/login__input-error.css);
+
 @import url(./components/Register/__label/register__label.css);
 @import url(./components/Register/__input/register__input.css);
 @import url(./components/Register/__input-error/register__input-error.css);
+
 @import url(./components/Profile/profile.css);
 @import url(./components/Profile/__title/profile__title.css);
 @import url(./components/Profile/__form/profile__form.css);
@@ -67,7 +76,7 @@
 @import url(./components/AboutMe/__link/aboutMe__link.css);
 @import url(./components/AboutMe/__avatar/aboutMe__avatar.css);
 @import url(./components/Portfolio/portfolio.css);
-@import url(./components/Portfolio/__title/portfolion__title.css);
+@import url(./components/Portfolio/__title/portfolio__title.css);
 @import url(./components/Portfolio/__items/portfolio__items.css);
 @import url(./components/Portfolio/__item/portfolio__item.css);
 @import url(./components/Portfolio/__text/portfolio__text.css);

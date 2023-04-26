@@ -5,17 +5,18 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-top: 246px;
+  padding-top: 216px;
   padding-bottom: 30px;
+  margin: auto;
 }
 
 @media screen and (max-width: 768px) {
   .PageNotFound {
-    padding-top: 408px;
+    padding-top: 215px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 428px) {
   .PageNotFound {
     padding-top: 329px;
   }
