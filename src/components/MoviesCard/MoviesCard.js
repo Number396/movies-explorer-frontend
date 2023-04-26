@@ -10,7 +10,7 @@ function MoviesCard({ img, title, time, fav }) {
     return (
         <li className="moviesCard">
             <img
-                className="movieCard__image"
+                className="moviesCard__image"
                 src={img}
                 alt="изображение фильма"
             />
@@ -21,7 +21,7 @@ function MoviesCard({ img, title, time, fav }) {
                 <button
                     aria-label="кнопка нравится"
                     type="button"
-                    className={` ${!fav ? 'moviesCard__like' : 'moviesCard__like_fav'} ${isLiked && 'movieCard__like_active'}`}
+                    className={` ${!fav ? 'moviesCard__like' : 'moviesCard__like-fav'} ${isLiked && 'movieCard__like-active'}`}
                     onClick={handleLikeClick}
                 />
             </div>

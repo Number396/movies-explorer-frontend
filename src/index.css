@@ -22,14 +22,6 @@
 @import url(./components/AuthPage/__input-error/_type/authpage__input-error_type_register.css);
 @import url(./components/AuthPage/__input-error/_type/authpage__input-error_type_login.css);
 
-@import url(./components/Login/__label/login__label.css);
-@import url(./components/Login/__input/login__input.css);
-@import url(./components/Login/__input-error/login__input-error.css);
-
-@import url(./components/Register/__label/register__label.css);
-@import url(./components/Register/__input/register__input.css);
-@import url(./components/Register/__input-error/register__input-error.css);
-
 @import url(./components/Profile/profile.css);
 @import url(./components/Profile/__title/profile__title.css);
 @import url(./components/Profile/__form/profile__form.css);
@@ -95,13 +87,16 @@
 @import url(./components/MoviesCardList/moviesCardList.css);
 @import url(./components/MoviesCardList/__items/moviesCardList__items.css);
 @import url(./components/MoviesCard/moviesCard.css);
-@import url(./components/MoviesCard/__image/movieCard__image.css);
+@import url(./components/MoviesCard/__image/moviesCard__image.css);
 @import url(./components/MoviesCard/__description/moviesCard__description.css);
 @import url(./components/MoviesCard/__title/moviesCard__title.css);
 @import url(./components/MoviesCard/__like/moviesCard__like.css);
 @import url(./components/MoviesCard/__time/moviesCard__time.css);
-@import url(./components/MoviesCard/__like/_active/movieCard__like_active.css);
-@import url(./components/MoviesCard/__like/_fav/moviesCard__like_fav.css);
+
+@import url(./components/MoviesCard/__like-active/movieCard__like-active.css);
+
+@import url(./components/MoviesCard/__like-fav/moviesCard__like-fav.css);
+
 @import url(./components/MoviesCardList/__more-button/moviesCardList__more-button.css);
 @import url(./components/MoviesCardList/__more-button/_type/moviesCardList__more-button_type_movie.css);
 @import url(./components/MoviesCardList/__more-button/_type/moviesCardList__more-button_type_movie-safe.css);
