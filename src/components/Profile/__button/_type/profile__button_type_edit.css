@@ -13,6 +13,8 @@
 
 @media screen and (max-width: 428px) {
   .rofile__button_type_edit {
+    font-size: 12px;
+    line-height: 15px;
     margin: 364px auto 16px;
   }
 }

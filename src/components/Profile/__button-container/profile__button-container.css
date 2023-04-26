@@ -13,7 +13,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 428px) {
   .profile__button-container {
     margin: 364px 0 0;
   }
