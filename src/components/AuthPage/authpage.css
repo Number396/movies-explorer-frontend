@@ -2,22 +2,18 @@
   display: flex;
   flex-direction: column;
   max-width: 396px;
-  /* margin: 70px auto 70px; */
   padding: 70px 0;
   margin: auto;
 }
 
 @media screen and (max-width: 768px) {
   .authpage {
-    /* margin: 232px auto; */
     padding: 232px 30px;
   }
 }
 
 @media screen and (max-width: 428px) {
   .authpage {
-    /* margin: 56px 30px auto; */
     padding: 56px 30px 30px;
-    /* align-items: center; */
   }
 }

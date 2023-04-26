@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Register from "../Register/Register";
@@ -6,17 +6,21 @@ import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../Saved-movies/Saved-movies";
 import { useState } from "react";
-import Navigation from "../Navigation/Navigation";
 import PageNotFound from "../PageNotFoud/PageNotFound";
 import Login from "../Login/Login";
 import Footer from "../Footer/Footer";
+import Popup from "../Popup/Popup";
+
+
 function App() {
+  const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({ name: "Виталий" });
-  const navigate = useNavigate();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
 
   function handleLogin() {
-
+    setIsPopupOpen(true);
   }
   function handleRegister() {
 
@@ -27,6 +31,10 @@ function App() {
   function onSignoutClick() {
     setLoggedIn(false);
     navigate("/", { replace: true });
+  }
+
+  function handlePopupClose() {
+    setIsPopupOpen(false);
   }
 
   return (
@@ -68,10 +76,12 @@ function App() {
       </Routes>
 
       <Footer />
+
+      <Popup
+        isOpen={isPopupOpen}
+        onClose={handlePopupClose}
+      />
     </div>
-
-
-
   );
 }
 
