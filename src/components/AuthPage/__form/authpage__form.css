@@ -1,9 +1,11 @@
 .authpage__form {
+  width: 396px;
   margin-top: 40px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 428px) {
   .authpage__form {
+    width: 260px;
     margin-top: 80px;
   }
 }
