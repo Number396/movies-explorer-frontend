@@ -1,4 +1,4 @@
-import avatar from "../../images/avatar.png";
+import avatar from "../../images/gagarin2.jpg";
 function AboutMe() {
 
     return (

@@ -20,7 +20,8 @@ function Profile({ currentUser, handleProfile, onSignoutClick }) {
 
     return (
         <section className="profile">
-            <h2 className="profile__title">{`Привет, ${currentUser.name}`}</h2>
+            {/* <h2 className="profile__title">{`Привет, ${currentUser.name}`}</h2> */}
+            <h2 className="profile__title">{`Привет, ${currentUser}`}</h2>
             <form name="profile"
                 className="profile__form"
                 onSubmit={handleSubmit}

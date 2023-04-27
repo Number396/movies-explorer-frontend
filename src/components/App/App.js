@@ -10,11 +10,12 @@ import PageNotFound from "../PageNotFoud/PageNotFound";
 import Login from "../Login/Login";
 import Footer from "../Footer/Footer";
 import Popup from "../Popup/Popup";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({ name: "Виталий" });
+  const [currentUser, setCurrentUser] = useState({});
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   function handleLogin() {
@@ -37,48 +38,52 @@ function App() {
 
   return (
     <div className='App'>
-      <Header logedIn={loggedIn} />
+      <CurrentUserContext.Provider value={currentUser}>
 
-      <Routes>
-        <Route
-          path="/"
-          element={<Main />}
-        />
-        <Route
-          path="/signup"
-          element={<Register loggedIn={loggedIn} handleRegister={handleRegister} />}
-        />
-        <Route
-          path="/signin"
-          element={<Login loggedIn={loggedIn} handleLogin={handleLogin} />}
-        />
-        <Route
-          path="/profile"
-          element={<Profile
-            currentUser={currentUser}
-            handleProfile={handleProfile}
-            onSignoutClick={onSignoutClick} />}
-        />
-        <Route
-          path="/movies"
-          element={<Movies />}
-        />
-        <Route
-          path="/saved-movies"
-          element={<SavedMovies />}
-        />
-        <Route
-          path="*"
-          element={<PageNotFound />}
-        />
-      </Routes>
+        <Header logedIn={loggedIn} />
 
-      <Footer />
+        <Routes>
+          <Route
+            path="/"
+            element={<Main />}
+          />
+          <Route
+            path="/signup"
+            element={<Register loggedIn={loggedIn} handleRegister={handleRegister} />}
+          />
+          <Route
+            path="/signin"
+            element={<Login loggedIn={loggedIn} handleLogin={handleLogin} />}
+          />
+          <Route
+            path="/profile"
+            element={<Profile
+              // currentUser={currentUser}
+              currentUser="number396"
+              handleProfile={handleProfile}
+              onSignoutClick={onSignoutClick} />}
+          />
+          <Route
+            path="/movies"
+            element={<Movies />}
+          />
+          <Route
+            path="/saved-movies"
+            element={<SavedMovies />}
+          />
+          <Route
+            path="*"
+            element={<PageNotFound />}
+          />
+        </Routes>
 
-      <Popup
-        isOpen={isPopupOpen}
-        onClose={handlePopupClose}
-      />
+        <Footer />
+
+        <Popup
+          isOpen={isPopupOpen}
+          onClose={handlePopupClose}
+        />
+      </CurrentUserContext.Provider>
     </div>
   );
 }
