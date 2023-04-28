@@ -1,8 +1,13 @@
 import AuthPage from "../AuthPage/AuthPage";
+import { useForm } from "./../../hooks/useForm";
 
 function Register({ loggedIn, handleRegister }) {
+
+    const { values, handleChange, setValues } = useForm({});
+
     function handleSubmit(e) {
         e.preventDefault();
+        console.log(values);
         // handleRegister(values);
     }
 
@@ -26,8 +31,8 @@ function Register({ loggedIn, handleRegister }) {
                 required
                 minLength="1"
                 maxLength="40"
-            // onChange={handleChange}
-            // value={values.email || ''}
+                onChange={handleChange}
+                value={values.name || ''}
             />
             {/* <span className="register__input-error email-input-error">Что-то пошло не так</span> */}
             <span className="authpage__input-error authpage__input-error_type_register email-input-error">Что-то пошло не так</span>
@@ -42,8 +47,8 @@ function Register({ loggedIn, handleRegister }) {
                 required
                 minLength="2"
                 maxLength="40"
-            // onChange={handleChange}
-            // value={values.email || ''}
+                onChange={handleChange}
+                value={values.email || ''}
             />
             <span className="authpage__input-error authpage__input-error_type_register email-input-error">Что-то пошло не так</span>
             <label className="authpage__label" htmlFor="password">Пароль</label>
@@ -56,8 +61,8 @@ function Register({ loggedIn, handleRegister }) {
                 required
                 minLength="2"
                 maxLength="40"
-            // onChange={handleChange}
-            // value={values.password || ''}
+                onChange={handleChange}
+                value={values.password || ''}
             />
             <span className="authpage__input-error authpage__input-error_type_register password-input-error">Что-то пошло не так</span>
         </AuthPage>
