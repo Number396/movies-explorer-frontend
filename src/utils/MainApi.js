@@ -31,6 +31,14 @@ class MainApi {
         })
     };
 
+    login(email, password) {
+        return this._request(this._signinUrl, {
+            method: "POST",
+            headers: this._headers,
+            body: JSON.stringify({ password, email }),
+        })
+    };
+
 }
 
 export const apiAuth = new MainApi(apiAuthConfig);

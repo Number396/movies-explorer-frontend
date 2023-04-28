@@ -1,13 +1,15 @@
 import { useState } from "react";
 import AuthPage from "../AuthPage/AuthPage";
+import { useForm } from "./../../hooks/useForm";
 
 
 function Login({ loggedIn, handleLogin }) {
 
+    const { values, handleChange, setValues } = useForm({});
 
     function handleSubmit(e) {
         e.preventDefault();
-        handleLogin();
+        handleLogin(values);
     }
 
     return (
@@ -29,8 +31,8 @@ function Login({ loggedIn, handleLogin }) {
                 required
                 minLength="2"
                 maxLength="40"
-            // onChange={handleChange}
-            // value={values.email || ''}
+                onChange={handleChange}
+                value={values.email || ''}
             />
             <span className="authpage__input-error authpage__input-error_type_login email-input-error">Что-то пошло не так</span>
             <label className="authpage__label" htmlFor="password">Пароль</label>
@@ -43,8 +45,8 @@ function Login({ loggedIn, handleLogin }) {
                 required
                 minLength="2"
                 maxLength="40"
-            // onChange={handleChange}
-            // value={values.password || ''}
+                onChange={handleChange}
+                value={values.password || ''}
             />
             <span className="authpage__input-error authpage__input-error_type_login password-input-error">Что-то пошло не так</span>
         </AuthPage>

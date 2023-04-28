@@ -19,8 +19,22 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  function handleLogin() {
+  function handleLogin({ email, password }) {
     // setIsPopupOpen(true);
+    apiAuth
+      .login(email, password)
+      .then((data) => {
+        console.log(data);
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          setLoggedIn(true);
+          navigate("/movies", { replace: true });
+        }
+
+      })
+      // .then(() => tokenCheck())
+      .catch((error) => console.log(`Ошибка входа: ${error}`));
+
 
   }
 
@@ -29,8 +43,12 @@ function App() {
       .then((data) => {
         console.log(data);
         navigate("/signin", { replace: true });
-
       })
+      .catch((error) => {
+        // setInfoTooltipSet({ isOpen: true, isSucceded: false });
+        console.log(`Ошибка регистрации: ${error}`);
+      });
+
 
   }
 
