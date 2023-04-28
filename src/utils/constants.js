@@ -15,7 +15,14 @@ import fourteen from "../images/pic__COLOR_pic14.png";
 import fifteen from "../images/pic__COLOR_pic15.png";
 import sixteen from "../images/pic__COLOR_pic16.png";
 
-// one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen
+
+export const apiAuthConfig = {
+    url: "http://localhost:3001/",
+    headers: {
+        "Content-Type": "application/json"
+    }
+}
+
 export const images = [
     {
         img: one,

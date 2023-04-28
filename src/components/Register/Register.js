@@ -8,7 +8,7 @@ function Register({ loggedIn, handleRegister }) {
     function handleSubmit(e) {
         e.preventDefault();
         console.log(values);
-        // handleRegister(values);
+        handleRegister(values);
     }
 
     return (

@@ -11,6 +11,7 @@ import Login from "../Login/Login";
 import Footer from "../Footer/Footer";
 import Popup from "../Popup/Popup";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { apiAuth } from "../../utils/MainApi";
 
 function App() {
   const navigate = useNavigate();
@@ -19,10 +20,17 @@ function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   function handleLogin() {
-    setIsPopupOpen(true);
+    // setIsPopupOpen(true);
+
   }
 
-  function handleRegister() {
+  function handleRegister({ name, email, password }) {
+    apiAuth.register(name, email, password)
+      .then((data) => {
+        console.log(data);
+        navigate("/signin", { replace: true });
+
+      })
 
   }
 
