@@ -21,12 +21,15 @@ function App() {
   function handleLogin() {
     setIsPopupOpen(true);
   }
+
   function handleRegister() {
 
   }
+
   function handleProfile() {
 
   }
+
   function onSignoutClick() {
     setLoggedIn(false);
     navigate("/", { replace: true });
