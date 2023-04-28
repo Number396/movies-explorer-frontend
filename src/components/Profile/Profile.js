@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import React from "react";
 
-function Profile({ currentUser, handleProfile, onSignoutClick }) {
+function Profile({ handleProfile, onSignoutClick }) {
     const [isEditPushed, setIsEditPushed] = useState(false);
     const [isEdit, setIsEdit] = useState(true);
+    const currentUser = React.useContext(CurrentUserContext);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -19,9 +22,10 @@ function Profile({ currentUser, handleProfile, onSignoutClick }) {
     }
 
     return (
+
         <section className="profile">
             {/* <h2 className="profile__title">{`Привет, ${currentUser.name}`}</h2> */}
-            <h2 className="profile__title">{`Привет, ${currentUser}`}</h2>
+            <h2 className="profile__title">{`Привет, ${currentUser.name}`}</h2>
             <form name="profile"
                 className="profile__form"
                 onSubmit={handleSubmit}
@@ -70,6 +74,8 @@ function Profile({ currentUser, handleProfile, onSignoutClick }) {
                     }
                     {!isEditPushed && <button
                         type="button"
+                        name="profileExitBtn"
+                        id="profileExitBtnId"
                         className="profile__button profile__button_type_signout"
                         onClick={onSignoutClick}
                     >

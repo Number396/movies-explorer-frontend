@@ -39,6 +39,17 @@ class MainApi {
         })
     };
 
+    checkToken(token) {
+        return this._request(this._userUrl, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            }
+        })
+
+    };
+
 }
 
 export const apiAuth = new MainApi(apiAuthConfig);

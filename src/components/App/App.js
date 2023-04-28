@@ -24,41 +24,58 @@ function App() {
     apiAuth
       .login(email, password)
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.token) {
           localStorage.setItem("token", data.token);
-          setLoggedIn(true);
+          // setLoggedIn(true);
+          tokenCheck();
           navigate("/movies", { replace: true });
         }
 
       })
       // .then(() => tokenCheck())
       .catch((error) => console.log(`Ошибка входа: ${error}`));
-
-
   }
 
   function handleRegister({ name, email, password }) {
     apiAuth.register(name, email, password)
       .then((data) => {
-        console.log(data);
         navigate("/signin", { replace: true });
       })
       .catch((error) => {
         // setInfoTooltipSet({ isOpen: true, isSucceded: false });
         console.log(`Ошибка регистрации: ${error}`);
       });
-
-
   }
+
+  function tokenCheck() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      apiAuth
+        .checkToken(token)
+        .then((data) => {
+          setLoggedIn(true);
+          setCurrentUser(data);
+          console.log(data);
+          // setUserData({ email: data.email });
+          // navigate("/", { replace: true });
+          // setJwtToken({ token });
+        })
+        .catch((error) => console.log(`Ошибка: ${error}`));
+    }
+  }
+
 
   function handleProfile() {
 
   }
 
   function onSignoutClick() {
+    localStorage.removeItem("token");
     setLoggedIn(false);
     navigate("/", { replace: true });
+    setCurrentUser({});
+    console.log(loggedIn);
   }
 
   function handlePopupClose() {
