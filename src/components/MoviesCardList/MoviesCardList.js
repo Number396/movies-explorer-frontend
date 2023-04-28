@@ -35,9 +35,9 @@ function MoviesCardList({ images, fav }) {
             >
                 Ещё
             </button>
-            {
-                isLoading && <Preloader />
-            }
+
+            {isLoading && <Preloader />}
+
         </section >
     );
 }

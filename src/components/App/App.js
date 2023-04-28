@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import Popup from "../Popup/Popup";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { apiAuth } from "../../utils/MainApi";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const navigate = useNavigate();
@@ -28,8 +29,8 @@ function App() {
         if (data.token) {
           localStorage.setItem("token", data.token);
           // setLoggedIn(true);
+          // navigate("/movies", { replace: true });
           tokenCheck();
-          navigate("/movies", { replace: true });
         }
 
       })
@@ -56,7 +57,8 @@ function App() {
         .then((data) => {
           setLoggedIn(true);
           setCurrentUser(data);
-          console.log(data);
+          navigate("/movies", { replace: true });
+          // console.log(data);
           // setUserData({ email: data.email });
           // navigate("/", { replace: true });
           // setJwtToken({ token });
@@ -86,7 +88,7 @@ function App() {
     <div className='App'>
       <CurrentUserContext.Provider value={currentUser}>
 
-        <Header logedIn={loggedIn} />
+        <Header loggedIn={loggedIn} />
 
         <Routes>
           <Route
@@ -101,26 +103,46 @@ function App() {
             path="/signin"
             element={<Login loggedIn={loggedIn} handleLogin={handleLogin} />}
           />
+
           <Route
             path="/profile"
-            element={<Profile
-              // currentUser={currentUser}
-              currentUser="number396"
-              handleProfile={handleProfile}
-              onSignoutClick={onSignoutClick} />}
+            element={
+              <ProtectedRoute
+                component={Profile}
+                loggedIn={loggedIn}
+                // currentUser={currentUser}
+                handleProfile={handleProfile}
+                onSignoutClick={onSignoutClick}
+              />
+            }
           />
+
           <Route
             path="/movies"
-            element={<Movies />}
+            // element={<Movies />}
+            element={
+              <ProtectedRoute
+                component={Movies}
+                loggedIn={loggedIn}
+              />
+            }
           />
+
           <Route
             path="/saved-movies"
-            element={<SavedMovies />}
+            element={
+              <ProtectedRoute
+                component={SavedMovies}
+                loggedIn={loggedIn}
+              />
+            }
           />
+
           <Route
             path="*"
             element={<PageNotFound />}
           />
+
         </Routes>
 
         <Footer />

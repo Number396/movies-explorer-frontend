@@ -5,6 +5,7 @@ import React from "react";
 function Profile({ handleProfile, onSignoutClick }) {
     const [isEditPushed, setIsEditPushed] = useState(false);
     const [isEdit, setIsEdit] = useState(true);
+
     const currentUser = React.useContext(CurrentUserContext);
 
     function handleSubmit(e) {

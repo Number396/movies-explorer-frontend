@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-function Navigation({ logedIn }) {
+function Navigation({ loggedIn }) {
     const [btnMenuClass, setBtnMenuClass] = useState("navigation__button");
     const [menuClass, setMenuClass] = useState("navigation__menu");
     const [overlayClass, setOverlayClass] = useState("navigation__overlay");
@@ -31,7 +31,7 @@ function Navigation({ logedIn }) {
         <section className="navigation">
             <div className={overlayClass} />
             <nav>
-                {logedIn ? (
+                {loggedIn ? (
                     <div className="navigation__main">
                         <div className={menuClass}>
                             <ul className="navigation__items">

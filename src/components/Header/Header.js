@@ -1,7 +1,7 @@
 import { Route, Routes, useNavigate, } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 
-function Header({ logedIn }) {
+function Header({ loggedIn }) {
     const navigate = useNavigate();
 
     return (
@@ -9,25 +9,25 @@ function Header({ logedIn }) {
             <Route path="/" element={
                 <header className="header"  >
                     <div className="header__logo" onClick={() => navigate('/')} />
-                    <Navigation logedIn={logedIn} />
+                    <Navigation loggedIn={loggedIn} />
                 </header >
             } />
             <Route path="/movies" element={
                 <header className="header header_active"  >
                     <div className="header__logo" onClick={() => navigate('/')} />
-                    <Navigation logedIn={true} />
+                    <Navigation loggedIn={loggedIn} />
                 </header >
             } />
             <Route path="/saved-movies" element={
                 <header className="header header_active"  >
                     <div className="header__logo" onClick={() => navigate('/')} />
-                    <Navigation logedIn={true} />
+                    <Navigation loggedIn={loggedIn} />
                 </header >
             } />
             <Route path="/profile" element={
                 <header className="header header_active"  >
                     <div className="header__logo" onClick={() => navigate('/')} />
-                    <Navigation logedIn={true} />
+                    <Navigation loggedIn={loggedIn} />
                 </header >
             } />
 
