@@ -17,6 +17,8 @@ function AuthPage({ title, name, btnText, loggedIn, isRegister, onSubmit, childr
                 name={name}
                 className="authpage__form"
                 onSubmit={onSubmit}
+                noValidate
+            // type="submit"
             >
                 {children}
                 <button type="submit" className="authpage__submit-button">
