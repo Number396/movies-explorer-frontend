@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, redirect, useLocation, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Register from "../Register/Register";
@@ -20,29 +20,24 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isDataLoading, setIsDataLoading] = useState(true);
-  let { pathname } = useLocation();
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    console.log('inside useEffec');
-    // const isTokenExist = localStorage.getItem("token");
+    // console.log('inside useEffec');
     tokenCheck();
   }, []);
 
   function handleLogin({ email, password }) {
     // setIsPopupOpen(true);
-    console.log(email, password);
+    // console.log(email, password);
     apiAuth
       .login(email, password)
       .then((data) => {
-        // console.log(data);
         if (data.token) {
           localStorage.setItem("token", data.token);
           setLoggedIn(true);
-          // setIsDataLoading(false);
-          // pathname = "/movies";
           navigate("/movies", { replace: true });
         }
-
       })
       .then(() => {
         const token = localStorage.getItem("token");
@@ -51,7 +46,6 @@ function App() {
             setCurrentUser(data);
           })
       })
-      // .then(() => tokenCheck())
       .catch((error) => console.log(`Ошибка входа: ${error}`));
   }
 
@@ -68,31 +62,22 @@ function App() {
   }
 
   function tokenCheck() {
-    console.log('login in token check:', loggedIn);
+    // console.log('login in token check:', loggedIn);
     const token = localStorage.getItem("token");
-    console.log('inside token check');
-    // console.log(isDataLoading);
 
     if (token) {
       apiAuth
         .checkToken(token)
         .then((data) => {
-          console.log('inside tokenCheck api');
+          // console.log('inside tokenCheck api');
           setLoggedIn(true);
           setCurrentUser(data);
-          // console.log(pathname);
-          // if (pathname === "/signin") {
-          //   pathname = "/";
-          // }
           navigate(pathname, { replace: true });
-          // console.log(data);
           // setUserData({ email: data.email });
-          // navigate("/", { replace: true });
           // setJwtToken({ token });
         })
         .catch((error) => console.log(`Ошибка: ${error}`))
         .finally(() => setIsDataLoading(false));
-
     }
     else {
       setIsDataLoading(false);
@@ -134,14 +119,17 @@ function App() {
 
           <Route
             path="/signup"
-            element={<Register loggedIn={loggedIn} handleRegister={handleRegister} />}
+            element={
+              !loggedIn ?
+                <Register loggedIn={loggedIn} handleRegister={handleRegister} />
+                : <Navigate to="/" />
+            }
           />
 
 
           < Route
             path="/signin"
             element={
-              // !loggedIn && isDataLoading ?
               !loggedIn ?
                 <Login loggedIn={loggedIn} handleLogin={handleLogin} />
                 : <Navigate to="/" />
@@ -151,42 +139,34 @@ function App() {
           <Route
             path="/profile"
             element={
-              // !isDataLoading ?
               <ProtectedRoute
                 component={Profile}
                 loggedIn={loggedIn}
-                isDataLoading={isDataLoading}
                 // currentUser={currentUser}
                 handleProfile={handleProfile}
                 onSignoutClick={onSignoutClick}
               />
-              // : <Navigate to="/**" />
             }
           />
 
           <Route
             path="/movies"
-            // element={<Movies />}
             element={
-              // !isDataLoading ?
               <ProtectedRoute
                 component={Movies}
                 loggedIn={loggedIn}
                 isDataLoading={isDataLoading}
               />
-              // : <Navigate to="/" />
             }
           />
 
           <Route
             path="/saved-movies"
             element={
-              // !isDataLoading &&
               <ProtectedRoute
                 component={SavedMovies}
                 loggedIn={loggedIn}
               />
-              // : <Navigate to="/" />
             }
           />
 

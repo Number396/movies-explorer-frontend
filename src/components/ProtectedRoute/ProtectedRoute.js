@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 
 
 function ProtectedRoute({ component: Component, ...props }) {
-    console.log('inside protected route');
+    // console.log('inside protected route');
     // console.log('logedin---', props.loggedIn);
     // console.log('isloading--', props.isDataLoading);
     // console.log('!isloading--', !props.isDataLoading);
