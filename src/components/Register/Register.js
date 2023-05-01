@@ -1,6 +1,6 @@
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 import AuthPage from "../AuthPage/AuthPage";
-import { useForm } from "./../../hooks/useForm";
+// import { useForm } from "./../../hooks/useForm";
 
 function Register({ loggedIn, handleRegister }) {
 
@@ -9,8 +9,8 @@ function Register({ loggedIn, handleRegister }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(values);
-        console.log(errors);
+        // console.log(values);
+        // console.log(errors);
         handleRegister(values);
     }
 

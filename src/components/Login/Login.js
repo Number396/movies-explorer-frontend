@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import AuthPage from "../AuthPage/AuthPage";
-import { useForm } from "./../../hooks/useForm";
+// import { useForm } from "./../../hooks/useForm";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
 
@@ -45,8 +45,8 @@ function Login({ loggedIn, handleLogin }) {
         e.preventDefault();
         // console.log(email.value);
         // console.log(pass.value);
-        console.log(values);
-        console.log(errors);
+        // console.log(values);
+        // console.log(errors);
         // resetForm();
         handleLogin(values);
     }
