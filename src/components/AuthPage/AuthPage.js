@@ -1,7 +1,16 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import logo from "../../images/header-logo.svg"
+import logo from "../../images/header-logo.svg";
 
-function AuthPage({ title, name, btnText, loggedIn, isRegister, onSubmit, children }) {
+function AuthPage({
+    title,
+    name,
+    btnText,
+    loggedIn,
+    isRegister,
+    onSubmit,
+    children,
+    isValid
+}) {
     const navigate = useNavigate();
 
     return (
@@ -9,7 +18,7 @@ function AuthPage({ title, name, btnText, loggedIn, isRegister, onSubmit, childr
             <img
                 className="authpage__logo"
                 src={logo}
-                onClick={() => navigate('/')}
+                onClick={() => navigate("/")}
                 alt="логотип"
             />
             <h2 className="authpage__title">{title}</h2>
@@ -21,23 +30,30 @@ function AuthPage({ title, name, btnText, loggedIn, isRegister, onSubmit, childr
             // type="submit"
             >
                 {children}
-                <button type="submit" className="authpage__submit-button">
+                <button
+                    // type="submit" 
+                    type="text"
+                    className="authpage__submit-button"
+                    disabled={!isValid}
+                >
                     {btnText}
                 </button>
-                {!loggedIn & isRegister ?
-                    <p className="authpage__suggestion">Уже зарегистрированы?
-                        <NavLink
-                            to="/signin"
-                            className="authpage__link">Войти
-                        </NavLink>
-                    </p> :
-                    <p className="authpage__suggestion">Ещё не зарегистрированы?
-                        <NavLink
-                            to="/signup"
-                            className="authpage__link">Регистрация
+
+                {!loggedIn & isRegister ? (
+                    <p className="authpage__suggestion">
+                        Уже зарегистрированы?
+                        <NavLink to="/signin" className="authpage__link">
+                            Войти
                         </NavLink>
                     </p>
-                }
+                ) : (
+                    <p className="authpage__suggestion">
+                        Ещё не зарегистрированы?
+                        <NavLink to="/signup" className="authpage__link">
+                            Регистрация
+                        </NavLink>
+                    </p>
+                )}
             </form>
         </section>
     );

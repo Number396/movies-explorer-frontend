@@ -1,13 +1,17 @@
+import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 import AuthPage from "../AuthPage/AuthPage";
 import { useForm } from "./../../hooks/useForm";
 
 function Register({ loggedIn, handleRegister }) {
 
-    const { values, handleChange, setValues } = useForm({});
+    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+
 
     function handleSubmit(e) {
         e.preventDefault();
-        handleRegister(values);
+        console.log(values);
+        console.log(errors);
+        // handleRegister(values);
     }
 
     return (
@@ -18,6 +22,7 @@ function Register({ loggedIn, handleRegister }) {
             loggedIn={loggedIn}
             isRegister={true}
             onSubmit={handleSubmit}
+            isValid={isValid}
 
         >
             <label className="authpage__label" htmlFor="name">Имя</label>
@@ -28,13 +33,14 @@ function Register({ loggedIn, handleRegister }) {
                 placeholder="Имя"
                 className="authpage__input"
                 required
-                minLength="1"
+                minLength="2"
                 maxLength="40"
                 onChange={handleChange}
                 value={values.name || ''}
+                pattern="^([a-яё]+(?:[ -][a-яё]+)*[ -]?|)$"
             />
             {/* <span className="register__input-error email-input-error">Что-то пошло не так</span> */}
-            <span className="authpage__input-error authpage__input-error_type_register email-input-error">Что-то пошло не так</span>
+            <span className="authpage__input-error authpage__input-error_type_register email-input-error">{errors.name}</span>
 
             <label className="authpage__label" htmlFor="email">E-mail</label>
             <input
@@ -49,7 +55,7 @@ function Register({ loggedIn, handleRegister }) {
                 onChange={handleChange}
                 value={values.email || ''}
             />
-            <span className="authpage__input-error authpage__input-error_type_register email-input-error">Что-то пошло не так</span>
+            <span className="authpage__input-error authpage__input-error_type_register email-input-error">{errors.email}</span>
             <label className="authpage__label" htmlFor="password">Пароль</label>
             <input
                 type="password"
@@ -63,7 +69,7 @@ function Register({ loggedIn, handleRegister }) {
                 onChange={handleChange}
                 value={values.password || ''}
             />
-            <span className="authpage__input-error authpage__input-error_type_register password-input-error">Что-то пошло не так</span>
+            <span className="authpage__input-error authpage__input-error_type_register password-input-error">{errors.password}</span>
         </AuthPage>
     );
 }
