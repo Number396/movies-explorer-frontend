@@ -7,7 +7,8 @@ function Header({ loggedIn }) {
     return (
         <Routes>
             <Route path="/" element={
-                <header className="header"  >
+                // <header className="header"  >
+                <header className={`header ${loggedIn && "header_active"} `}>
                     <div className="header__logo" onClick={() => navigate('/')} />
                     <Navigation loggedIn={loggedIn} />
                 </header >
