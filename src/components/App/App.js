@@ -84,8 +84,13 @@ function App() {
     }
   }
 
-
-  function handleProfile() {
+  function handleProfile({ name, email }) {
+    const token = localStorage.getItem("token");
+    apiAuth.setUserInfo({ name, email, token })
+      .then((data) => {
+        setCurrentUser(data);
+      })
+      .catch((error) => console.log(`Ошибка при обновлении профиля: ${error}`));
 
   }
 
