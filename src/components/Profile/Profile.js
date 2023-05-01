@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import React from "react";
+import { useFormWithValidation } from "../../hooks/useFormWithValidation";
+import { useHref } from "react-router-dom";
 
 function Profile({ handleProfile, onSignoutClick }) {
     const [isEditPushed, setIsEditPushed] = useState(false);
-    const [isEdit, setIsEdit] = useState(true);
+    const [isInputSame, setIsInputSame] = useState(true);
+    const [initialValue, setInitailValue] = useState({});
 
     const currentUser = React.useContext(CurrentUserContext);
+    const { values, setValues, handleChange, errors, isValid } = useFormWithValidation();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -15,12 +19,27 @@ function Profile({ handleProfile, onSignoutClick }) {
 
     function handleEditClick() {
         setIsEditPushed(true);
-        setIsEdit(true);
+        // setIsEdit(true);
     }
 
     function handleInputClick() {
-        setIsEdit(false);
+        // setIsEdit(false);
     }
+
+    useEffect(() => {
+        setValues({ name: currentUser.name, email: currentUser.email });
+    }, []);
+
+    useEffect(() => {
+        setInitailValue(values);
+        console.log('values:', values);
+        console.log('initialValue:', initialValue);
+    }, [isEditPushed]);
+
+    useEffect(() => {
+
+
+    }, [values])
 
     return (
 
@@ -42,8 +61,9 @@ function Profile({ handleProfile, onSignoutClick }) {
                     disabled={!isEditPushed}
                     minLength="1"
                     maxLength="40"
-                    onClick={handleInputClick}
-                // value="Виталий"
+                    // onClick={handleInputClick}
+                    onChange={handleChange}
+                    value={values.name || ''}
                 />
                 <span className="profile__input-error name-input-error">Что-то пошло не так</span>
                 <div className="profile__input-border" />
@@ -58,8 +78,10 @@ function Profile({ handleProfile, onSignoutClick }) {
                     disabled={!isEditPushed}
                     minLength="2"
                     maxLength="40"
-                    onClick={handleInputClick}
-                // value="pochta@yandex.ru"
+                    // onClick={handleInputClick}
+                    onChange={handleChange}
+                    value={values.email || ''}
+
                 />
                 <span className="profile__input-error email-input-error">Что-то пошло не так</span>
 
@@ -87,7 +109,7 @@ function Profile({ handleProfile, onSignoutClick }) {
                         type="submit"
                         className="profile__button profile__button_type_submit"
                         onSubmit={handleSubmit}
-                        disabled={isEdit}
+                        disabled={(isInputSame & !isValid) ? true : false}
                     >
                         Сохранить
                     </button>
