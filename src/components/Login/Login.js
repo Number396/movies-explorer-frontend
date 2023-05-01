@@ -48,7 +48,7 @@ function Login({ loggedIn, handleLogin }) {
         console.log(values);
         console.log(errors);
         // resetForm();
-        // handleLogin(values);
+        handleLogin(values);
     }
     // const email = useInput('', { isEmpty: true, minLength: 2 });
     // const pass = useInput('', { isEmpty: true, minLength: 2 });

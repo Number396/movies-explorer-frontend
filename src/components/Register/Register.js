@@ -11,7 +11,7 @@ function Register({ loggedIn, handleRegister }) {
         e.preventDefault();
         console.log(values);
         console.log(errors);
-        // handleRegister(values);
+        handleRegister(values);
     }
 
     return (
