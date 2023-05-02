@@ -1,4 +1,10 @@
-import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Register from "../Register/Register";
@@ -11,8 +17,9 @@ import Login from "../Login/Login";
 import Footer from "../Footer/Footer";
 import Popup from "../Popup/Popup";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { apiAuth } from "../../utils/MainApi";
+import { apiMain } from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { apiMovies } from "../../utils/MoviesApi";
 
 function App() {
   const navigate = useNavigate();
@@ -30,7 +37,7 @@ function App() {
   function handleLogin({ email, password }) {
     // setIsPopupOpen(true);
     // console.log(email, password);
-    apiAuth
+    apiMain
       .login(email, password)
       .then((data) => {
         if (data.token) {
@@ -41,18 +48,17 @@ function App() {
       })
       .then(() => {
         const token = localStorage.getItem("token");
-        apiAuth.checkToken(token)
-          .then((data) => {
-            setCurrentUser(data);
-          })
+        apiMain.checkToken(token).then((data) => {
+          setCurrentUser(data);
+        });
       })
       .catch((error) => console.log(`Ошибка входа: ${error}`));
   }
 
   function handleRegister({ name, email, password }) {
-    apiAuth.register(name, email, password)
+    apiMain
+      .register(name, email, password)
       .then((data) => {
-
         handleLogin({ email, password });
       })
       .catch((error) => {
@@ -66,7 +72,7 @@ function App() {
     const token = localStorage.getItem("token");
 
     if (token) {
-      apiAuth
+      apiMain
         .checkToken(token)
         .then((data) => {
           // console.log('inside tokenCheck api');
@@ -78,20 +84,35 @@ function App() {
         })
         .catch((error) => console.log(`Ошибка: ${error}`))
         .finally(() => setIsDataLoading(false));
-    }
-    else {
+    } else {
       setIsDataLoading(false);
     }
   }
 
   function handleProfile({ name, email }) {
     const token = localStorage.getItem("token");
-    apiAuth.setUserInfo({ name, email, token })
+    apiMain
+      .setUserInfo({ name, email, token })
       .then((data) => {
         setCurrentUser(data);
       })
       .catch((error) => console.log(`Ошибка при обновлении профиля: ${error}`));
+  }
 
+  function handleSearch(params) {
+    // console.log("handlesearch");
+    apiMovies
+      .getMovies()
+      .then((data) => {
+        console.log(data);
+
+        localStorage.setItem("all_movies", JSON.stringify(data));
+
+        const movies = localStorage.getItem("all_movies");
+
+        console.log(JSON.parse(movies));
+      })
+      .catch((error) => console.log(`Ошибка: ${error}`));
   }
 
   function onSignoutClick() {
@@ -108,36 +129,32 @@ function App() {
   if (isDataLoading) return null;
 
   return (
-    <div className='App'>
+    <div className="App">
       <CurrentUserContext.Provider value={currentUser}>
-
-
-        <Header
-          loggedIn={loggedIn}
-        />
+        <Header loggedIn={loggedIn} />
 
         <Routes>
-          <Route
-            path="/"
-            element={<Main />}
-          />
+          <Route path="/" element={<Main />} />
 
           <Route
             path="/signup"
             element={
-              !loggedIn ?
+              !loggedIn ? (
                 <Register loggedIn={loggedIn} handleRegister={handleRegister} />
-                : <Navigate to="/" />
+              ) : (
+                <Navigate to="/" />
+              )
             }
           />
 
-
-          < Route
+          <Route
             path="/signin"
             element={
-              !loggedIn ?
+              !loggedIn ? (
                 <Login loggedIn={loggedIn} handleLogin={handleLogin} />
-                : <Navigate to="/" />
+              ) : (
+                <Navigate to="/" />
+              )
             }
           />
 
@@ -160,6 +177,7 @@ function App() {
               <ProtectedRoute
                 component={Movies}
                 loggedIn={loggedIn}
+                handleSearch={handleSearch}
                 isDataLoading={isDataLoading}
               />
             }
@@ -168,26 +186,16 @@ function App() {
           <Route
             path="/saved-movies"
             element={
-              <ProtectedRoute
-                component={SavedMovies}
-                loggedIn={loggedIn}
-              />
+              <ProtectedRoute component={SavedMovies} loggedIn={loggedIn} />
             }
           />
 
-          <Route
-            path="*"
-            element={<PageNotFound />}
-          />
-
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
 
         <Footer />
 
-        <Popup
-          isOpen={isPopupOpen}
-          onClose={handlePopupClose}
-        />
+        <Popup isOpen={isPopupOpen} onClose={handlePopupClose} />
       </CurrentUserContext.Provider>
     </div>
   );

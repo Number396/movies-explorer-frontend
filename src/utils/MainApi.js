@@ -64,4 +64,4 @@ class MainApi {
   }
 }
 
-export const apiAuth = new MainApi(apiAuthConfig);
+export const apiMain = new MainApi(apiAuthConfig);

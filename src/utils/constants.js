@@ -15,95 +15,99 @@ import fourteen from "../images/pic__COLOR_pic14.png";
 import fifteen from "../images/pic__COLOR_pic15.png";
 import sixteen from "../images/pic__COLOR_pic16.png";
 
-
 export const apiAuthConfig = {
-    url: "http://localhost:3001/",
-    headers: {
-        "Content-Type": "application/json"
-    }
-}
+  url: "http://localhost:3001/",
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
+
+export const apiMoviesConfig = {
+  url: " https://api.nomoreparties.co/beatfilm-movies",
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
 
 export const images = [
-    {
-        img: one,
-        title: "33 слова о дизайне",
-        time: "1ч 42м"
-    },
-    {
-        img: two,
-        title: "Киноальманах «100 лет дизайна»",
-        time: "1ч 42м"
-    },
-    {
-        img: three,
-        title: "В погоне за Бенкси",
-        time: "1ч 42м"
-    },
-    {
-        img: four,
-        title: "Баския: Взрыв реальности",
-        time: "1ч 42м"
-    },
-    {
-        img: five,
-        title: "Бег это свобода",
-        time: "1ч 42м"
-    },
-    {
-        img: six,
-        title: "Книготорговцы",
-        time: "1ч 42м"
-    },
-    {
-        img: seven,
-        title: "Когда я думаю о Германии ночью",
-        time: "1ч 42м"
-    },
-    {
-        img: eight,
-        title: "Gimme Danger: История Игги и The Stooges",
-        time: "1ч 42м"
-    },
-    {
-        img: nine,
-        title: "Дженис: Маленькая девочка грустит",
-        time: "1ч 42м"
-    },
-    {
-        img: ten,
-        title: "Соберись перед прыжком",
-        time: "1ч 42м"
-    },
-    {
-        img: eleven,
-        title: "Пи Джей Харви: A dog called money",
-        time: "1ч 42м"
-    },
-    {
-        img: twelve,
-        title: "По волнам: Искусство звука в кино",
-        time: "1ч 42м"
-    },
-    {
-        img: thirteen,
-        title: "Рудбой",
-        time: "1ч 42м"
-    },
-    {
-        img: fourteen,
-        title: "Скейт — кухня",
-        time: "1ч 42м"
-    },
-    {
-        img: fifteen,
-        title: "Война искусств",
-        time: "1ч 42м"
-    },
-    {
-        img: sixteen,
-        title: "Зона",
-        time: "1ч 42м"
-    }
-]
-
-
+  {
+    img: one,
+    title: "33 слова о дизайне",
+    time: "1ч 42м",
+  },
+  {
+    img: two,
+    title: "Киноальманах «100 лет дизайна»",
+    time: "1ч 42м",
+  },
+  {
+    img: three,
+    title: "В погоне за Бенкси",
+    time: "1ч 42м",
+  },
+  {
+    img: four,
+    title: "Баския: Взрыв реальности",
+    time: "1ч 42м",
+  },
+  {
+    img: five,
+    title: "Бег это свобода",
+    time: "1ч 42м",
+  },
+  {
+    img: six,
+    title: "Книготорговцы",
+    time: "1ч 42м",
+  },
+  {
+    img: seven,
+    title: "Когда я думаю о Германии ночью",
+    time: "1ч 42м",
+  },
+  {
+    img: eight,
+    title: "Gimme Danger: История Игги и The Stooges",
+    time: "1ч 42м",
+  },
+  {
+    img: nine,
+    title: "Дженис: Маленькая девочка грустит",
+    time: "1ч 42м",
+  },
+  {
+    img: ten,
+    title: "Соберись перед прыжком",
+    time: "1ч 42м",
+  },
+  {
+    img: eleven,
+    title: "Пи Джей Харви: A dog called money",
+    time: "1ч 42м",
+  },
+  {
+    img: twelve,
+    title: "По волнам: Искусство звука в кино",
+    time: "1ч 42м",
+  },
+  {
+    img: thirteen,
+    title: "Рудбой",
+    time: "1ч 42м",
+  },
+  {
+    img: fourteen,
+    title: "Скейт — кухня",
+    time: "1ч 42м",
+  },
+  {
+    img: fifteen,
+    title: "Война искусств",
+    time: "1ч 42м",
+  },
+  {
+    img: sixteen,
+    title: "Зона",
+    time: "1ч 42м",
+  },
+];
