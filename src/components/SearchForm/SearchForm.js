@@ -1,10 +1,19 @@
+import { useState } from "react";
+import { useForm } from "../../hooks/useForm";
 import searchIcon from "../../images/search-icon.svg";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 function SearchForm({ handleSearch }) {
+  const { values, handleChange } = useForm({});
+  const [checked, setChecked] = useState(false);
+
+  function handleCheckbox() {
+    setChecked(!checked);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    handleSearch();
+    handleSearch(values, checked);
   }
 
   return (
@@ -17,12 +26,14 @@ function SearchForm({ handleSearch }) {
         />
         <label htmlFor="search" />
         <input
+          required
           className="searchForm__input"
           type="text"
           name="searchMovies"
           id="searchMovies"
           placeholder="Фильм"
-          required
+          onChange={handleChange}
+          value={values.searchMovies || ""}
         />
         <button
           className="searchForm__button"
@@ -31,7 +42,7 @@ function SearchForm({ handleSearch }) {
         />
       </form>
       <div className="searchForm__checbox-container">
-        <FilterCheckbox />
+        <FilterCheckbox isChecked={checked} handleCheckbox={handleCheckbox} />
         <p className="searchForm__checbox-text">Короткометражки</p>
       </div>
     </section>

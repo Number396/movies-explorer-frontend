@@ -99,17 +99,14 @@ function App() {
       .catch((error) => console.log(`Ошибка при обновлении профиля: ${error}`));
   }
 
-  function handleSearch(params) {
-    // console.log("handlesearch");
+  function handleSearch({ searchMovies }, checked) {
     apiMovies
       .getMovies()
       .then((data) => {
-        console.log(data);
-
         localStorage.setItem("all_movies", JSON.stringify(data));
-
+        localStorage.setItem("all_query", searchMovies);
+        localStorage.setItem("all_isChecked", checked);
         const movies = localStorage.getItem("all_movies");
-
         console.log(JSON.parse(movies));
       })
       .catch((error) => console.log(`Ошибка: ${error}`));
