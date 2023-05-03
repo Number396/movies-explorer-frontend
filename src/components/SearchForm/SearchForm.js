@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import searchIcon from "../../images/search-icon.svg";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 function SearchForm({ handleSearch }) {
-  const { values, handleChange } = useForm({});
+  const { values, handleChange, setValues } = useForm({});
   const [checked, setChecked] = useState(false);
 
   function handleCheckbox() {
@@ -19,6 +19,13 @@ function SearchForm({ handleSearch }) {
       console.log("pusto");
     }
   }
+
+  useEffect(() => {
+    const query = localStorage.getItem("query");
+    if (query) {
+      setValues({ searchMovies: query });
+    }
+  }, []);
 
   return (
     <section className="searchForm">

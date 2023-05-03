@@ -151,6 +151,7 @@ function App() {
     setLoggedIn(false);
     navigate("/", { replace: true });
     setCurrentUser({});
+    setFoundedMovies([]);
   }
 
   function handlePopupClose() {
