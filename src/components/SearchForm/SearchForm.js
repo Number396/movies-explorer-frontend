@@ -13,7 +13,11 @@ function SearchForm({ handleSearch }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleSearch(values, checked);
+    if (values.searchMovies !== "") {
+      handleSearch(values, checked);
+    } else {
+      console.log("pusto");
+    }
   }
 
   return (

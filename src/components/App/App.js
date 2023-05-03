@@ -27,6 +27,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isDataLoading, setIsDataLoading] = useState(true);
+  const [foundedMovies, setFoundedMovies] = useState([]);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -100,7 +101,7 @@ function App() {
   }
 
   function getSearchResult(text, query) {
-    return text.includes(query.toLowerCase());
+    return text.toLowerCase().includes(query.toLowerCase());
   }
 
   function handleSearchMovie(movies, query, isShortMovie) {
@@ -139,8 +140,9 @@ function App() {
       // const query = localStorage.getItem("query");
       // const isShortMovie = localStorage.getItem("isShortMovie");
 
-      const foundedMovies = handleSearchMovie(movies, searchMovies, checked);
-      console.log(foundedMovies);
+      const searchResult = handleSearchMovie(movies, searchMovies, checked);
+      localStorage.setItem("foundedMovies", JSON.stringify(searchResult));
+      setFoundedMovies(searchResult);
     }
   }
 
@@ -208,6 +210,7 @@ function App() {
                 loggedIn={loggedIn}
                 handleSearch={handleSearch}
                 isDataLoading={isDataLoading}
+                foundedMovies={foundedMovies}
               />
             }
           />
