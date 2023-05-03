@@ -99,17 +99,49 @@ function App() {
       .catch((error) => console.log(`Ошибка при обновлении профиля: ${error}`));
   }
 
+  function getSearchResult(text, query) {
+    return text.includes(query.toLowerCase());
+  }
+
+  function handleSearchMovie(movies, query, isShortMovie) {
+    const searchedMovies = movies.filter((movie) => {
+      const text = movie.nameRU;
+      const duration = movie.duration;
+
+      if (isShortMovie & (duration <= 40)) {
+        return getSearchResult(text, query);
+      }
+      if (!isShortMovie) {
+        return getSearchResult(text, query);
+      }
+    });
+
+    return searchedMovies;
+  }
+
   function handleSearch({ searchMovies }, checked) {
-    apiMovies
-      .getMovies()
-      .then((data) => {
-        localStorage.setItem("all_movies", JSON.stringify(data));
-        localStorage.setItem("all_query", searchMovies);
-        localStorage.setItem("all_isChecked", checked);
-        const movies = localStorage.getItem("all_movies");
-        console.log(JSON.parse(movies));
-      })
-      .catch((error) => console.log(`Ошибка: ${error}`));
+    const isLocalMovies = localStorage.getItem("movies");
+
+    if (!isLocalMovies) {
+      apiMovies
+        .getMovies()
+        .then((data) => {
+          localStorage.setItem("movies", JSON.stringify(data));
+          localStorage.setItem("query", searchMovies);
+          localStorage.setItem("isShortMovie", checked);
+        })
+        .catch((error) => console.log(`Ошибка: ${error}`));
+    } else {
+      const movies = JSON.parse(localStorage.getItem("movies"));
+      localStorage.setItem("query", searchMovies);
+      localStorage.setItem("isShortMovie", checked);
+
+      // const query = localStorage.getItem("query");
+      // const isShortMovie = localStorage.getItem("isShortMovie");
+
+      const foundedMovies = handleSearchMovie(movies, searchMovies, checked);
+      console.log(foundedMovies);
+    }
   }
 
   function onSignoutClick() {
