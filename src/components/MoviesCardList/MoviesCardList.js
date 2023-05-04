@@ -4,14 +4,15 @@ import Preloader from "../Preloader/Preloader";
 
 function MoviesCardList({ images, fav, foundedMovies }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [end, setEnd] = useState();
   const [newMovies, setNewMovies] = useState([]);
+  const [countS, setCountS] = useState(7);
+  const [countM, setCountM] = useState(10);
+  const [countL, setCountL] = useState(16);
+  const [isMore, setIsMore] = useState(false);
 
   const SCREEN_SM = 320;
   const SCREEN_MD = 768;
   const SCREEN_LG = 1244;
-  // const SCREEN_XL = 1200;
-  // const SCREEN_XXL = 1400;
 
   const useResize = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -40,22 +41,70 @@ function MoviesCardList({ images, fav, foundedMovies }) {
 
   useEffect(() => {
     if (isScreenSm) {
+      if (foundedMovies.length >= 6) {
+        setIsMore(true);
+      }
+
       setNewMovies(foundedMovies.slice(0, 5));
+      setCountS(7);
     }
     if (isScreenMd) {
+      if (foundedMovies.length >= 9) {
+        setIsMore(true);
+      } else {
+        setIsMore(false);
+      }
+
       setNewMovies(foundedMovies.slice(0, 8));
+      setCountM(10);
     }
     if (isScreenLg) {
+      if (foundedMovies.length >= 13) {
+        setIsMore(true);
+      } else {
+        setIsMore(false);
+      }
+
       setNewMovies(foundedMovies.slice(0, 12));
-      // setEnd(16);
+      setCountL(16);
     }
   }, [width, foundedMovies]);
 
   function handleMoreClick() {
+    console.log(foundedMovies.length);
     // setIsLoading(!isLoading);
-    console.log(isScreenSm);
-    console.log(isScreenMd);
-    console.log(isScreenLg);
+    // if (isScreenMd) {
+    //   setNewMovies(foundedMovies.slice(0, 8));
+    // }
+    if (isScreenSm) {
+      setNewMovies(foundedMovies.slice(0, countS));
+      setCountS(countS + 2);
+      console.log("countS", countS);
+      if (foundedMovies.length <= countS) {
+        setIsMore(false);
+        setCountS(7);
+      }
+    }
+
+    if (isScreenMd) {
+      setNewMovies(foundedMovies.slice(0, countM));
+      setCountM(countM + 2);
+      console.log("countM", countM);
+      if (foundedMovies.length <= countM) {
+        setIsMore(false);
+        setCountM(10);
+      }
+    }
+
+    if (isScreenLg) {
+      setNewMovies(foundedMovies.slice(0, countL));
+      setCountL(countL + 4);
+      console.log("countL", countL);
+      if (foundedMovies.length <= countL) {
+        setIsMore(false);
+        setCountL(16);
+      }
+    }
   }
 
   function getTimeFromMins(mins) {
@@ -79,19 +128,22 @@ function MoviesCardList({ images, fav, foundedMovies }) {
           />
         ))}
       </ul>
-      <button
-        className={` moviesCardList__more-button
-                ${
-                  fav
-                    ? "moviesCardList__more-button_type_movie-safe"
-                    : "moviesCardList__more-button_type_movie"
-                }
-                    `}
-        type="button"
-        onClick={handleMoreClick}
-      >
-        Ещё
-      </button>
+
+      {isMore && (
+        <button
+          className={` moviesCardList__more-button
+      ${
+        fav
+          ? "moviesCardList__more-button_type_movie-safe"
+          : "moviesCardList__more-button_type_movie"
+      }
+      `}
+          type="button"
+          onClick={handleMoreClick}
+        >
+          Ещё
+        </button>
+      )}
 
       {isLoading && <Preloader />}
     </section>
