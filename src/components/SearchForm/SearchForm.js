@@ -2,29 +2,44 @@ import { useEffect, useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import searchIcon from "../../images/search-icon.svg";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
-function SearchForm({ handleSearch }) {
-  const { values, handleChange, setValues } = useForm({});
-  const [checked, setChecked] = useState(false);
+function SearchForm({ handleSearch, handleCheckbox, shortMovie, query }) {
+  // const { values, handleChange, setValues } = useForm({});
+  const { values, handleChange, setValues, errors } = useFormWithValidation();
 
-  function handleCheckbox() {
-    setChecked(!checked);
-  }
+  // const [checked, setChecked] = useState(false);
+
+  // function handleCheckbox() {
+  //   setChecked(!checked);
+  // }
 
   function handleSubmit(e) {
+    // console.log(values.searchMovies);
+    console.log(errors.searchMovies);
     e.preventDefault();
+
     if (values.searchMovies !== "") {
-      handleSearch(values, checked);
+      // handleSearch(values, checked);
+      handleSearch(values);
     } else {
       console.log("pusto");
     }
   }
 
   useEffect(() => {
-    const query = localStorage.getItem("query");
-    if (query) {
-      setValues({ searchMovies: query });
-    }
+    setValues({ searchMovies: query });
+    // const query = localStorage.getItem("query");
+    // // const isShortMovie = localStorage.getItem("isShortMovie");
+    // if (query) {
+    //   setValues({ searchMovies: query });
+    // } else {
+    //   console.log("else");
+    //   setValues({ searchMovies: "" });
+    // }
+    // if (isShortMovie) {
+    //   setChecked(isShortMovie);
+    // }
   }, []);
 
   return (
@@ -38,6 +53,7 @@ function SearchForm({ handleSearch }) {
         <label htmlFor="search" />
         <input
           required
+          minLength="1"
           className="searchForm__input"
           type="text"
           name="searchMovies"
@@ -53,7 +69,10 @@ function SearchForm({ handleSearch }) {
         />
       </form>
       <div className="searchForm__checbox-container">
-        <FilterCheckbox isChecked={checked} handleCheckbox={handleCheckbox} />
+        <FilterCheckbox
+          isChecked={shortMovie}
+          handleCheckbox={handleCheckbox}
+        />
         <p className="searchForm__checbox-text">Короткометражки</p>
       </div>
     </section>

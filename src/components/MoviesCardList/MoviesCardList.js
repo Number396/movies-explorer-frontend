@@ -1,117 +1,132 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Preloader from "../Preloader/Preloader";
+// import { useResize } from "../../hooks/useResize";
+import { getTimeFromMins } from "../../utils/getTimeFromMins";
+import { useState } from "react";
 
-function MoviesCardList({ images, fav, foundedMovies }) {
+function MoviesCardList({
+  // images,
+  fav,
+  // foundedMovies,
+  isMore,
+  handleMoreClick,
+  newMovies,
+}) {
   const [isLoading, setIsLoading] = useState(false);
-  const [newMovies, setNewMovies] = useState([]);
-  const [countS, setCountS] = useState(7);
-  const [countM, setCountM] = useState(10);
-  const [countL, setCountL] = useState(16);
-  const [isMore, setIsMore] = useState(false);
+  // const [newMovies, setNewMovies] = useState([]);
+  // const [countS, setCountS] = useState(7);
+  // const [countM, setCountM] = useState(10);
+  // const [countL, setCountL] = useState(16);
+  // const [isMore, setIsMore] = useState(false);
 
-  const SCREEN_SM = 320;
-  const SCREEN_MD = 768;
-  const SCREEN_LG = 1244;
+  // const SCREEN_SM = 320;
+  // const SCREEN_MD = 768;
+  // const SCREEN_LG = 1244;
 
-  const useResize = () => {
-    const [width, setWidth] = useState(window.innerWidth);
+  // const useResize = () => {
+  //   const [width, setWidth] = useState(window.innerWidth);
 
-    useEffect(() => {
-      const handleResize = (event) => {
-        setWidth(event.target.innerWidth);
-      };
-      window.addEventListener("resize", handleResize);
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }, []);
+  //   useEffect(() => {
+  //     const handleResize = (event) => {
+  //       setWidth(event.target.innerWidth);
+  //     };
+  //     window.addEventListener("resize", handleResize);
+  //     return () => {
+  //       window.removeEventListener("resize", handleResize);
+  //     };
+  //   }, []);
 
-    return {
-      width,
-      isScreenSm: width >= SCREEN_SM && width < SCREEN_MD,
-      isScreenMd: width >= SCREEN_MD && width < SCREEN_LG,
-      isScreenLg: width >= SCREEN_LG,
-      // isScreenXl: width >= SCREEN_XL,
-      // isScreenXxl: width >= SCREEN_XXL,
-    };
-  };
+  //   return {
+  //     width,
+  //     isScreenSm: width >= SCREEN_SM && width < SCREEN_MD,
+  //     isScreenMd: width >= SCREEN_MD && width < SCREEN_LG,
+  //     isScreenLg: width >= SCREEN_LG,
+  //     // isScreenXl: width >= SCREEN_XL,
+  //     // isScreenXxl: width >= SCREEN_XXL,
+  //   };
+  // };
+  // const { width, isScreenSm, isScreenMd, isScreenLg } = useResize();
 
-  const { width, isScreenSm, isScreenMd, isScreenLg } = useResize();
+  // useEffect(() => {
+  //   // console.log("base");
 
-  useEffect(() => {
-    if (isScreenSm) {
-      if (foundedMovies.length >= 6) {
-        setIsMore(true);
-      }
+  //   if (isScreenSm) {
+  //     if (foundedMovies.length >= 6) {
+  //       setIsMore(true);
+  //     } else {
+  //       setIsMore(false);
+  //     }
 
-      setNewMovies(foundedMovies.slice(0, 5));
-      setCountS(7);
-    }
-    if (isScreenMd) {
-      if (foundedMovies.length >= 9) {
-        setIsMore(true);
-      } else {
-        setIsMore(false);
-      }
+  //     setNewMovies(foundedMovies.slice(0, 5));
+  //     setCountS(7);
+  //   }
 
-      setNewMovies(foundedMovies.slice(0, 8));
-      setCountM(10);
-    }
-    if (isScreenLg) {
-      if (foundedMovies.length >= 13) {
-        setIsMore(true);
-      } else {
-        setIsMore(false);
-      }
+  //   if (isScreenMd) {
+  //     if (foundedMovies.length >= 9) {
+  //       setIsMore(true);
+  //     } else {
+  //       setIsMore(false);
+  //     }
 
-      setNewMovies(foundedMovies.slice(0, 12));
-      setCountL(16);
-    }
-  }, [width, foundedMovies]);
+  //     setNewMovies(foundedMovies.slice(0, 8));
+  //     setCountM(10);
+  //   }
+  //   if (isScreenLg) {
+  //     if (foundedMovies.length >= 13) {
+  //       setIsMore(true);
+  //     } else {
+  //       setIsMore(false);
+  //     }
 
-  function handleMoreClick() {
-    console.log(foundedMovies.length);
-    // setIsLoading(!isLoading);
-    // if (isScreenMd) {
-    //   setNewMovies(foundedMovies.slice(0, 8));
-    // }
-    if (isScreenSm) {
-      setNewMovies(foundedMovies.slice(0, countS));
-      setCountS(countS + 2);
-      console.log("countS", countS);
-      if (foundedMovies.length <= countS) {
-        setIsMore(false);
-        setCountS(7);
-      }
-    }
+  //     setNewMovies(foundedMovies.slice(0, 12));
+  //     setCountL(16);
+  //   }
+  // }, [width, foundedMovies]);
 
-    if (isScreenMd) {
-      setNewMovies(foundedMovies.slice(0, countM));
-      setCountM(countM + 2);
-      console.log("countM", countM);
-      if (foundedMovies.length <= countM) {
-        setIsMore(false);
-        setCountM(10);
-      }
-    }
+  // function handleMoreClick() {
+  //   // console.log(foundedMovies.length);
 
-    if (isScreenLg) {
-      setNewMovies(foundedMovies.slice(0, countL));
-      setCountL(countL + 4);
-      console.log("countL", countL);
-      if (foundedMovies.length <= countL) {
-        setIsMore(false);
-        setCountL(16);
-      }
-    }
-  }
+  //   // setIsLoading(!isLoading);
+  //   // if (isScreenMd) {
+  //   //   setNewMovies(foundedMovies.slice(0, 8));
+  //   // }
+  //   if (isScreenSm) {
+  //     setNewMovies(foundedMovies.slice(0, countS));
+  //     setCountS(countS + 2);
+  //     // console.log("countS", countS);
+  //     if (foundedMovies.length <= countS) {
+  //       setIsMore(false);
+  //       setCountS(7);
+  //     }
+  //   }
 
-  function getTimeFromMins(mins) {
-    let hours = Math.trunc(mins / 60);
-    let minutes = mins % 60;
-    return hours + "ч " + minutes + "м";
-  }
+  //   if (isScreenMd) {
+  //     setNewMovies(foundedMovies.slice(0, countM));
+  //     setCountM(countM + 2);
+  //     // console.log("countM", countM);
+  //     if (foundedMovies.length <= countM) {
+  //       setIsMore(false);
+  //       setCountM(10);
+  //     }
+  //   }
+
+  //   if (isScreenLg) {
+  //     setNewMovies(foundedMovies.slice(0, countL));
+  //     setCountL(countL + 4);
+  //     // console.log("countL", countL);
+  //     if (foundedMovies.length <= countL) {
+  //       setIsMore(false);
+  //       setCountL(16);
+  //     }
+  //   }
+  // }
+
+  // function getTimeFromMins(mins) {
+  //   let hours = Math.trunc(mins / 60);
+  //   let minutes = mins % 60;
+  //   return hours + "ч " + minutes + "м";
+  // }
 
   return (
     <section className="moviesCardList">

@@ -20,6 +20,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { apiMain } from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { apiMovies } from "../../utils/MoviesApi";
+import { useResize } from "../../hooks/useResize";
 
 function App() {
   const navigate = useNavigate();
@@ -28,12 +29,110 @@ function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isDataLoading, setIsDataLoading] = useState(true);
   const [foundedMovies, setFoundedMovies] = useState([]);
+  const [shortMovie, setShortMovies] = useState(false);
+  const [query, setQuery] = useState("");
   const { pathname } = useLocation();
+
+  const [newMovies, setNewMovies] = useState([]);
+  const [countS, setCountS] = useState(7);
+  const [countM, setCountM] = useState(10);
+  const [countL, setCountL] = useState(16);
+  const [isMore, setIsMore] = useState(false);
+  const { width, isScreenSm, isScreenMd, isScreenLg } = useResize();
+
+  useEffect(() => {
+    // console.log("base");
+
+    if (isScreenSm) {
+      if (foundedMovies.length >= 6) {
+        setIsMore(true);
+      } else {
+        setIsMore(false);
+      }
+
+      setNewMovies(foundedMovies.slice(0, 5));
+      setCountS(7);
+    }
+
+    if (isScreenMd) {
+      if (foundedMovies.length >= 9) {
+        setIsMore(true);
+      } else {
+        setIsMore(false);
+      }
+
+      setNewMovies(foundedMovies.slice(0, 8));
+      setCountM(10);
+    }
+    if (isScreenLg) {
+      if (foundedMovies.length >= 13) {
+        setIsMore(true);
+      } else {
+        setIsMore(false);
+      }
+
+      setNewMovies(foundedMovies.slice(0, 12));
+      setCountL(16);
+    }
+  }, [width, foundedMovies]);
 
   useEffect(() => {
     // console.log('inside useEffec');
     tokenCheck();
+    const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
+    const isShortMovie = JSON.parse(localStorage.getItem("isShortMovie"));
+    const isQuery = localStorage.getItem("query");
+    console.log(isShortMovie);
+
+    if (isFoundedMovies) {
+      setFoundedMovies(isFoundedMovies);
+    }
+
+    if (isShortMovie) {
+      setShortMovies(isShortMovie);
+    }
+    if (isQuery) {
+      setQuery(isQuery);
+    }
   }, []);
+
+  function handleMoreClick() {
+    // console.log(foundedMovies.length);
+
+    // setIsLoading(!isLoading);
+    // if (isScreenMd) {
+    //   setNewMovies(foundedMovies.slice(0, 8));
+    // }
+    if (isScreenSm) {
+      setNewMovies(foundedMovies.slice(0, countS));
+      setCountS(countS + 2);
+      // console.log("countS", countS);
+      if (foundedMovies.length <= countS) {
+        setIsMore(false);
+        setCountS(7);
+      }
+    }
+
+    if (isScreenMd) {
+      setNewMovies(foundedMovies.slice(0, countM));
+      setCountM(countM + 2);
+      // console.log("countM", countM);
+      if (foundedMovies.length <= countM) {
+        setIsMore(false);
+        setCountM(10);
+      }
+    }
+
+    if (isScreenLg) {
+      setNewMovies(foundedMovies.slice(0, countL));
+      setCountL(countL + 4);
+      // console.log("countL", countL);
+      if (foundedMovies.length <= countL) {
+        setIsMore(false);
+        setCountL(16);
+      }
+    }
+  }
 
   function handleLogin({ email, password }) {
     // setIsPopupOpen(true);
@@ -120,7 +219,8 @@ function App() {
     return searchedMovies;
   }
 
-  function handleSearch({ searchMovies }, checked) {
+  // function handleSearch({ searchMovies }, checked) {
+  function handleSearch({ searchMovies }) {
     const isLocalMovies = localStorage.getItem("movies");
 
     if (!isLocalMovies) {
@@ -129,21 +229,37 @@ function App() {
         .then((data) => {
           localStorage.setItem("movies", JSON.stringify(data));
           localStorage.setItem("query", searchMovies);
-          localStorage.setItem("isShortMovie", checked);
+          localStorage.setItem("isShortMovie", shortMovie);
+          // localStorage.setItem("isShortMovie", checked);
+          const searchResult = handleSearchMovie(
+            data,
+            searchMovies,
+            shortMovie
+          );
+          localStorage.setItem("foundedMovies", JSON.stringify(searchResult));
+          setFoundedMovies(searchResult);
         })
         .catch((error) => console.log(`Ошибка: ${error}`));
     } else {
       const movies = JSON.parse(localStorage.getItem("movies"));
       localStorage.setItem("query", searchMovies);
-      localStorage.setItem("isShortMovie", checked);
+      localStorage.setItem("isShortMovie", shortMovie);
+      setQuery(searchMovies);
+      // localStorage.setItem("isShortMovie", checked);
 
       // const query = localStorage.getItem("query");
       // const isShortMovie = localStorage.getItem("isShortMovie");
 
-      const searchResult = handleSearchMovie(movies, searchMovies, checked);
+      // const searchResult = handleSearchMovie(movies, searchMovies, checked);
+      const searchResult = handleSearchMovie(movies, searchMovies, shortMovie);
       localStorage.setItem("foundedMovies", JSON.stringify(searchResult));
       setFoundedMovies(searchResult);
     }
+  }
+
+  function handleCheckbox() {
+    // localStorage.setItem("isShortMovie", !shortMovie);
+    setShortMovies(!shortMovie);
   }
 
   function onSignoutClick() {
@@ -210,8 +326,14 @@ function App() {
                 component={Movies}
                 loggedIn={loggedIn}
                 handleSearch={handleSearch}
+                handleCheckbox={handleCheckbox}
                 isDataLoading={isDataLoading}
-                foundedMovies={foundedMovies}
+                // foundedMovies={foundedMovies}
+                shortMovie={shortMovie}
+                handleMoreClick={handleMoreClick}
+                isMore={isMore}
+                newMovies={newMovies}
+                query={query}
               />
             }
           />
