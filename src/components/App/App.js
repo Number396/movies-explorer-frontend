@@ -41,7 +41,8 @@ function App() {
   const { width, isScreenSm, isScreenMd, isScreenLg } = useResize();
 
   useEffect(() => {
-    // console.log("base");
+    console.log("base");
+    console.log("foundedMovies:", foundedMovies);
 
     if (isScreenSm) {
       if (foundedMovies.length >= 6) {
@@ -236,6 +237,7 @@ function App() {
             searchMovies,
             shortMovie
           );
+
           localStorage.setItem("foundedMovies", JSON.stringify(searchResult));
           setFoundedMovies(searchResult);
         })
@@ -259,7 +261,17 @@ function App() {
 
   function handleCheckbox() {
     // localStorage.setItem("isShortMovie", !shortMovie);
+    // const isShortMovie = JSON.parse(localStorage.getItem("isShortMovie"));
     setShortMovies(!shortMovie);
+    const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
+    if (isFoundedMovies) {
+      const searchInside = handleSearchMovie(
+        isFoundedMovies,
+        query,
+        !shortMovie
+      );
+      setFoundedMovies(searchInside);
+    }
   }
 
   function onSignoutClick() {
@@ -341,7 +353,11 @@ function App() {
           <Route
             path="/saved-movies"
             element={
-              <ProtectedRoute component={SavedMovies} loggedIn={loggedIn} />
+              <ProtectedRoute
+                component={SavedMovies}
+                loggedIn={loggedIn}
+                newMovies={newMovies}
+              />
             }
           />
 

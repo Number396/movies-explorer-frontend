@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 function MoviesCard({ img, title, time, fav, link }) {
-  const [isLiked, setIsLiekd] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
 
   function handleLikeClick() {
-    setIsLiekd(!isLiked);
+    console.log("like click");
+    setIsLiked(!isLiked);
   }
 
   return (

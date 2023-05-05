@@ -138,7 +138,7 @@ function MoviesCardList({
             title={items.nameRU}
             time={getTimeFromMins(items.duration)}
             link={items.trailerLink}
-            // fav={fav}
+            fav={fav}
             key={items.id}
           />
         ))}
