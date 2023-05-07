@@ -99,9 +99,9 @@ class MainApi {
     });
   }
 
-  deleteMovie({ delMovieId, token }) {
-    console.log(delMovieId, token);
-    return this._request(`${this._movieUrl}/${delMovieId}`, {
+  deleteMovie({ movieId, token }) {
+    console.log(movieId, token);
+    return this._request(`${this._movieUrl}/${movieId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

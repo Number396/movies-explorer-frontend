@@ -279,26 +279,77 @@ function App() {
   }
 
   function handleRemoveClick(card, isLiked, setIsLiked) {
+    const token = localStorage.getItem("token");
     console.log(card);
+    console.log(savedMovies);
+    const copySavedMovies = [...savedMovies];
+
+    const movieIndex = copySavedMovies.findIndex((item) => {
+      // console.log(item.movieId, card.id);
+      return item.movieId === card.movieId;
+    });
+
+    console.log(movieIndex);
     console.log(isLiked);
+    const movieId = card._id;
+
+    apiMain
+      .deleteMovie({ movieId, token })
+      .then((result) => {
+        // console.log("3)", result);
+        // const newSavedMovies = savedMovies.splice(movieIndex, 1);
+        // console.log("4) copySavedMovies before cut:", copySavedMovies);
+        const cut = copySavedMovies.splice(movieIndex, 1);
+        console.log("cut:", cut);
+        console.log("4.1) copySavedMovies after cut:", copySavedMovies);
+        setSavedMovies(copySavedMovies);
+        // localStorage.setItem("savedMovie", JSON.stringify(copySavedMovies));
+        // console.log("5) savedMovie");
+      })
+      .catch((error) => console.log(`Ошибка снятия лайка: ${error}`));
   }
 
   function handleLikeClick(card, isLiked, setIsLiked) {
     const token = localStorage.getItem("token");
+    // const copySavedMovies = [...savedMovies];
+    // console.log("copySavedMovies", copySavedMovies);
     // console.log(card);
 
     if (isLiked) {
-      const delMovie = savedMovies.filter((item) => {
-        console.log(item.movieId, card.id);
+      const copySavedMovies = [...savedMovies];
+      // console.log(copySavedMovies);
+
+      // console.log("0) SavedMovies", savedMovies);
+      // console.log("0) copySavedMovies", copySavedMovies);
+
+      const movieIndex = copySavedMovies.findIndex((item) => {
+        // console.log(item.movieId, card.id);
         return item.movieId === card.id;
       });
-      if (delMovie.length > 0) {
-        const delMovieId = delMovie[0]._id;
+
+      // console.log("1) movieIndex:", movieIndex);
+
+      if (movieIndex !== -1) {
+        // const movieId = savedMovies[movieIndex]._id;
+        // const copyMovieId = copySavedMovies[movieIndex]._id;
+        const movieId = copySavedMovies[movieIndex]._id;
+
+        // console.log("2) movieId", movieId);
+        // console.log("2.1) copyMovieId", copyMovieId);
+
         apiMain
-          .deleteMovie({ delMovieId, token })
+          .deleteMovie({ movieId, token })
           .then((result) => {
-            console.log(result);
+            // console.log("3)", result);
+            // const newSavedMovies = savedMovies.splice(movieIndex, 1);
+            // console.log("4) copySavedMovies before cut:", copySavedMovies);
+            const cut = copySavedMovies.splice(movieIndex, 1);
+            // console.log("cut:", cut);
+            // console.log("4.1) copySavedMovies after cut:", copySavedMovies);
+            setSavedMovies(copySavedMovies);
             setIsLiked(!isLiked);
+            // localStorage.setItem("savedMovie", JSON.stringify(copySavedMovies));
+            // console.log("5) savedMovie");
           })
           .catch((error) => console.log(`Ошибка снятия лайка: ${error}`));
       }
