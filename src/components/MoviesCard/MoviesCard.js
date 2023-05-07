@@ -1,11 +1,21 @@
 import { useState } from "react";
 
-function MoviesCard({ img, title, time, fav, link }) {
+function MoviesCard({
+  img,
+  title,
+  time,
+  fav,
+  link,
+  // isLiked,
+  handleLikeClick,
+  card,
+}) {
   const [isLiked, setIsLiked] = useState(false);
 
-  function handleLikeClick() {
-    console.log("like click");
-    setIsLiked(!isLiked);
+  function handleClick() {
+    // console.log("like click");
+    handleLikeClick(card, isLiked, setIsLiked);
+    // setIsLiked(!isLiked);
   }
 
   return (
@@ -21,7 +31,7 @@ function MoviesCard({ img, title, time, fav, link }) {
           className={` ${!fav ? "moviesCard__like" : "moviesCard__like-fav"} ${
             isLiked && "movieCard__like-active"
           }`}
-          onClick={handleLikeClick}
+          onClick={handleClick}
         />
       </div>
       <p className="moviesCard__time">{time}</p>

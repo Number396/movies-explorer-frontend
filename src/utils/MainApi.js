@@ -7,6 +7,7 @@ class MainApi {
     this._signupUrl = `${this._baseUrl}signup`;
     this._signinUrl = `${this._baseUrl}signin`;
     this._userUrl = `${this._baseUrl}users/me`;
+    this._movieUrl = `${this._baseUrl}movies`;
   }
 
   _checkResponse(response) {
@@ -60,6 +61,52 @@ class MainApi {
         name,
         email,
       }),
+    });
+  }
+
+  createMovie({
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    id,
+    nameRU,
+    nameEN,
+    token,
+  }) {
+    return this._request(this._movieUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image: `https://api.nomoreparties.co/${image.url}`,
+        trailerLink,
+        thumbnail: `https://api.nomoreparties.co/${image.formats.thumbnail.url}`,
+        movieId: id,
+        nameRU,
+        nameEN,
+      }),
+    });
+  }
+
+  deleteMovie({ delMovieId, token }) {
+    console.log(delMovieId, token);
+    return this._request(`${this._movieUrl}/${delMovieId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
   }
 }

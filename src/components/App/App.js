@@ -29,6 +29,7 @@ function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isDataLoading, setIsDataLoading] = useState(true);
   const [foundedMovies, setFoundedMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
   const [shortMovie, setShortMovies] = useState(false);
   const [query, setQuery] = useState("");
   const { pathname } = useLocation();
@@ -38,11 +39,13 @@ function App() {
   const [countM, setCountM] = useState(10);
   const [countL, setCountL] = useState(16);
   const [isMore, setIsMore] = useState(false);
+  // const [isLiked, setIsLiked] = useState(false);
   const { width, isScreenSm, isScreenMd, isScreenLg } = useResize();
 
+  // для отображения карточек в зависимости от разрешения
   useEffect(() => {
-    console.log("base");
-    console.log("foundedMovies:", foundedMovies);
+    // console.log("base");
+    // console.log("foundedMovies:", foundedMovies);
 
     if (isScreenSm) {
       if (foundedMovies.length >= 6) {
@@ -77,13 +80,14 @@ function App() {
     }
   }, [width, foundedMovies]);
 
+  //основной юзэффект при монтировании страницы
   useEffect(() => {
     // console.log('inside useEffec');
     tokenCheck();
     const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
     const isShortMovie = JSON.parse(localStorage.getItem("isShortMovie"));
     const isQuery = localStorage.getItem("query");
-    console.log(isShortMovie);
+    // console.log(isShortMovie);
 
     if (isFoundedMovies) {
       setFoundedMovies(isFoundedMovies);
@@ -274,6 +278,71 @@ function App() {
     }
   }
 
+  function handleRemoveClick(card, isLiked, setIsLiked) {
+    console.log(card);
+    console.log(isLiked);
+  }
+
+  function handleLikeClick(card, isLiked, setIsLiked) {
+    const token = localStorage.getItem("token");
+    // console.log(card);
+
+    if (isLiked) {
+      const delMovie = savedMovies.filter((item) => {
+        console.log(item.movieId, card.id);
+        return item.movieId === card.id;
+      });
+      if (delMovie.length > 0) {
+        const delMovieId = delMovie[0]._id;
+        apiMain
+          .deleteMovie({ delMovieId, token })
+          .then((result) => {
+            console.log(result);
+            setIsLiked(!isLiked);
+          })
+          .catch((error) => console.log(`Ошибка снятия лайка: ${error}`));
+      }
+    } else {
+      // console.log(card);
+      const {
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image,
+        trailerLink,
+        id,
+        nameRU,
+        nameEN,
+      } = card;
+
+      apiMain
+        .createMovie({
+          country,
+          director,
+          duration,
+          year,
+          description,
+          image,
+          trailerLink,
+          id,
+          nameRU,
+          nameEN,
+          token,
+        })
+        .then((data) => {
+          setSavedMovies([...savedMovies, data]);
+          console.log("saveMovies:", savedMovies);
+          // setSaveMovies((saveMovie) => [...saveMovie, data]);
+          // console.log(data);
+          setIsLiked(!isLiked);
+        })
+        .catch((error) => console.log(`Ошибка установки лайка: ${error}`));
+      // console.log("saveMovies3:", saveMovies);
+    }
+  }
+
   function onSignoutClick() {
     localStorage.clear();
     setLoggedIn(false);
@@ -346,6 +415,8 @@ function App() {
                 isMore={isMore}
                 newMovies={newMovies}
                 query={query}
+                // isLiked={isLiked}
+                handleLikeClick={handleLikeClick}
               />
             }
           />
@@ -356,7 +427,8 @@ function App() {
               <ProtectedRoute
                 component={SavedMovies}
                 loggedIn={loggedIn}
-                newMovies={newMovies}
+                saveMovies={savedMovies}
+                handleRemoveClick={handleRemoveClick}
               />
             }
           />

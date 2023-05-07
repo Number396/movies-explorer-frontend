@@ -11,6 +11,8 @@ function Movies({
   isMore,
   newMovies,
   query,
+  // isLiked,
+  handleLikeClick,
 }) {
   return (
     <main>
@@ -28,6 +30,8 @@ function Movies({
         handleMoreClick={handleMoreClick}
         isMore={isMore}
         newMovies={newMovies}
+        // isLiked={isLiked}
+        handleLikeClick={handleLikeClick}
       />
     </main>
   );

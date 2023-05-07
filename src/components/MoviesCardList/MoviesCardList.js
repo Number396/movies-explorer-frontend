@@ -12,6 +12,8 @@ function MoviesCardList({
   isMore,
   handleMoreClick,
   newMovies,
+  // isLiked,
+  handleLikeClick,
 }) {
   const [isLoading, setIsLoading] = useState(false);
   // const [newMovies, setNewMovies] = useState([]);
@@ -132,14 +134,21 @@ function MoviesCardList({
     <section className="moviesCardList">
       <ul className="moviesCardList__items">
         {/* {foundedMovies.map((items) => ( */}
-        {newMovies.map((items) => (
+        {newMovies.map((item) => (
           <MoviesCard
-            img={`https://api.nomoreparties.co/${items.image.url}`}
-            title={items.nameRU}
-            time={getTimeFromMins(items.duration)}
-            link={items.trailerLink}
+            card={item}
+            img={
+              fav
+                ? item.image
+                : `https://api.nomoreparties.co/${item.image.url}`
+            }
+            title={item.nameRU}
+            time={getTimeFromMins(item.duration)}
+            link={item.trailerLink}
             fav={fav}
-            key={items.id}
+            key={fav ? item._id : item.id}
+            // isLiked={isLiked}
+            handleLikeClick={handleLikeClick}
           />
         ))}
       </ul>

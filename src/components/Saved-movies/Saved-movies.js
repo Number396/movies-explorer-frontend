@@ -2,12 +2,13 @@ import { images } from "../../utils/constants";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
-function SavedMovies({ newMovies }) {
+function SavedMovies({ saveMovies, handleRemoveClick }) {
   return (
     <main>
       <SearchForm />
       <MoviesCardList
-        newMovies={newMovies}
+        newMovies={saveMovies}
+        handleLikeClick={handleRemoveClick}
         // images={images.slice(0, 3)}
         fav={true}
       />
