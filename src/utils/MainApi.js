@@ -109,6 +109,16 @@ class MainApi {
       },
     });
   }
+
+  getSavedMovies({ token }) {
+    return this._request(this._movieUrl, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
 }
 
 export const apiMain = new MainApi(apiAuthConfig);

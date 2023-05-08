@@ -68,6 +68,7 @@ function App() {
       setNewMovies(foundedMovies.slice(0, 8));
       setCountM(10);
     }
+
     if (isScreenLg) {
       if (foundedMovies.length >= 13) {
         setIsMore(true);
@@ -100,6 +101,22 @@ function App() {
       setQuery(isQuery);
     }
   }, []);
+
+  useEffect(() => {
+    console.log("getSavedMovies");
+    const token = localStorage.getItem("token");
+    if (token) {
+      apiMain
+        .getSavedMovies({ token })
+        .then((data) => {
+          console.log(data);
+          setSavedMovies(data);
+        })
+        .catch((error) =>
+          console.log(`Ошибка получения сохр. фильмов: ${error}`)
+        );
+    }
+  }, [loggedIn]);
 
   function handleMoreClick() {
     // console.log(foundedMovies.length);
@@ -281,7 +298,7 @@ function App() {
   function handleRemoveClick(card, isLiked, setIsLiked) {
     const token = localStorage.getItem("token");
     console.log(card);
-    console.log(savedMovies);
+    // console.log(savedMovies);
     const copySavedMovies = [...savedMovies];
 
     const movieIndex = copySavedMovies.findIndex((item) => {
@@ -289,7 +306,7 @@ function App() {
       return item.movieId === card.movieId;
     });
 
-    console.log(movieIndex);
+    // console.log(movieIndex);
     console.log(isLiked);
     const movieId = card._id;
 
@@ -299,8 +316,10 @@ function App() {
         // console.log("3)", result);
         // const newSavedMovies = savedMovies.splice(movieIndex, 1);
         // console.log("4) copySavedMovies before cut:", copySavedMovies);
-        const cut = copySavedMovies.splice(movieIndex, 1);
-        console.log("cut:", cut);
+
+        // const cut = copySavedMovies.splice(movieIndex, 1);
+        copySavedMovies.splice(movieIndex, 1);
+        // console.log("cut:", cut);
         console.log("4.1) copySavedMovies after cut:", copySavedMovies);
         setSavedMovies(copySavedMovies);
         // localStorage.setItem("savedMovie", JSON.stringify(copySavedMovies));
@@ -313,7 +332,7 @@ function App() {
     const token = localStorage.getItem("token");
     // const copySavedMovies = [...savedMovies];
     // console.log("copySavedMovies", copySavedMovies);
-    // console.log(card);
+    console.log(card);
 
     if (isLiked) {
       const copySavedMovies = [...savedMovies];
@@ -343,7 +362,9 @@ function App() {
             // console.log("3)", result);
             // const newSavedMovies = savedMovies.splice(movieIndex, 1);
             // console.log("4) copySavedMovies before cut:", copySavedMovies);
-            const cut = copySavedMovies.splice(movieIndex, 1);
+
+            // const cut = copySavedMovies.splice(movieIndex, 1);
+            copySavedMovies.splice(movieIndex, 1);
             // console.log("cut:", cut);
             // console.log("4.1) copySavedMovies after cut:", copySavedMovies);
             setSavedMovies(copySavedMovies);
