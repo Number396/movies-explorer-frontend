@@ -4,7 +4,7 @@ import searchIcon from "../../images/search-icon.svg";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
-function SearchForm({ handleSearch, handleCheckbox, shortMovie, query }) {
+function SearchForm({ handleSearch, handleCheckbox, shortMovie, query, fav }) {
   // const { values, handleChange, setValues } = useForm({});
   const { values, handleChange, setValues, errors } = useFormWithValidation();
 
@@ -16,7 +16,7 @@ function SearchForm({ handleSearch, handleCheckbox, shortMovie, query }) {
 
   function handleSubmit(e) {
     // console.log(values.searchMovies);
-    console.log(errors.searchMovies);
+    // console.log(errors.searchMovies);
     e.preventDefault();
 
     if (values.searchMovies !== "") {
@@ -28,7 +28,11 @@ function SearchForm({ handleSearch, handleCheckbox, shortMovie, query }) {
   }
 
   useEffect(() => {
-    setValues({ searchMovies: query });
+    if (!fav) {
+      setValues({ searchMovies: query });
+    } else {
+      setValues({ searchMovies: "" });
+    }
     // const query = localStorage.getItem("query");
     // // const isShortMovie = localStorage.getItem("isShortMovie");
     // if (query) {

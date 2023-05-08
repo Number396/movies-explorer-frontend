@@ -30,8 +30,15 @@ function App() {
   const [isDataLoading, setIsDataLoading] = useState(true);
   const [foundedMovies, setFoundedMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
+  //shortMovie  состояние чекбокса
   const [shortMovie, setShortMovies] = useState(false);
+  //shortSaveMovie состояние чекбокса для сохранённых фильмов
+  const [shortSaveMovie, setShortSaveMovie] = useState(false);
+
   const [query, setQuery] = useState("");
+
+  const [querySavedMovie, setQuerySavedMovie] = useState("");
+
   const { pathname } = useLocation();
 
   const [newMovies, setNewMovies] = useState([]);
@@ -103,13 +110,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("getSavedMovies");
+    // console.log("getSavedMovies");
     const token = localStorage.getItem("token");
     if (token) {
       apiMain
         .getSavedMovies({ token })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           localStorage.setItem("savedMovies", JSON.stringify(data));
           setSavedMovies(data);
         })
@@ -244,55 +251,101 @@ function App() {
 
   // function handleSearch({ searchMovies }, checked) {
   function handleSearch({ searchMovies }) {
-    const isLocalMovies = localStorage.getItem("movies");
+    console.log("pathname:", pathname);
+    //searchMovies - это значение из инпута
+    if (pathname === "/movies") {
+      console.log("hello movies");
+      const isLocalMovies = localStorage.getItem("movies");
 
-    if (!isLocalMovies) {
-      apiMovies
-        .getMovies()
-        .then((data) => {
-          localStorage.setItem("movies", JSON.stringify(data));
-          localStorage.setItem("query", searchMovies);
-          localStorage.setItem("isShortMovie", shortMovie);
-          // localStorage.setItem("isShortMovie", checked);
-          const searchResult = handleSearchMovie(
-            data,
-            searchMovies,
-            shortMovie
-          );
+      if (!isLocalMovies) {
+        apiMovies
+          .getMovies()
+          .then((data) => {
+            localStorage.setItem("movies", JSON.stringify(data));
+            localStorage.setItem("query", searchMovies);
+            localStorage.setItem("isShortMovie", shortMovie);
+            // localStorage.setItem("isShortMovie", checked);
+            const searchResult = handleSearchMovie(
+              data,
+              searchMovies,
+              shortMovie
+            );
 
-          localStorage.setItem("foundedMovies", JSON.stringify(searchResult));
-          setFoundedMovies(searchResult);
-        })
-        .catch((error) => console.log(`Ошибка: ${error}`));
+            localStorage.setItem("foundedMovies", JSON.stringify(searchResult));
+            setFoundedMovies(searchResult);
+          })
+          .catch((error) => console.log(`Ошибка: ${error}`));
+      } else {
+        const movies = JSON.parse(localStorage.getItem("movies"));
+
+        localStorage.setItem("query", searchMovies);
+        localStorage.setItem("isShortMovie", shortMovie);
+
+        setQuery(searchMovies);
+        // localStorage.setItem("isShortMovie", checked);
+
+        // const query = localStorage.getItem("query");
+        // const isShortMovie = localStorage.getItem("isShortMovie");
+
+        // const searchResult = handleSearchMovie(movies, searchMovies, checked);
+        const searchResult = handleSearchMovie(
+          movies,
+          searchMovies,
+          shortMovie
+        );
+
+        localStorage.setItem("foundedMovies", JSON.stringify(searchResult));
+        setFoundedMovies(searchResult);
+      }
     } else {
-      const movies = JSON.parse(localStorage.getItem("movies"));
-      localStorage.setItem("query", searchMovies);
-      localStorage.setItem("isShortMovie", shortMovie);
-      setQuery(searchMovies);
-      // localStorage.setItem("isShortMovie", checked);
+      console.log("saved movies search---");
+      // console.log(shortMovie);
+      const savedLocalMovies = JSON.parse(localStorage.getItem("savedMovies"));
 
-      // const query = localStorage.getItem("query");
-      // const isShortMovie = localStorage.getItem("isShortMovie");
-
-      // const searchResult = handleSearchMovie(movies, searchMovies, checked);
-      const searchResult = handleSearchMovie(movies, searchMovies, shortMovie);
-      localStorage.setItem("foundedMovies", JSON.stringify(searchResult));
-      setFoundedMovies(searchResult);
+      const searchResult = handleSearchMovie(
+        savedLocalMovies,
+        searchMovies,
+        shortSaveMovie
+      );
+      console.log(searchResult);
+      localStorage.setItem("foundedSavedMovies", JSON.stringify(searchResult));
+      setQuerySavedMovie(searchMovies);
+      setSavedMovies(searchResult);
     }
   }
 
   function handleCheckbox() {
     // localStorage.setItem("isShortMovie", !shortMovie);
     // const isShortMovie = JSON.parse(localStorage.getItem("isShortMovie"));
-    setShortMovies(!shortMovie);
-    const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
-    if (isFoundedMovies) {
-      const searchInside = handleSearchMovie(
-        isFoundedMovies,
-        query,
-        !shortMovie
+    if (pathname === "/movies") {
+      setShortMovies(!shortMovie);
+
+      const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
+
+      if (isFoundedMovies) {
+        const searchInsideResult = handleSearchMovie(
+          isFoundedMovies,
+          query,
+          !shortMovie
+        );
+        setFoundedMovies(searchInsideResult);
+      }
+    } else {
+      console.log("savedMovie checkbox handle");
+      setShortSaveMovie(!shortSaveMovie);
+
+      const isFoundedSavedMovies = JSON.parse(
+        localStorage.getItem("foundedSavedMovies")
       );
-      setFoundedMovies(searchInside);
+      if (isFoundedSavedMovies) {
+        const searchInsideResult = handleSearchMovie(
+          savedMovies,
+          querySavedMovie,
+          !shortSaveMovie
+        );
+        setSavedMovies(searchInsideResult);
+        console.log(searchInsideResult);
+      }
     }
   }
 
@@ -432,6 +485,9 @@ function App() {
     navigate("/", { replace: true });
     setCurrentUser({});
     setFoundedMovies([]);
+    setSavedMovies([]);
+    setQuerySavedMovie("");
+    setQuery("");
   }
 
   function handlePopupClose() {
@@ -512,6 +568,11 @@ function App() {
                 loggedIn={loggedIn}
                 saveMovies={savedMovies}
                 handleRemoveClick={handleRemoveClick}
+                handleSearch={handleSearch}
+                setSavedMovies={setSavedMovies}
+                shortSaveMovie={shortSaveMovie}
+                handleCheckbox={handleCheckbox}
+                querySavedMovie={querySavedMovie}
               />
             }
           />

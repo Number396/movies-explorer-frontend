@@ -21,6 +21,7 @@ function Movies({
         shortMovie={shortMovie}
         handleCheckbox={handleCheckbox}
         query={query}
+        fav={false}
       />
 
       <MoviesCardList

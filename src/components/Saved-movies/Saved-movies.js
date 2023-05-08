@@ -1,15 +1,33 @@
-import { images } from "../../utils/constants";
+import { useEffect } from "react";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
-function SavedMovies({ saveMovies, handleRemoveClick }) {
+function SavedMovies({
+  saveMovies,
+  handleRemoveClick,
+  handleSearch,
+  setSavedMovies,
+  shortSaveMovie,
+  handleCheckbox,
+  querySavedMovie,
+}) {
+  useEffect(() => {
+    const savedLocalMovies = JSON.parse(localStorage.getItem("savedMovies"));
+    setSavedMovies(savedLocalMovies);
+  }, []);
+
   return (
     <main>
-      <SearchForm />
+      <SearchForm
+        handleSearch={handleSearch}
+        shortMovie={shortSaveMovie}
+        handleCheckbox={handleCheckbox}
+        query={querySavedMovie}
+        fav={true}
+      />
       <MoviesCardList
         newMovies={saveMovies}
         handleLikeClick={handleRemoveClick}
-        // images={images.slice(0, 3)}
         fav={true}
       />
     </main>
