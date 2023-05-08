@@ -10,10 +10,13 @@ function SavedMovies({
   shortSaveMovie,
   handleCheckbox,
   querySavedMovie,
+  // setShortSaveMovie,
 }) {
   useEffect(() => {
     const savedLocalMovies = JSON.parse(localStorage.getItem("savedMovies"));
     setSavedMovies(savedLocalMovies);
+    localStorage.setItem("foundedSavedMovies", JSON.stringify(""));
+    // setShortSaveMovie(false);
   }, []);
 
   return (

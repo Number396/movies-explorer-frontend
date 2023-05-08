@@ -339,7 +339,7 @@ function App() {
       );
       if (isFoundedSavedMovies) {
         const searchInsideResult = handleSearchMovie(
-          savedMovies,
+          isFoundedSavedMovies,
           querySavedMovie,
           !shortSaveMovie
         );
@@ -573,6 +573,7 @@ function App() {
                 shortSaveMovie={shortSaveMovie}
                 handleCheckbox={handleCheckbox}
                 querySavedMovie={querySavedMovie}
+                // setShortSaveMovie={setShortSaveMovie}
               />
             }
           />
