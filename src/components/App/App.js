@@ -110,6 +110,7 @@ function App() {
         .getSavedMovies({ token })
         .then((data) => {
           console.log(data);
+          localStorage.setItem("savedMovies", JSON.stringify(data));
           setSavedMovies(data);
         })
         .catch((error) =>
@@ -321,6 +322,8 @@ function App() {
         copySavedMovies.splice(movieIndex, 1);
         // console.log("cut:", cut);
         console.log("4.1) copySavedMovies after cut:", copySavedMovies);
+
+        localStorage.setItem("savedMovies", JSON.stringify(copySavedMovies));
         setSavedMovies(copySavedMovies);
         // localStorage.setItem("savedMovie", JSON.stringify(copySavedMovies));
         // console.log("5) savedMovie");
@@ -367,6 +370,10 @@ function App() {
             copySavedMovies.splice(movieIndex, 1);
             // console.log("cut:", cut);
             // console.log("4.1) copySavedMovies after cut:", copySavedMovies);
+            localStorage.setItem(
+              "savedMovies",
+              JSON.stringify(copySavedMovies)
+            );
             setSavedMovies(copySavedMovies);
             setIsLiked(!isLiked);
             // localStorage.setItem("savedMovie", JSON.stringify(copySavedMovies));
@@ -404,6 +411,10 @@ function App() {
           token,
         })
         .then((data) => {
+          localStorage.setItem(
+            "savedMovies",
+            JSON.stringify([...savedMovies, data])
+          );
           setSavedMovies([...savedMovies, data]);
           console.log("saveMovies:", savedMovies);
           // setSaveMovies((saveMovie) => [...saveMovie, data]);
