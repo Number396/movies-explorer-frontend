@@ -32,6 +32,9 @@ export const apiMoviesConfig = {
 export const SCREEN_SM = 320;
 export const SCREEN_MD = 768;
 export const SCREEN_LG = 1244;
+export const REGISTER_ERROR =
+  "Что-то пошло не так. Попробуйте зарегистрироваться позже.";
+export const LOGIN_ERROR = "Что-то пошло не так. Попробуйте войти позже.";
 
 export const images = [
   {

@@ -1,84 +1,25 @@
 import React, { useCallback, useEffect, useState } from "react";
 import AuthPage from "../AuthPage/AuthPage";
-// import { useForm } from "./../../hooks/useForm";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
-function Login({ loggedIn, handleLogin }) {
-  // const useInput = (initialValue, validations) => {
-  //     const [value, setValue] = useState(initialValue);
-  //     const valid = useValidation(value, validations);
+function Login({
+  loggedIn,
+  handleLogin,
+  errorLoginMessage,
+  isLoginError,
+  isButtonDisabled,
+  setErrorLoginMessage,
+}) {
+  // useEffect(() => {
+  //   setErrorLoginMessage("");
+  // }, [setErrorLoginMessage]);
 
-  //     const handleChange = (e) => {
-  //         setValue(e.target.value);
-  //     }
-  //     return { value, handleChange, ...valid }
-  // };
-
-  // const useValidation = (value, validators) => {
-  //     const [isEmpty, setIsEmpty] = useState(true);
-  //     const [minLengthError, setMinLengthError] = useState(false);
-
-  //     useEffect(() => {
-  //         for (const validation in validators) {
-  //             // eslint-disable-next-line default-case
-  //             switch (validation) {
-  //                 case 'minLength':
-  //                     value.length < validators[validation] ? setMinLengthError(true) : setMinLengthError(false)
-  //                     break;
-  //                 case 'isEmpty':
-  //                     value ? setIsEmpty(false) : setIsEmpty(true)
-  //                     break;
-  //                 // default:
-  //                 //     break;
-  //             }
-  //         }
-  //     }, [value])
-
-  //     return { isEmpty, minLengthError }
-  // };
-
-  // const { values, handleChange, setValues } = useForm({});
+  const { values, handleChange, errors, isValid } = useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
-    // console.log(email.value);
-    // console.log(pass.value);
-    // console.log(values);
-    // console.log(errors);
-    // resetForm();
     handleLogin(values);
   }
-  // const email = useInput('', { isEmpty: true, minLength: 2 });
-  // const pass = useInput('', { isEmpty: true, minLength: 2 });
-
-  // const useFormWithValidation = () => {
-  //     const [values, setValues] = React.useState({});
-  //     const [errors, setErrors] = React.useState({});
-  //     const [isValid, setIsValid] = React.useState(false);
-
-  //     const handleChange = (event) => {
-  //         const target = event.target;
-  //         const name = target.name;
-  //         const value = target.value;
-  //         setValues({ ...values, [name]: value });
-  //         setErrors({ ...errors, [name]: target.validationMessage });
-  //         setIsValid(target.closest("form").checkValidity());
-  //     };
-
-  //     const resetForm = useCallback(
-  //         (newValues = {}, newErrors = {}, newIsValid = false) => {
-  //             setValues(newValues);
-  //             setErrors(newErrors);
-  //             setIsValid(newIsValid);
-  //         },
-  //         [setValues, setErrors, setIsValid]
-  //     );
-
-  //     return { values, handleChange, errors, isValid, resetForm };
-  // };
-
-  const { values, handleChange, errors, isValid, resetForm } =
-    useFormWithValidation();
 
   return (
     <AuthPage
@@ -89,6 +30,9 @@ function Login({ loggedIn, handleLogin }) {
       isRegister={false}
       onSubmit={handleSubmit}
       isValid={isValid}
+      errorLoginMessage={errorLoginMessage}
+      isLoginError={isLoginError}
+      isButtonDisabled={isButtonDisabled}
     >
       <label className="authpage__label" htmlFor="email">
         E-mail

@@ -22,6 +22,7 @@
 @import url(./components/AuthPage/__input-error/_type/authpage__input-error_type_register.css);
 @import url(./components/AuthPage/__input-error/_type/authpage__input-error_type_login.css);
 @import url(./components/AuthPage/__input-error/_type/authpage__input-error_type_error.css);
+@import url(./components/AuthPage/__api-error/authpage__api-error.css);
 
 @import url(./components/Profile/profile.css);
 @import url(./components/Profile/__title/profile__title.css);

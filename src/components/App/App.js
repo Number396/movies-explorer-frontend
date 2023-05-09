@@ -21,10 +21,18 @@ import { apiMain } from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { apiMovies } from "../../utils/MoviesApi";
 import { useResize } from "../../hooks/useResize";
+import { LOGIN_ERROR, REGISTER_ERROR } from "../../utils/constants";
 
 function App() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isRegisterError, setIsRegisterError] = useState(false);
+  const [isLoginError, setIsLoginError] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  const [errorRegisterMessage, setErrorRegisterMessage] = useState("");
+  const [errorLoginMessage, setErrorLoginMessage] = useState("");
+
   const [currentUser, setCurrentUser] = useState({});
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isDataLoading, setIsDataLoading] = useState(true);
@@ -34,11 +42,8 @@ function App() {
   const [shortMovie, setShortMovies] = useState(false);
   //shortSaveMovie состояние чекбокса для сохранённых фильмов
   const [shortSaveMovie, setShortSaveMovie] = useState(false);
-
   const [query, setQuery] = useState("");
-
   const [querySavedMovie, setQuerySavedMovie] = useState("");
-
   const { pathname } = useLocation();
 
   const [newMovies, setNewMovies] = useState([]);
@@ -126,6 +131,14 @@ function App() {
     }
   }, [loggedIn]);
 
+  useEffect(() => {
+    console.log("navigate");
+    if (pathname === "/signin" || "/signup") {
+      setErrorLoginMessage("");
+      setErrorRegisterMessage("");
+    }
+  }, [pathname]);
+
   function handleMoreClick() {
     // console.log(foundedMovies.length);
 
@@ -167,6 +180,10 @@ function App() {
   function handleLogin({ email, password }) {
     // setIsPopupOpen(true);
     // console.log(email, password);
+    setIsButtonDisabled(true);
+    setIsLoginError(false);
+    setErrorLoginMessage("");
+
     apiMain
       .login(email, password)
       .then((data) => {
@@ -178,22 +195,38 @@ function App() {
       })
       .then(() => {
         const token = localStorage.getItem("token");
+
+        setIsLoginError(false);
+
         apiMain.checkToken(token).then((data) => {
           setCurrentUser(data);
         });
       })
-      .catch((error) => console.log(`Ошибка входа: ${error}`));
+      .catch((error) => {
+        console.log(`Ошибка входа: ${error}`);
+        setErrorLoginMessage(LOGIN_ERROR);
+        setIsLoginError(true);
+        setIsButtonDisabled(false);
+      });
   }
 
   function handleRegister({ name, email, password }) {
+    setIsButtonDisabled(true);
+    setIsRegisterError(false);
+    setErrorRegisterMessage("");
     apiMain
       .register(name, email, password)
       .then((data) => {
+        setIsRegisterError(false);
+        setIsButtonDisabled(false);
         handleLogin({ email, password });
       })
       .catch((error) => {
         // setInfoTooltipSet({ isOpen: true, isSucceded: false });
         console.log(`Ошибка регистрации: ${error}`);
+        setErrorRegisterMessage(REGISTER_ERROR);
+        setIsRegisterError(true);
+        setIsButtonDisabled(false);
       });
   }
 
@@ -508,7 +541,15 @@ function App() {
             path="/signup"
             element={
               !loggedIn ? (
-                <Register loggedIn={loggedIn} handleRegister={handleRegister} />
+                <Register
+                  loggedIn={loggedIn}
+                  handleRegister={handleRegister}
+                  errorRegisterMessage={errorRegisterMessage}
+                  isRegisterError={isRegisterError}
+                  isButtonDisabled={isButtonDisabled}
+                  setErrorRegisterMessage={setErrorRegisterMessage}
+                  pathname={pathname}
+                />
               ) : (
                 <Navigate to="/" />
               )
@@ -519,7 +560,15 @@ function App() {
             path="/signin"
             element={
               !loggedIn ? (
-                <Login loggedIn={loggedIn} handleLogin={handleLogin} />
+                <Login
+                  loggedIn={loggedIn}
+                  handleLogin={handleLogin}
+                  errorLoginMessage={errorLoginMessage}
+                  isLoginError={isLoginError}
+                  isButtonDisabled={isButtonDisabled}
+                  setErrorLoginMessage={setErrorLoginMessage}
+                  pathname={pathname}
+                />
               ) : (
                 <Navigate to="/" />
               )
