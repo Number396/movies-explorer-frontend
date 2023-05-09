@@ -132,8 +132,8 @@ function App() {
   }, [loggedIn]);
 
   useEffect(() => {
-    console.log("navigate");
-    if (pathname === "/signin" || "/signup") {
+    if (pathname === "/signin" || pathname === "/signup") {
+      console.log("navigate");
       setErrorLoginMessage("");
       setErrorRegisterMessage("");
     }
@@ -521,6 +521,7 @@ function App() {
     setSavedMovies([]);
     setQuerySavedMovie("");
     setQuery("");
+    setIsButtonDisabled(false);
   }
 
   function handlePopupClose() {
