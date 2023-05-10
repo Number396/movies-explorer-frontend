@@ -26,15 +26,15 @@ import { LOGIN_ERROR, REGISTER_ERROR } from "../../utils/constants";
 function App() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
-  const [isRegisterError, setIsRegisterError] = useState(false);
-  const [isLoginError, setIsLoginError] = useState(false);
+  // const [isRegisterError, setIsRegisterError] = useState(false);
+  // const [isLoginError, setIsLoginError] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
-  const [errorRegisterMessage, setErrorRegisterMessage] = useState("");
-  const [errorLoginMessage, setErrorLoginMessage] = useState("");
+  const [errorAuthMessage, setErrorAuthMessage] = useState("");
+  const [isAuthError, setIsAuthError] = useState(false);
 
-  const [errorGMessage, setErrorGMessage] = useState("");
-  const [isGError, setGError] = useState(false);
+  // const [errorRegisterMessage, setErrorRegisterMessage] = useState("");
+  const [errorLoginMessage, setErrorLoginMessage] = useState("");
 
   const [currentUser, setCurrentUser] = useState({});
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -138,8 +138,8 @@ function App() {
     if (pathname === "/signin" || pathname === "/signup") {
       console.log(pathname);
       // setErrorLoginMessage("");
-      setErrorRegisterMessage("");
-      setErrorGMessage("");
+      // setErrorRegisterMessage("");
+      setErrorAuthMessage("");
     }
   }, [pathname]);
 
@@ -200,11 +200,11 @@ function App() {
   function handleLogin({ email, password }) {
     // setIsPopupOpen(true);
     // console.log(email, password);
-    setIsButtonDisabled(true);
-    setGError(false);
+    setIsAuthError(false);
     // setIsLoginError(false);
     // setErrorLoginMessage("");
-    setErrorGMessage("");
+    setErrorAuthMessage("");
+    setIsButtonDisabled(true);
 
     apiMain
       .login(email, password)
@@ -219,7 +219,7 @@ function App() {
         const token = localStorage.getItem("token");
 
         // setIsLoginError(false);
-        setGError(false);
+        setIsAuthError(false);
 
         apiMain.checkToken(token).then((data) => {
           setCurrentUser(data);
@@ -248,7 +248,12 @@ function App() {
 
         // setIsButtonDisabled(false);
 
-        checkErrorStatus(error, setErrorGMessage, setGError, LOGIN_ERROR);
+        checkErrorStatus(
+          error,
+          setErrorAuthMessage,
+          setIsAuthError,
+          LOGIN_ERROR
+        );
 
         // if (typeof error !== "object") {
         //   error.json().then((error) => {
@@ -265,16 +270,16 @@ function App() {
   }
 
   function handleRegister({ name, email, password }) {
-    setErrorRegisterMessage("");
-    setErrorGMessage("");
-    setIsRegisterError(false);
-    setGError(false);
+    // setErrorRegisterMessage("");
+    setErrorAuthMessage("");
+    // setIsRegisterError(false);
+    setIsAuthError(false);
     setIsButtonDisabled(true);
     apiMain
       .register(name, email, password)
       .then((data) => {
         // setIsRegisterError(false);
-        setGError(false);
+        setIsAuthError(false);
         setIsButtonDisabled(false);
         handleLogin({ email, password });
       })
@@ -292,7 +297,12 @@ function App() {
         //   setIsButtonDisabled(false);
         // }
 
-        checkErrorStatus(error, setErrorGMessage, setGError, REGISTER_ERROR);
+        checkErrorStatus(
+          error,
+          setErrorAuthMessage,
+          setIsAuthError,
+          REGISTER_ERROR
+        );
 
         // setErrorRegisterMessage(error);
         // setIsRegisterError(true);
@@ -592,7 +602,7 @@ function App() {
     setQuerySavedMovie("");
     setQuery("");
     setIsButtonDisabled(false);
-    setGError(false);
+    setIsAuthError(false);
   }
 
   function handlePopupClose() {
@@ -616,13 +626,13 @@ function App() {
                 <Register
                   loggedIn={loggedIn}
                   handleRegister={handleRegister}
-                  errorRegisterMessage={errorRegisterMessage}
-                  isRegisterError={isRegisterError}
+                  // errorRegisterMessage={errorRegisterMessage}
+                  // isRegisterError={isRegisterError}
                   isButtonDisabled={isButtonDisabled}
-                  setErrorRegisterMessage={setErrorRegisterMessage}
+                  // setErrorRegisterMessage={setErrorRegisterMessage}
                   pathname={pathname}
-                  errorGMessage={errorGMessage}
-                  isGError={isGError}
+                  errorAuthMessage={errorAuthMessage}
+                  isAuthError={isAuthError}
                 />
               ) : (
                 <Navigate to="/" />
@@ -637,13 +647,13 @@ function App() {
                 <Login
                   loggedIn={loggedIn}
                   handleLogin={handleLogin}
-                  errorLoginMessage={errorLoginMessage}
-                  isLoginError={isLoginError}
+                  // errorLoginMessage={errorLoginMessage}
+                  // isLoginError={isLoginError}
                   isButtonDisabled={isButtonDisabled}
-                  setErrorLoginMessage={setErrorLoginMessage}
+                  // setErrorLoginMessage={setErrorLoginMessage}
                   pathname={pathname}
-                  errorGMessage={errorGMessage}
-                  isGError={isGError}
+                  errorAuthMessage={errorAuthMessage}
+                  isAuthError={isAuthError}
                 />
               ) : (
                 <Navigate to="/" />

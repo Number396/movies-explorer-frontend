@@ -12,11 +12,9 @@ class MainApi {
 
   _checkUserResponse(response) {
     if (response.ok) {
-      console.log("res ok");
       // console.log(response);
       return response.json();
     } else {
-      console.log("res bad");
       return Promise.reject(response);
     }
   }

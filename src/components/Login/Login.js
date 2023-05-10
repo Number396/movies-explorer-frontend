@@ -5,12 +5,12 @@ import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 function Login({
   loggedIn,
   handleLogin,
-  errorLoginMessage,
-  isLoginError,
+  // errorLoginMessage,
+  // isLoginError,
   isButtonDisabled,
-  setErrorLoginMessage,
-  errorGMessage,
-  isGError,
+  // setErrorLoginMessage,
+  errorAuthMessage,
+  isAuthError,
 }) {
   // useEffect(() => {
   //   setErrorLoginMessage("");
@@ -32,11 +32,11 @@ function Login({
       isRegister={false}
       onSubmit={handleSubmit}
       isValid={isValid}
-      errorLoginMessage={errorLoginMessage}
-      isLoginError={isLoginError}
+      // errorLoginMessage={errorLoginMessage}
+      // isLoginError={isLoginError}
       isButtonDisabled={isButtonDisabled}
-      errorGMessage={errorGMessage}
-      isGError={isGError}
+      errorAuthMessage={errorAuthMessage}
+      isAuthError={isAuthError}
     >
       <label className="authpage__label" htmlFor="email">
         E-mail

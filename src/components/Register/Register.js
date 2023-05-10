@@ -6,12 +6,12 @@ import AuthPage from "../AuthPage/AuthPage";
 function Register({
   loggedIn,
   handleRegister,
-  errorRegisterMessage,
-  isRegisterError,
+  // errorRegisterMessage,
+  // isRegisterError,
   isButtonDisabled,
-  setErrorRegisterMessage,
-  errorGMessage,
-  isGError,
+  // setErrorRegisterMessage,
+  errorAuthMessage,
+  isAuthError,
 }) {
   const { values, handleChange, errors, isValid } = useFormWithValidation();
 
@@ -35,11 +35,11 @@ function Register({
       isRegister={true}
       onSubmit={handleSubmit}
       isValid={isValid}
-      errorRegisterMessage={errorRegisterMessage}
-      isRegisterError={isRegisterError}
+      // errorRegisterMessage={errorRegisterMessage}
+      // isRegisterError={isRegisterError}
       isButtonDisabled={isButtonDisabled}
-      errorGMessage={errorGMessage}
-      isGError={isGError}
+      errorAuthMessage={errorAuthMessage}
+      isAuthError={isAuthError}
     >
       <label className="authpage__label" htmlFor="name">
         Имя
