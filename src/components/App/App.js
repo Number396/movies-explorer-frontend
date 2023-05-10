@@ -21,7 +21,11 @@ import { apiMain } from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { apiMovies } from "../../utils/MoviesApi";
 import { useResize } from "../../hooks/useResize";
-import { LOGIN_ERROR, REGISTER_ERROR } from "../../utils/constants";
+import {
+  LOGIN_ERROR,
+  PROFILE_ERROR,
+  REGISTER_ERROR,
+} from "../../utils/constants";
 
 function App() {
   const navigate = useNavigate();
@@ -135,7 +139,11 @@ function App() {
   }, [loggedIn]);
 
   useEffect(() => {
-    if (pathname === "/signin" || pathname === "/signup") {
+    if (
+      pathname === "/signin" ||
+      pathname === "/signup" ||
+      pathname === "/profile"
+    ) {
       console.log(pathname);
       // setErrorLoginMessage("");
       // setErrorRegisterMessage("");
@@ -337,11 +345,25 @@ function App() {
     apiMain
       .setUserInfo({ name, email, token })
       .then((data) => {
+        console.log(data);
         setCurrentUser(data);
+        setErrorAuthMessage("");
       })
-      .catch((error) => console.log(`Ошибка при обновлении профиля: ${error}`));
+      .catch((error) => {
+        // console.log(`Ошибка при обновлении профиля: ${error}`);
+        checkErrorStatus(
+          error,
+          setErrorAuthMessage,
+          setIsAuthError,
+          PROFILE_ERROR
+        );
+        // setCurrentUser(currentUser);
+        console.log("----------------");
+      });
   }
-
+  function handleEditClick() {
+    setErrorAuthMessage("");
+  }
   function getSearchResult(text, query) {
     return text.toLowerCase().includes(query.toLowerCase());
   }
@@ -670,6 +692,8 @@ function App() {
                 // currentUser={currentUser}
                 handleProfile={handleProfile}
                 onSignoutClick={onSignoutClick}
+                errorAuthMessage={errorAuthMessage}
+                handleEditClick={handleEditClick}
               />
             }
           />

@@ -1,4 +1,4 @@
-.authpage__api-error {
+.profile__api-error {
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
@@ -6,10 +6,11 @@
   color: #ff004c;
   margin: 6px 0;
   min-height: 14px;
+  margin-top: 194px;
 }
 
 @media screen and (max-width: 428px) {
-  .authpage__api-error {
+  .profile__api-error {
     min-height: 28px;
   }
 }

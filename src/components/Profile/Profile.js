@@ -4,7 +4,12 @@ import React from "react";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 // import { json, useHref } from "react-router-dom";
 
-function Profile({ handleProfile, onSignoutClick }) {
+function Profile({
+  handleProfile,
+  onSignoutClick,
+  errorAuthMessage,
+  handleEditClick,
+}) {
   const [isEditPushed, setIsEditPushed] = useState(false);
   const [isSame, setIsSame] = useState(false);
   const [initialValue, setInitialValue] = useState({});
@@ -16,15 +21,18 @@ function Profile({ handleProfile, onSignoutClick }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsEditPushed(false);
-    console.log(values);
+    // console.log(values);
     handleProfile(values);
+    // resetForm();
   }
 
-  function handleEditClick() {
+  function handleEdit() {
     setIsEditPushed(true);
+    handleEditClick();
   }
 
   useEffect(() => {
+    // resetForm();
     setValues({ name: currentUser.name, email: currentUser.email });
     setInitialValue({ name: currentUser.name, email: currentUser.email });
   }, []);
@@ -38,6 +46,7 @@ function Profile({ handleProfile, onSignoutClick }) {
     // console.log('initialValue:', initialValue);
     // console.log('values:', values);
 
+    //сравнение одинаковости значений инпутов профиля
     if (JSON.stringify(initialValue) === JSON.stringify(values)) {
       setIsSame(true);
     }
@@ -90,12 +99,14 @@ function Profile({ handleProfile, onSignoutClick }) {
           {errors.email}
         </span>
 
+        <div className="profile__api-error">{errorAuthMessage}</div>
+
         <div className="profile__button-container">
           {!isEditPushed && (
             <button
               type="button"
               className="profile__button profile__button_type_edit"
-              onClick={handleEditClick}
+              onClick={handleEdit}
             >
               Редактировать
             </button>

@@ -64,7 +64,7 @@ class MainApi {
   }
 
   setUserInfo({ name, email, token }) {
-    return this._request(this._userUrl, {
+    return this._userRequest(this._userUrl, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

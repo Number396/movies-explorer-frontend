@@ -35,6 +35,7 @@ export const SCREEN_LG = 1244;
 export const REGISTER_ERROR =
   "Что-то пошло не так. Попробуйте зарегистрироваться позже.";
 export const LOGIN_ERROR = "Что-то пошло не так. Попробуйте войти позже.";
+export const PROFILE_ERROR = "Что-то пошло не так. Попробуйте позже.";
 
 export const images = [
   {

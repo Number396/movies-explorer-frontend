@@ -1,5 +1,6 @@
 .profile__button-container {
-  margin: 206px 0 0;
+  /* margin: 206px 0 0; */
+  margin: 0 0 0;
   height: 48px;
   display: flex;
   flex-direction: column;
@@ -7,7 +8,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .profile__button-container {
     margin: 198px 0 0;
   }
@@ -17,4 +18,4 @@
   .profile__button-container {
     margin: 364px 0 0;
   }
-}
+} */
