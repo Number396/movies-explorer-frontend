@@ -33,6 +33,9 @@ function App() {
   const [errorRegisterMessage, setErrorRegisterMessage] = useState("");
   const [errorLoginMessage, setErrorLoginMessage] = useState("");
 
+  const [errorGMessage, setErrorGMessage] = useState("");
+  const [isGError, setGError] = useState(false);
+
   const [currentUser, setCurrentUser] = useState({});
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isDataLoading, setIsDataLoading] = useState(true);
@@ -133,9 +136,10 @@ function App() {
 
   useEffect(() => {
     if (pathname === "/signin" || pathname === "/signup") {
-      console.log("navigate");
-      setErrorLoginMessage("");
+      console.log(pathname);
+      // setErrorLoginMessage("");
       setErrorRegisterMessage("");
+      setErrorGMessage("");
     }
   }, [pathname]);
 
@@ -177,12 +181,30 @@ function App() {
     }
   }
 
+  function checkErrorStatus(error, setErrorMessage, setIsError, messageError) {
+    try {
+      error.json().then((error) => {
+        setErrorMessage(error.message);
+        setIsError(true);
+        setIsButtonDisabled(false);
+        console.log("uuuuuu");
+      });
+    } catch {
+      console.log(messageError);
+      setErrorMessage(messageError);
+      setIsError(true);
+      setIsButtonDisabled(false);
+    }
+  }
+
   function handleLogin({ email, password }) {
     // setIsPopupOpen(true);
     // console.log(email, password);
     setIsButtonDisabled(true);
-    setIsLoginError(false);
-    setErrorLoginMessage("");
+    setGError(false);
+    // setIsLoginError(false);
+    // setErrorLoginMessage("");
+    setErrorGMessage("");
 
     apiMain
       .login(email, password)
@@ -196,37 +218,85 @@ function App() {
       .then(() => {
         const token = localStorage.getItem("token");
 
-        setIsLoginError(false);
+        // setIsLoginError(false);
+        setGError(false);
 
         apiMain.checkToken(token).then((data) => {
           setCurrentUser(data);
         });
       })
       .catch((error) => {
-        console.log(`Ошибка входа: ${error}`);
-        setErrorLoginMessage(LOGIN_ERROR);
-        setIsLoginError(true);
-        setIsButtonDisabled(false);
+        // console.log(error);
+        // console.log(typeof error);
+        // console.log(error.ok);
+        // if (!error.ok) {
+        // try {
+        //   error.json().then((error) => {
+        //     console.log(error);
+        //     // setErrorLoginMessage(error.message);
+        //     setErrorGMessage(error.message);
+        //     // setIsLoginError(true);
+        //     setGError(true);
+        //     console.log(error.message);
+        //   });
+        // } catch {
+        //   console.log("catch try");
+        //   setErrorGMessage(LOGIN_ERROR);
+        //   setGError(true);
+        // }
+        // });
+
+        // setIsButtonDisabled(false);
+
+        checkErrorStatus(error, setErrorGMessage, setGError, LOGIN_ERROR);
+
+        // if (typeof error !== "object") {
+        //   error.json().then((error) => {
+        //     setErrorLoginMessage(error.message);
+        //     setIsLoginError(true);
+        //     setIsButtonDisabled(false);
+        //   });
+        // } else {
+        //   setErrorLoginMessage(LOGIN_ERROR);
+        //   setIsButtonDisabled(false);
+        // }
       });
+    // setIsButtonDisabled(false);
   }
 
   function handleRegister({ name, email, password }) {
-    setIsButtonDisabled(true);
-    setIsRegisterError(false);
     setErrorRegisterMessage("");
+    setErrorGMessage("");
+    setIsRegisterError(false);
+    setGError(false);
+    setIsButtonDisabled(true);
     apiMain
       .register(name, email, password)
       .then((data) => {
-        setIsRegisterError(false);
+        // setIsRegisterError(false);
+        setGError(false);
         setIsButtonDisabled(false);
         handleLogin({ email, password });
       })
       .catch((error) => {
-        // setInfoTooltipSet({ isOpen: true, isSucceded: false });
-        console.log(`Ошибка регистрации: ${error}`);
-        setErrorRegisterMessage(REGISTER_ERROR);
-        setIsRegisterError(true);
-        setIsButtonDisabled(false);
+        // if (typeof error !== "object") {
+        //   error.json().then((error) => {
+        //     setErrorRegisterMessage(error.message);
+        //     setIsRegisterError(true);
+        //     setIsButtonDisabled(false);
+        //   });
+        // } else {
+        //   console.log(REGISTER_ERROR);
+        //   setIsRegisterError(true);
+        //   setErrorRegisterMessage(REGISTER_ERROR);
+        //   setIsButtonDisabled(false);
+        // }
+
+        checkErrorStatus(error, setErrorGMessage, setGError, REGISTER_ERROR);
+
+        // setErrorRegisterMessage(error);
+        // setIsRegisterError(true);
+        // setIsButtonDisabled(false);
       });
   }
 
@@ -522,6 +592,7 @@ function App() {
     setQuerySavedMovie("");
     setQuery("");
     setIsButtonDisabled(false);
+    setGError(false);
   }
 
   function handlePopupClose() {
@@ -550,6 +621,8 @@ function App() {
                   isButtonDisabled={isButtonDisabled}
                   setErrorRegisterMessage={setErrorRegisterMessage}
                   pathname={pathname}
+                  errorGMessage={errorGMessage}
+                  isGError={isGError}
                 />
               ) : (
                 <Navigate to="/" />
@@ -569,6 +642,8 @@ function App() {
                   isButtonDisabled={isButtonDisabled}
                   setErrorLoginMessage={setErrorLoginMessage}
                   pathname={pathname}
+                  errorGMessage={errorGMessage}
+                  isGError={isGError}
                 />
               ) : (
                 <Navigate to="/" />

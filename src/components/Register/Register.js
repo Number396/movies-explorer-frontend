@@ -10,6 +10,8 @@ function Register({
   isRegisterError,
   isButtonDisabled,
   setErrorRegisterMessage,
+  errorGMessage,
+  isGError,
 }) {
   const { values, handleChange, errors, isValid } = useFormWithValidation();
 
@@ -36,6 +38,8 @@ function Register({
       errorRegisterMessage={errorRegisterMessage}
       isRegisterError={isRegisterError}
       isButtonDisabled={isButtonDisabled}
+      errorGMessage={errorGMessage}
+      isGError={isGError}
     >
       <label className="authpage__label" htmlFor="name">
         Имя

@@ -9,6 +9,8 @@ function Login({
   isLoginError,
   isButtonDisabled,
   setErrorLoginMessage,
+  errorGMessage,
+  isGError,
 }) {
   // useEffect(() => {
   //   setErrorLoginMessage("");
@@ -33,6 +35,8 @@ function Login({
       errorLoginMessage={errorLoginMessage}
       isLoginError={isLoginError}
       isButtonDisabled={isButtonDisabled}
+      errorGMessage={errorGMessage}
+      isGError={isGError}
     >
       <label className="authpage__label" htmlFor="email">
         E-mail

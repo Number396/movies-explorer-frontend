@@ -15,6 +15,8 @@ function AuthPage({
   isRegisterError,
   isLoginError,
   isButtonDisabled,
+  errorGMessage,
+  isGError,
 }) {
   const navigate = useNavigate();
 
@@ -39,7 +41,9 @@ function AuthPage({
         {/* {(isRegisterError || isLoginError) && ( */}
 
         <div className="authpage__api-error">
-          {isRegisterError ? errorRegisterMessage : errorLoginMessage}
+          {/* {isRegisterError ? errorRegisterMessage : errorLoginMessage} */}
+          {/* {isRegisterError ? errorGMessage : errorGMessage} */}
+          {isGError && errorGMessage}
         </div>
 
         <button

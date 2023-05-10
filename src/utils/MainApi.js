@@ -10,6 +10,17 @@ class MainApi {
     this._movieUrl = `${this._baseUrl}movies`;
   }
 
+  _checkUserResponse(response) {
+    if (response.ok) {
+      console.log("res ok");
+      // console.log(response);
+      return response.json();
+    } else {
+      console.log("res bad");
+      return Promise.reject(response);
+    }
+  }
+
   _checkResponse(response) {
     if (response.ok) {
       return response.json();
@@ -24,8 +35,12 @@ class MainApi {
     return fetch(url, options).then(this._checkResponse);
   }
 
+  _userRequest(url, options) {
+    return fetch(url, options).then(this._checkUserResponse);
+  }
+
   register(name, email, password) {
-    return this._request(this._signupUrl, {
+    return this._userRequest(this._signupUrl, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({ name, email, password }),
@@ -33,7 +48,7 @@ class MainApi {
   }
 
   login(email, password) {
-    return this._request(this._signinUrl, {
+    return this._userRequest(this._signinUrl, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({ password, email }),
