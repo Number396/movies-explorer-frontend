@@ -9,6 +9,7 @@ function Profile({
   onSignoutClick,
   errorAuthMessage,
   handleEditClick,
+  isProfileUpdated,
 }) {
   const [isEditPushed, setIsEditPushed] = useState(false);
   const [isSame, setIsSame] = useState(false);
@@ -28,18 +29,29 @@ function Profile({
 
   function handleEdit() {
     setIsEditPushed(true);
+    setIsSame(true);
+    setInitialValue({ name: currentUser.name, email: currentUser.email });
     handleEditClick();
   }
 
   useEffect(() => {
     // resetForm();
+    console.log("first init values");
     setValues({ name: currentUser.name, email: currentUser.email });
     setInitialValue({ name: currentUser.name, email: currentUser.email });
   }, []);
 
+  // useEffect(() => {
+  //   // resetForm();
+  //   console.log("second init values");
+  //   // setValues({ name: currentUser.name, email: currentUser.email });
+  //   setInitialValue({ name: currentUser.name, email: currentUser.email });
+  // }, [isEditPushed]);
+
   useEffect(() => {
     // console.log("----------------");
-    // console.log(isSame);
+    // console.log("isSame", isSame);
+    // console.log("isValid:", isValid);
     // console.log("----------------");
     // console.log('hello');
     // console.log(JSON.stringify(initialValue) === JSON.stringify(values));
@@ -48,9 +60,11 @@ function Profile({
 
     //сравнение одинаковости значений инпутов профиля
     if (JSON.stringify(initialValue) === JSON.stringify(values)) {
+      // console.log("setIsSame TRUE:");
       setIsSame(true);
     }
     if (JSON.stringify(initialValue) !== JSON.stringify(values)) {
+      // console.log("setIsSame FALSE:");
       setIsSame(false);
     }
   }, [values]);
@@ -99,7 +113,13 @@ function Profile({
           {errors.email}
         </span>
 
-        <div className="profile__api-error">{errorAuthMessage}</div>
+        <div
+          className={`profile__api-error ${
+            isProfileUpdated && "profile__api-succed"
+          }`}
+        >
+          {errorAuthMessage}
+        </div>
 
         <div className="profile__button-container">
           {!isEditPushed && (

@@ -43,6 +43,9 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isDataLoading, setIsDataLoading] = useState(true);
+
+  const [isProfileUpdated, setIsProfileUpdated] = useState(false);
+
   const [foundedMovies, setFoundedMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   //shortMovie  состояние чекбокса
@@ -347,9 +350,12 @@ function App() {
       .then((data) => {
         console.log(data);
         setCurrentUser(data);
-        setErrorAuthMessage("");
+        setIsProfileUpdated(true);
+
+        setErrorAuthMessage("Профиль обновлён");
       })
       .catch((error) => {
+        setIsProfileUpdated(false);
         // console.log(`Ошибка при обновлении профиля: ${error}`);
         checkErrorStatus(
           error,
@@ -358,7 +364,6 @@ function App() {
           PROFILE_ERROR
         );
         // setCurrentUser(currentUser);
-        console.log("----------------");
       });
   }
   function handleEditClick() {
@@ -694,6 +699,7 @@ function App() {
                 onSignoutClick={onSignoutClick}
                 errorAuthMessage={errorAuthMessage}
                 handleEditClick={handleEditClick}
+                isProfileUpdated={isProfileUpdated}
               />
             }
           />
