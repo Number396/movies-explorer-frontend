@@ -36,7 +36,7 @@ function Profile({
 
   useEffect(() => {
     // resetForm();
-    console.log("first init values");
+    // console.log("first init values");
     setValues({ name: currentUser.name, email: currentUser.email });
     setInitialValue({ name: currentUser.name, email: currentUser.email });
   }, []);

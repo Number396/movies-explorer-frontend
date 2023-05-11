@@ -28,6 +28,8 @@ function SearchForm({ handleSearch, handleCheckbox, shortMovie, query, fav }) {
   }
 
   useEffect(() => {
+    console.log("inside useEffect [] in SearchForm");
+    console.log("inside useEffect [] in SearchForm. query:", query);
     if (!fav) {
       setValues({ searchMovies: query });
     } else {

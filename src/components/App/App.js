@@ -32,13 +32,14 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   // const [isRegisterError, setIsRegisterError] = useState(false);
   // const [isLoginError, setIsLoginError] = useState(false);
+  //  стейт для кнопки аутентификации
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const [errorAuthMessage, setErrorAuthMessage] = useState("");
   const [isAuthError, setIsAuthError] = useState(false);
 
   // const [errorRegisterMessage, setErrorRegisterMessage] = useState("");
-  const [errorLoginMessage, setErrorLoginMessage] = useState("");
+  // const [errorLoginMessage, setErrorLoginMessage] = useState("");
 
   const [currentUser, setCurrentUser] = useState({});
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -54,6 +55,7 @@ function App() {
   const [shortSaveMovie, setShortSaveMovie] = useState(false);
   const [query, setQuery] = useState("");
   const [querySavedMovie, setQuerySavedMovie] = useState("");
+
   const { pathname } = useLocation();
 
   const [newMovies, setNewMovies] = useState([]);
@@ -123,7 +125,7 @@ function App() {
       setQuery(isQuery);
     }
   }, []);
-
+  //закидываем в локалсторедж данные сохранённых фильмов
   useEffect(() => {
     // console.log("getSavedMovies");
     const token = localStorage.getItem("token");
@@ -147,7 +149,7 @@ function App() {
       pathname === "/signup" ||
       pathname === "/profile"
     ) {
-      console.log(pathname);
+      // console.log(pathname);
       // setErrorLoginMessage("");
       // setErrorRegisterMessage("");
       setErrorAuthMessage("");
@@ -366,6 +368,7 @@ function App() {
         // setCurrentUser(currentUser);
       });
   }
+
   function handleEditClick() {
     setErrorAuthMessage("");
   }
@@ -389,12 +392,11 @@ function App() {
     return searchedMovies;
   }
 
-  // function handleSearch({ searchMovies }, checked) {
   function handleSearch({ searchMovies }) {
     console.log("pathname:", pathname);
     //searchMovies - это значение из инпута
     if (pathname === "/movies") {
-      console.log("hello movies");
+      console.log("inside handleSearch movies");
       const isLocalMovies = localStorage.getItem("movies");
 
       if (!isLocalMovies) {
@@ -413,6 +415,7 @@ function App() {
 
             localStorage.setItem("foundedMovies", JSON.stringify(searchResult));
             setFoundedMovies(searchResult);
+            setQuery(searchMovies);
           })
           .catch((error) => console.log(`Ошибка: ${error}`));
       } else {
@@ -630,6 +633,8 @@ function App() {
     setQuery("");
     setIsButtonDisabled(false);
     setIsAuthError(false);
+    setShortMovies(false);
+    setShortSaveMovie(false);
   }
 
   function handlePopupClose() {
