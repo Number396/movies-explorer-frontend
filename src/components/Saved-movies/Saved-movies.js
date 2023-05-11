@@ -26,7 +26,7 @@ function SavedMovies({
     setSavedMovies(savedLocalMovies);
     setFoundedSavedMovies(savedLocalMovies);
     setSavedMoviesSeached([]);
-    // setShortSaveMovie(false);
+    setShortSaveMovie(false);
 
     // setShortSaveMovie(false);
   }, []);
