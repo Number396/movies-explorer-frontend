@@ -156,11 +156,11 @@ function App() {
     }
   }, [pathname]);
 
-  function setFoundedMoviesDef() {
-    console.log("inside setFoundedMoviesDef");
-    const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
-    setFoundedMovies(isFoundedMovies);
-  }
+  // function setFoundedMoviesDef() {
+  //   console.log("inside setFoundedMoviesDef");
+  //   const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
+  //   setFoundedMovies(isFoundedMovies);
+  // }
 
   function handleMoreClick() {
     // console.log(foundedMovies.length);
@@ -732,7 +732,7 @@ function App() {
                 query={query}
                 // isLiked={isLiked}
                 handleLikeClick={handleLikeClick}
-                setFoundedMoviesDef={setFoundedMoviesDef}
+                // setFoundedMoviesDef={setFoundedMoviesDef}
               />
             }
           />
@@ -751,7 +751,7 @@ function App() {
                 handleCheckbox={handleCheckbox}
                 querySavedMovie={querySavedMovie}
                 // setShortSaveMovie={setShortSaveMovie}
-                setFoundedMoviesDef={setFoundedMoviesDef}
+                // setFoundedMoviesDef={setFoundedMoviesDef}
               />
             }
           />

@@ -10,7 +10,7 @@ function SearchForm({
   shortMovie,
   query,
   fav,
-  setFoundedMoviesDef,
+  // setFoundedMoviesDef,
 }) {
   // const { values, handleChange, setValues } = useForm({});
   const { values, handleChange, setValues, errors } = useFormWithValidation();
@@ -42,7 +42,7 @@ function SearchForm({
       setValues({ searchMovies: query });
     } else {
       setValues({ searchMovies: "" });
-      setFoundedMoviesDef();
+      // setFoundedMoviesDef();
     }
     // const query = localStorage.getItem("query");
     // // const isShortMovie = localStorage.getItem("isShortMovie");

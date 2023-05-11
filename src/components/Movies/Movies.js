@@ -14,7 +14,7 @@ function Movies({
   query,
   // isLiked,
   handleLikeClick,
-  setFoundedMoviesDef,
+  // setFoundedMoviesDef,
 }) {
   // useEffect(() => {
   //   setFoundedMoviesDef();
@@ -27,7 +27,7 @@ function Movies({
         handleCheckbox={handleCheckbox}
         query={query}
         fav={false}
-        setFoundedMoviesDef={setFoundedMoviesDef}
+        // setFoundedMoviesDef={setFoundedMoviesDef}
       />
 
       <MoviesCardList
