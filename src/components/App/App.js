@@ -48,6 +48,9 @@ function App() {
   const [isProfileUpdated, setIsProfileUpdated] = useState(false);
 
   const [foundedMovies, setFoundedMovies] = useState([]);
+  const [foundedSavedMovies, setFoundedSavedMovies] = useState([]);
+  //массив для хранения резальтата поиска в сохранённых
+  const [savedMoviesSeached, setSavedMoviesSeached] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   //shortMovie  состояние чекбокса
   const [shortMovie, setShortMovies] = useState(false);
@@ -136,6 +139,7 @@ function App() {
           // console.log(data);
           localStorage.setItem("savedMovies", JSON.stringify(data));
           setSavedMovies(data);
+          setFoundedSavedMovies(data);
         })
         .catch((error) =>
           console.log(`Ошибка получения сохр. фильмов: ${error}`)
@@ -457,9 +461,13 @@ function App() {
         shortSaveMovie
       );
       console.log(searchResult);
+      // console.log(savedMovies);
       localStorage.setItem("foundedSavedMovies", JSON.stringify(searchResult));
       setQuerySavedMovie(searchMovies);
-      setSavedMovies(searchResult);
+
+      setSavedMoviesSeached(searchResult);
+      //для отобржения резальтата поиска
+      setFoundedSavedMovies(searchResult);
     }
   }
 
@@ -509,8 +517,16 @@ function App() {
       return item.movieId === card.movieId;
     });
 
+    const savedMoviesIndexSearched = savedMoviesSeached.findIndex((item) => {
+      // console.log(item.movieId, card.id);
+      return item.movieId === card.movieId;
+    });
+
     // console.log(movieIndex);
-    console.log(isLiked);
+    console.log("SavedMoviesSeached", savedMoviesSeached);
+    console.log("movieIndexSearched", savedMoviesIndexSearched);
+
+    // console.log(isLiked);
     const movieId = card._id;
 
     apiMain
@@ -522,11 +538,24 @@ function App() {
 
         // const cut = copySavedMovies.splice(movieIndex, 1);
         copySavedMovies.splice(movieIndex, 1);
+        // savedMoviesSeached.splice(savedMoviesIndexSearched, 1);
+
         // console.log("cut:", cut);
-        console.log("4.1) copySavedMovies after cut:", copySavedMovies);
+        // console.log("4.1) copySavedMovies after cut:", copySavedMovies);
 
         localStorage.setItem("savedMovies", JSON.stringify(copySavedMovies));
+        localStorage.setItem(
+          "foundedSavedMovies",
+          JSON.stringify(copySavedMovies)
+        );
+
         setSavedMovies(copySavedMovies);
+        if (savedMoviesIndexSearched !== -1) {
+          savedMoviesSeached.splice(savedMoviesIndexSearched, 1);
+          setFoundedSavedMovies(savedMoviesSeached);
+        } else {
+          setFoundedSavedMovies(copySavedMovies);
+        }
         // localStorage.setItem("savedMovie", JSON.stringify(copySavedMovies));
         // console.log("5) savedMovie");
       })
@@ -550,9 +579,7 @@ function App() {
         // console.log(item.movieId, card.id);
         return item.movieId === card.id;
       });
-
       // console.log("1) movieIndex:", movieIndex);
-
       if (movieIndex !== -1) {
         // const movieId = savedMovies[movieIndex]._id;
         // const copyMovieId = copySavedMovies[movieIndex]._id;
@@ -577,8 +604,10 @@ function App() {
               JSON.stringify(copySavedMovies)
             );
             setSavedMovies(copySavedMovies);
+            setFoundedSavedMovies(copySavedMovies);
             setIsLiked(!isLiked);
-            // localStorage.setItem("savedMovie", JSON.stringify(copySavedMovies));
+            localStorage.setItem("savedMovie", JSON.stringify(copySavedMovies));
+
             // console.log("5) savedMovie");
           })
           .catch((error) => console.log(`Ошибка снятия лайка: ${error}`));
@@ -618,8 +647,8 @@ function App() {
             JSON.stringify([...savedMovies, data])
           );
           setSavedMovies([...savedMovies, data]);
+          setFoundedSavedMovies([...foundedSavedMovies, data]);
           console.log("saveMovies:", savedMovies);
-          // setSaveMovies((saveMovie) => [...saveMovie, data]);
           // console.log(data);
           setIsLiked(!isLiked);
         })
@@ -635,6 +664,8 @@ function App() {
     setCurrentUser({});
     setFoundedMovies([]);
     setSavedMovies([]);
+    setFoundedSavedMovies([]);
+    setSavedMoviesSeached([]);
     setQuerySavedMovie("");
     setQuery("");
     setIsButtonDisabled(false);
@@ -743,13 +774,16 @@ function App() {
               <ProtectedRoute
                 component={SavedMovies}
                 loggedIn={loggedIn}
-                saveMovies={savedMovies}
+                // saveMovies={savedMovies}
+                foundedSavedMovies={foundedSavedMovies}
                 handleRemoveClick={handleRemoveClick}
                 handleSearch={handleSearch}
                 setSavedMovies={setSavedMovies}
                 shortSaveMovie={shortSaveMovie}
                 handleCheckbox={handleCheckbox}
                 querySavedMovie={querySavedMovie}
+                setFoundedSavedMovies={setFoundedSavedMovies}
+                setSavedMoviesSeached={setSavedMoviesSeached}
                 // setShortSaveMovie={setShortSaveMovie}
                 // setFoundedMoviesDef={setFoundedMoviesDef}
               />

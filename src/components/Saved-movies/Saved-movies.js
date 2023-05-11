@@ -12,11 +12,20 @@ function SavedMovies({
   querySavedMovie,
   // setShortSaveMovie,
   // setFoundedMoviesDef,
+  foundedSavedMovies,
+  setFoundedSavedMovies,
+  setSavedMoviesSeached,
 }) {
   useEffect(() => {
     const savedLocalMovies = JSON.parse(localStorage.getItem("savedMovies"));
+    localStorage.setItem(
+      "foundedSavedMovies",
+      JSON.stringify(savedLocalMovies)
+    );
     setSavedMovies(savedLocalMovies);
-    localStorage.setItem("foundedSavedMovies", JSON.stringify(""));
+    setFoundedSavedMovies(savedLocalMovies);
+    setSavedMoviesSeached([]);
+
     // setShortSaveMovie(false);
   }, []);
 
@@ -31,7 +40,7 @@ function SavedMovies({
         // setFoundedMoviesDef={setFoundedMoviesDef}
       />
       <MoviesCardList
-        newMovies={saveMovies}
+        newMovies={foundedSavedMovies}
         handleLikeClick={handleRemoveClick}
         fav={true}
       />
