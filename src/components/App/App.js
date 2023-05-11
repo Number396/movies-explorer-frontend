@@ -68,7 +68,7 @@ function App() {
 
   // для отображения карточек в зависимости от разрешения
   useEffect(() => {
-    // console.log("base");
+    console.log("эффект при изменении ширины или foundedMovies");
     // console.log("foundedMovies:", foundedMovies);
 
     if (isScreenSm) {
@@ -107,7 +107,7 @@ function App() {
 
   //основной юзэффект при монтировании страницы
   useEffect(() => {
-    // console.log('inside useEffec');
+    console.log("юзэффект при монтировании страницы");
     tokenCheck();
     const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
     const isShortMovie = JSON.parse(localStorage.getItem("isShortMovie"));
@@ -155,6 +155,12 @@ function App() {
       setErrorAuthMessage("");
     }
   }, [pathname]);
+
+  function setFoundedMoviesDef() {
+    console.log("inside setFoundedMoviesDef");
+    const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
+    setFoundedMovies(isFoundedMovies);
+  }
 
   function handleMoreClick() {
     // console.log(foundedMovies.length);
@@ -726,6 +732,7 @@ function App() {
                 query={query}
                 // isLiked={isLiked}
                 handleLikeClick={handleLikeClick}
+                setFoundedMoviesDef={setFoundedMoviesDef}
               />
             }
           />
@@ -744,6 +751,7 @@ function App() {
                 handleCheckbox={handleCheckbox}
                 querySavedMovie={querySavedMovie}
                 // setShortSaveMovie={setShortSaveMovie}
+                setFoundedMoviesDef={setFoundedMoviesDef}
               />
             }
           />

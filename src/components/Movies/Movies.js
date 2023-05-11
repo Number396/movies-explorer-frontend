@@ -1,6 +1,7 @@
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import { images } from "../../utils/constants";
+import { useEffect } from "react";
 
 function Movies({
   handleSearch,
@@ -13,7 +14,11 @@ function Movies({
   query,
   // isLiked,
   handleLikeClick,
+  setFoundedMoviesDef,
 }) {
+  // useEffect(() => {
+  //   setFoundedMoviesDef();
+  // }, []);
   return (
     <main>
       <SearchForm
@@ -22,6 +27,7 @@ function Movies({
         handleCheckbox={handleCheckbox}
         query={query}
         fav={false}
+        setFoundedMoviesDef={setFoundedMoviesDef}
       />
 
       <MoviesCardList

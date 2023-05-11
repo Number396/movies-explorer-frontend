@@ -11,6 +11,7 @@ function SavedMovies({
   handleCheckbox,
   querySavedMovie,
   // setShortSaveMovie,
+  setFoundedMoviesDef,
 }) {
   useEffect(() => {
     const savedLocalMovies = JSON.parse(localStorage.getItem("savedMovies"));
@@ -27,6 +28,7 @@ function SavedMovies({
         handleCheckbox={handleCheckbox}
         query={querySavedMovie}
         fav={true}
+        setFoundedMoviesDef={setFoundedMoviesDef}
       />
       <MoviesCardList
         newMovies={saveMovies}
