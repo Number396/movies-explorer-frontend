@@ -15,6 +15,7 @@ function SavedMovies({
   foundedSavedMovies,
   setFoundedSavedMovies,
   setSavedMoviesSeached,
+  setShortSaveMovie,
 }) {
   useEffect(() => {
     const savedLocalMovies = JSON.parse(localStorage.getItem("savedMovies"));
@@ -25,6 +26,7 @@ function SavedMovies({
     setSavedMovies(savedLocalMovies);
     setFoundedSavedMovies(savedLocalMovies);
     setSavedMoviesSeached([]);
+    // setShortSaveMovie(false);
 
     // setShortSaveMovie(false);
   }, []);

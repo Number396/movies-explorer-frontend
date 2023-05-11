@@ -463,8 +463,8 @@ function App() {
       console.log(searchResult);
       // console.log(savedMovies);
       localStorage.setItem("foundedSavedMovies", JSON.stringify(searchResult));
-      setQuerySavedMovie(searchMovies);
 
+      setQuerySavedMovie(searchMovies);
       setSavedMoviesSeached(searchResult);
       //для отобржения резальтата поиска
       setFoundedSavedMovies(searchResult);
@@ -488,21 +488,34 @@ function App() {
         setFoundedMovies(searchInsideResult);
       }
     } else {
-      console.log("savedMovie checkbox handle");
       setShortSaveMovie(!shortSaveMovie);
-
-      const isFoundedSavedMovies = JSON.parse(
-        localStorage.getItem("foundedSavedMovies")
+      console.log(
+        "setSavedMoviesSeached inside handleCheckbox",
+        savedMoviesSeached
       );
-      if (isFoundedSavedMovies) {
+
+      if (savedMoviesSeached.length > 0) {
         const searchInsideResult = handleSearchMovie(
-          isFoundedSavedMovies,
+          savedMoviesSeached,
           querySavedMovie,
           !shortSaveMovie
         );
-        setSavedMovies(searchInsideResult);
-        console.log(searchInsideResult);
+        setFoundedSavedMovies(searchInsideResult);
       }
+
+      // const isFoundedSavedMovies = JSON.parse(
+      //   localStorage.getItem("foundedSavedMovies")
+      // );
+
+      // if (isFoundedSavedMovies) {
+      //   const searchInsideResult = handleSearchMovie(
+      //     isFoundedSavedMovies,
+      //     querySavedMovie,
+      //     !shortSaveMovie
+      //   );
+      //   setSavedMovies(searchInsideResult);
+      //   console.log(searchInsideResult);
+      // }
     }
   }
 
@@ -553,6 +566,7 @@ function App() {
         if (savedMoviesIndexSearched !== -1) {
           savedMoviesSeached.splice(savedMoviesIndexSearched, 1);
           setFoundedSavedMovies(savedMoviesSeached);
+          setShortSaveMovie(false);
         } else {
           setFoundedSavedMovies(copySavedMovies);
         }
@@ -784,6 +798,7 @@ function App() {
                 querySavedMovie={querySavedMovie}
                 setFoundedSavedMovies={setFoundedSavedMovies}
                 setSavedMoviesSeached={setSavedMoviesSeached}
+                setShortSaveMovie={setShortSaveMovie}
                 // setShortSaveMovie={setShortSaveMovie}
                 // setFoundedMoviesDef={setFoundedMoviesDef}
               />
