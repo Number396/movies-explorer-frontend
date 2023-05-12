@@ -56,7 +56,6 @@ function App() {
   const [isMore, setIsMore] = useState(false);
   const { width, isScreenSm, isScreenMd, isScreenLg } = useResize();
 
-  // для отображения карточек в зависимости от разрешения
   useEffect(() => {
     if (isScreenSm) {
       if (foundedMovies.length >= 6) {
@@ -92,7 +91,6 @@ function App() {
     }
   }, [width, foundedMovies]);
 
-  //основной юзэффект при монтировании страницы
   useEffect(() => {
     tokenCheck();
     const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
@@ -304,8 +302,6 @@ function App() {
   }
 
   function showSearchMessage(searchResult) {
-    // setIsSearchMessage(false);
-
     if (searchResult.length === 0) {
       setSearchMessage(NOT_FOUND);
       setIsSearchMessage(true);
