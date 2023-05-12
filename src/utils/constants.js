@@ -1,5 +1,5 @@
 export const API_AUTH_CONFIG = {
-  url: "http://localhost:3001/",
+  url: "https://api.movies.number396.nomoredomains.monster/",
   headers: {
     "Content-Type": "application/json",
   },
