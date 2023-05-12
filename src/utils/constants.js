@@ -36,6 +36,8 @@ export const REGISTER_ERROR =
   "Что-то пошло не так. Попробуйте зарегистрироваться позже.";
 export const LOGIN_ERROR = "Что-то пошло не так. Попробуйте войти позже.";
 export const PROFILE_ERROR = "Что-то пошло не так. Попробуйте позже.";
+export const NOT_FOUND = "Ничего не найдено";
+export const EMPTY_FIELD = "Поле не может быть пустым";
 
 export const images = [
   {

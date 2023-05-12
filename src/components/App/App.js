@@ -22,7 +22,9 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { apiMovies } from "../../utils/MoviesApi";
 import { useResize } from "../../hooks/useResize";
 import {
+  EMPTY_FIELD,
   LOGIN_ERROR,
+  NOT_FOUND,
   PROFILE_ERROR,
   REGISTER_ERROR,
 } from "../../utils/constants";
@@ -46,7 +48,8 @@ function App() {
   const [isDataLoading, setIsDataLoading] = useState(true);
 
   const [isProfileUpdated, setIsProfileUpdated] = useState(false);
-
+  const [isSearchMessage, setIsSearchMessage] = useState(false);
+  const [searchMessage, setSearchMessage] = useState("");
   const [foundedMovies, setFoundedMovies] = useState([]);
   const [foundedSavedMovies, setFoundedSavedMovies] = useState([]);
   //массив для хранения резальтата поиска в сохранённых
@@ -402,9 +405,30 @@ function App() {
     return searchedMovies;
   }
 
+  function setSearchMessageSettings() {
+    setIsSearchMessage(false);
+    setSearchMessage("");
+  }
+
+  function showSearchMessage(searchResult) {
+    // setIsSearchMessage(false);
+
+    if (searchResult.length === 0) {
+      setSearchMessage(NOT_FOUND);
+      setIsSearchMessage(true);
+    }
+    if (searchResult === "") {
+      setSearchMessage(EMPTY_FIELD);
+      setIsSearchMessage(true);
+    }
+  }
+
   function handleSearch({ searchMovies }) {
     console.log("pathname:", pathname);
     //searchMovies - это значение из инпута
+    // setIsSearchMessage(false);
+    setSearchMessageSettings();
+
     if (pathname === "/movies") {
       console.log("inside handleSearch movies");
       const isLocalMovies = localStorage.getItem("movies");
@@ -422,6 +446,8 @@ function App() {
               searchMovies,
               shortMovie
             );
+
+            showSearchMessage(searchResult);
 
             localStorage.setItem("foundedMovies", JSON.stringify(searchResult));
             setFoundedMovies(searchResult);
@@ -447,6 +473,13 @@ function App() {
           shortMovie
         );
 
+        showSearchMessage(searchResult);
+        // console.log(searchResult.length);
+        // if (searchResult.length === 0) {
+        //   setSearchMessage(NOT_FOUND);
+        //   setIsSearchMessage(true);
+        // }
+
         localStorage.setItem("foundedMovies", JSON.stringify(searchResult));
         setFoundedMovies(searchResult);
       }
@@ -460,7 +493,13 @@ function App() {
         searchMovies,
         shortSaveMovie
       );
-      console.log(searchResult);
+
+      showSearchMessage(searchResult);
+
+      // if (searchResult.length === 0) {
+      //   setSearchMessage(NOT_FOUND);
+      //   setIsSearchMessage(true);
+      // }
       // console.log(savedMovies);
       localStorage.setItem("foundedSavedMovies", JSON.stringify(searchResult));
 
@@ -682,10 +721,12 @@ function App() {
     setSavedMoviesSeached([]);
     setQuerySavedMovie("");
     setQuery("");
+    setSearchMessage("");
     setIsButtonDisabled(false);
     setIsAuthError(false);
     setShortMovies(false);
     setShortSaveMovie(false);
+    setIsSearchMessage(false);
   }
 
   function handlePopupClose() {
@@ -777,6 +818,10 @@ function App() {
                 query={query}
                 // isLiked={isLiked}
                 handleLikeClick={handleLikeClick}
+                isSearchMessage={isSearchMessage}
+                searchMessage={searchMessage}
+                setSearchMessageSettings={setSearchMessageSettings}
+                showSearchMessage={showSearchMessage}
                 // setFoundedMoviesDef={setFoundedMoviesDef}
               />
             }
@@ -799,6 +844,10 @@ function App() {
                 setFoundedSavedMovies={setFoundedSavedMovies}
                 setSavedMoviesSeached={setSavedMoviesSeached}
                 setShortSaveMovie={setShortSaveMovie}
+                isSearchMessage={isSearchMessage}
+                searchMessage={searchMessage}
+                setSearchMessageSettings={setSearchMessageSettings}
+                showSearchMessage={showSearchMessage}
                 // setShortSaveMovie={setShortSaveMovie}
                 // setFoundedMoviesDef={setFoundedMoviesDef}
               />

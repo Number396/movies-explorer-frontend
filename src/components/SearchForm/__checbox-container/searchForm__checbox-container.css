@@ -1,11 +1,11 @@
 .searchForm__checbox-container {
   display: flex;
   justify-content: center;
-  margin-top: 29px;
+  margin-top: 9px;
 }
 
 @media screen and (max-width: 428px) {
   .searchForm__checbox-container {
-    margin-top: 42px;
+    margin-top: 22px;
   }
 }

@@ -14,6 +14,10 @@ function Movies({
   query,
   // isLiked,
   handleLikeClick,
+  isSearchMessage,
+  searchMessage,
+  setSearchMessageSettings,
+  showSearchMessage,
   // setFoundedMoviesDef,
 }) {
   // useEffect(() => {
@@ -27,6 +31,10 @@ function Movies({
         handleCheckbox={handleCheckbox}
         query={query}
         fav={false}
+        isSearchMessage={isSearchMessage}
+        searchMessage={searchMessage}
+        setSearchMessageSettings={setSearchMessageSettings}
+        showSearchMessage={showSearchMessage}
         // setFoundedMoviesDef={setFoundedMoviesDef}
       />
 

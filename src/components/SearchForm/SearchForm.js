@@ -10,6 +10,10 @@ function SearchForm({
   shortMovie,
   query,
   fav,
+  isSearchMessage,
+  searchMessage,
+  setSearchMessageSettings,
+  showSearchMessage,
   // setFoundedMoviesDef,
 }) {
   // const { values, handleChange, setValues } = useForm({});
@@ -31,12 +35,14 @@ function SearchForm({
       handleSearch(values);
     } else {
       console.log("pusto");
+      showSearchMessage(values.searchMovies);
     }
   }
 
   useEffect(() => {
     console.log("inside useEffect [] in SearchForm");
     console.log("inside useEffect [] in SearchForm. query:", query);
+    setSearchMessageSettings();
 
     if (!fav) {
       setValues({ searchMovies: query });
@@ -83,6 +89,11 @@ function SearchForm({
           onSubmit={handleSubmit}
         />
       </form>
+
+      <div className="searchForm__message ">
+        {isSearchMessage && searchMessage}
+      </div>
+
       <div className="searchForm__checbox-container">
         <FilterCheckbox
           isChecked={shortMovie}

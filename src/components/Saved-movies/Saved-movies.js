@@ -16,6 +16,10 @@ function SavedMovies({
   setFoundedSavedMovies,
   setSavedMoviesSeached,
   setShortSaveMovie,
+  isSearchMessage,
+  searchMessage,
+  setSearchMessageSettings,
+  showSearchMessage,
 }) {
   useEffect(() => {
     const savedLocalMovies = JSON.parse(localStorage.getItem("savedMovies"));
@@ -39,6 +43,11 @@ function SavedMovies({
         handleCheckbox={handleCheckbox}
         query={querySavedMovie}
         fav={true}
+        isSearchMessage={isSearchMessage}
+        searchMessage={searchMessage}
+        setSearchMessageSettings={setSearchMessageSettings}
+        showSearchMessage={showSearchMessage}
+
         // setFoundedMoviesDef={setFoundedMoviesDef}
       />
       <MoviesCardList

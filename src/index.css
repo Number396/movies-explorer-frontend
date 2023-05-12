@@ -83,6 +83,7 @@
 @import url(./components/SearchForm/__form/searchForm__form.css);
 @import url(./components/SearchForm/__input/searchForm__input.css);
 @import url(./components/SearchForm/__button/searchForm__button.css);
+@import url(./components/SearchForm/__message/searchForm__message.css);
 @import url(./components/FilterCheckbox/checkbox/checkbox.css);
 @import url(./components/FilterCheckbox/checkbox/__slider/checkbox__slider.css);
 @import url(./components/SearchForm/__checbox-container/searchForm__checbox-container.css);
