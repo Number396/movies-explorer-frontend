@@ -2,6 +2,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import { images } from "../../utils/constants";
 import { useEffect } from "react";
+import Preloader from "../Preloader/Preloader";
 
 function Movies({
   handleSearch,
@@ -18,6 +19,7 @@ function Movies({
   searchMessage,
   setSearchMessageSettings,
   showSearchMessage,
+  isLoading,
   // setFoundedMoviesDef,
 }) {
   // useEffect(() => {
@@ -37,6 +39,7 @@ function Movies({
         showSearchMessage={showSearchMessage}
         // setFoundedMoviesDef={setFoundedMoviesDef}
       />
+      {isLoading && <Preloader />}
 
       <MoviesCardList
         images={images}

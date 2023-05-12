@@ -15,7 +15,7 @@ function MoviesCardList({
   // isLiked,
   handleLikeClick,
 }) {
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   // const [newMovies, setNewMovies] = useState([]);
   // const [countS, setCountS] = useState(7);
   // const [countM, setCountM] = useState(10);
@@ -169,7 +169,7 @@ function MoviesCardList({
         </button>
       )}
 
-      {isLoading && <Preloader />}
+      {/* {isLoading && <Preloader />} */}
     </section>
   );
 }

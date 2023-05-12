@@ -65,6 +65,8 @@ function App() {
   const { pathname } = useLocation();
 
   const [newMovies, setNewMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const [countS, setCountS] = useState(7);
   const [countM, setCountM] = useState(10);
   const [countL, setCountL] = useState(16);
@@ -434,6 +436,7 @@ function App() {
       const isLocalMovies = localStorage.getItem("movies");
 
       if (!isLocalMovies) {
+        setIsLoading(true);
         apiMovies
           .getMovies()
           .then((data) => {
@@ -441,6 +444,7 @@ function App() {
             localStorage.setItem("query", searchMovies);
             localStorage.setItem("isShortMovie", shortMovie);
             // localStorage.setItem("isShortMovie", checked);
+            setIsLoading(false);
             const searchResult = handleSearchMovie(
               data,
               searchMovies,
@@ -453,7 +457,8 @@ function App() {
             setFoundedMovies(searchResult);
             setQuery(searchMovies);
           })
-          .catch((error) => console.log(`Ошибка: ${error}`));
+          .catch((error) => console.log(`Ошибка: ${error}`))
+          .finally(() => setIsLoading(false));
       } else {
         const movies = JSON.parse(localStorage.getItem("movies"));
 
@@ -822,6 +827,7 @@ function App() {
                 searchMessage={searchMessage}
                 setSearchMessageSettings={setSearchMessageSettings}
                 showSearchMessage={showSearchMessage}
+                isLoading={isLoading}
                 // setFoundedMoviesDef={setFoundedMoviesDef}
               />
             }
