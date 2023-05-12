@@ -92,7 +92,7 @@ function App() {
   }, [width, foundedMovies]);
 
   useEffect(() => {
-    tokenCheck();
+    checkToken();
     const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
     const isShortMovie = JSON.parse(localStorage.getItem("isShortMovie"));
     const isQuery = localStorage.getItem("query");
@@ -233,7 +233,7 @@ function App() {
       });
   }
 
-  function tokenCheck() {
+  function checkToken() {
     const token = localStorage.getItem("token");
 
     if (token) {
