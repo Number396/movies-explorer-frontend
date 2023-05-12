@@ -1,4 +1,4 @@
-import { apiAuthConfig } from "./constants";
+import { API_AUTH_CONFIG } from "./constants";
 
 class MainApi {
   constructor({ url, headers }) {
@@ -134,4 +134,4 @@ class MainApi {
   }
 }
 
-export const apiMain = new MainApi(apiAuthConfig);
+export const apiMain = new MainApi(API_AUTH_CONFIG);

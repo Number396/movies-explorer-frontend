@@ -1,7 +1,7 @@
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
-import { images } from "../../utils/constants";
-import { useEffect } from "react";
+// import { images } from "../../utils/constants";
+// import { useEffect } from "react";
 import Preloader from "../Preloader/Preloader";
 
 function Movies({
@@ -42,7 +42,7 @@ function Movies({
       {isLoading && <Preloader />}
 
       <MoviesCardList
-        images={images}
+        // images={images}
         fav={false}
         // foundedMovies={foundedMovies}
         handleMoreClick={handleMoreClick}

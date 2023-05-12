@@ -1,4 +1,4 @@
-import { apiMoviesConfig } from "./constants";
+import { API_MOVIES_CONFIG } from "./constants";
 
 class MoviesApi {
   constructor({ url, headers }) {
@@ -28,4 +28,4 @@ class MoviesApi {
   }
 }
 
-export const apiMovies = new MoviesApi(apiMoviesConfig);
+export const apiMovies = new MoviesApi(API_MOVIES_CONFIG);
