@@ -132,10 +132,3 @@
 @import url(./components/Footer/__links/footer__links.css);
 @import url(./components/Footer/__link/footer__link.css);
 @import url(./components/Footer/__link-container/footer__link-container.css);
-
-@import url(./components/Popup/popup.css);
-@import url(./components/Popup/_enabled/popup_enabled.css);
-@import url(./components/Popup/__container/popup__container.css);
-@import url(./components/Popup/__close-button/popup__close-button.css);
-@import url(./components/Popup/__union/popup__union.css);
-@import url(./components/Popup/__message/popup__message.css);
