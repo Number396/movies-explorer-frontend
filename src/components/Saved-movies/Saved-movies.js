@@ -3,15 +3,12 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
 function SavedMovies({
-  // saveMovies,
   handleRemoveClick,
   handleSearch,
   setSavedMovies,
   shortSaveMovie,
   handleCheckbox,
   querySavedMovie,
-  // setShortSaveMovie,
-  // setFoundedMoviesDef,
   showSavedMovies,
   setShowSavedMovies,
   setSavedMoviesSeached,
@@ -23,16 +20,10 @@ function SavedMovies({
 }) {
   useEffect(() => {
     const savedLocalMovies = JSON.parse(localStorage.getItem("savedMovies"));
-    // localStorage.setItem(
-    //   "foundedSavedMovies",
-    //   JSON.stringify(savedLocalMovies)
-    // );
     setSavedMovies(savedLocalMovies);
     setShowSavedMovies(savedLocalMovies);
     setSavedMoviesSeached([]);
     setShortSaveMovie(false);
-
-    // setShortSaveMovie(false);
   }, []);
 
   return (
@@ -47,8 +38,6 @@ function SavedMovies({
         searchMessage={searchMessage}
         setSearchMessageSettings={setSearchMessageSettings}
         showSearchMessage={showSearchMessage}
-
-        // setFoundedMoviesDef={setFoundedMoviesDef}
       />
       <MoviesCardList
         newMovies={showSavedMovies}

@@ -10,10 +10,6 @@ function AuthPage({
   onSubmit,
   children,
   isValid,
-  // errorRegisterMessage,
-  // errorLoginMessage,
-  // isRegisterError,
-  // isLoginError,
   isButtonDisabled,
   errorAuthMessage,
   isAuthError,
@@ -34,20 +30,14 @@ function AuthPage({
         className="authpage__form"
         onSubmit={onSubmit}
         noValidate
-        // type="submit"
       >
         {children}
 
-        {/* {(isRegisterError || isLoginError) && ( */}
-
         <div className="authpage__api-error">
-          {/* {isRegisterError ? errorRegisterMessage : errorLoginMessage} */}
-          {/* {isRegisterError ? errorGMessage : errorGMessage} */}
           {isAuthError && errorAuthMessage}
         </div>
 
         <button
-          // type="submit"
           type="text"
           className="authpage__submit-button"
           disabled={!isValid || isButtonDisabled}

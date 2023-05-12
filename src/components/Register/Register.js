@@ -1,28 +1,17 @@
-// import { useEffect } from "react";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 import AuthPage from "../AuthPage/AuthPage";
-// import { useForm } from "./../../hooks/useForm";
 
 function Register({
   loggedIn,
   handleRegister,
-  // errorRegisterMessage,
-  // isRegisterError,
   isButtonDisabled,
-  // setErrorRegisterMessage,
   errorAuthMessage,
   isAuthError,
 }) {
   const { values, handleChange, errors, isValid } = useFormWithValidation();
 
-  //   useEffect(() => {
-  //     setErrorRegisterMessage("");
-  //   }, [setErrorRegisterMessage]);
-
   function handleSubmit(e) {
     e.preventDefault();
-    // console.log(values);
-    // console.log(errors);
     handleRegister(values);
   }
 
@@ -35,8 +24,6 @@ function Register({
       isRegister={true}
       onSubmit={handleSubmit}
       isValid={isValid}
-      // errorRegisterMessage={errorRegisterMessage}
-      // isRegisterError={isRegisterError}
       isButtonDisabled={isButtonDisabled}
       errorAuthMessage={errorAuthMessage}
       isAuthError={isAuthError}
@@ -57,7 +44,6 @@ function Register({
         value={values.name || ""}
         pattern="^([a-яё]+(?:[ -][a-яё]+)*[ -]?|)$"
       />
-      {/* <span className="register__input-error email-input-error">Что-то пошло не так</span> */}
       <span className="authpage__input-error authpage__input-error_type_register ">
         {errors.name}
       </span>

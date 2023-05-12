@@ -15,7 +15,6 @@ import { useEffect, useState } from "react";
 import PageNotFound from "../PageNotFoud/PageNotFound";
 import Login from "../Login/Login";
 import Footer from "../Footer/Footer";
-// import Popup from "../Popup/Popup";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { apiMain } from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -32,53 +31,33 @@ import {
 function App() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
-  // const [isRegisterError, setIsRegisterError] = useState(false);
-  // const [isLoginError, setIsLoginError] = useState(false);
-  //  стейт для кнопки аутентификации
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-
   const [errorAuthMessage, setErrorAuthMessage] = useState("");
   const [isAuthError, setIsAuthError] = useState(false);
-
-  // const [errorRegisterMessage, setErrorRegisterMessage] = useState("");
-  // const [errorLoginMessage, setErrorLoginMessage] = useState("");
-
   const [currentUser, setCurrentUser] = useState({});
-  // const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isDataLoading, setIsDataLoading] = useState(true);
-
   const [isProfileUpdated, setIsProfileUpdated] = useState(false);
   const [isSearchMessage, setIsSearchMessage] = useState(false);
   const [searchMessage, setSearchMessage] = useState("");
   const [foundedMovies, setFoundedMovies] = useState([]);
   const [showSavedMovies, setShowSavedMovies] = useState([]);
-  //массив для хранения резальтата поиска в сохранённых
   const [savedMoviesSeached, setSavedMoviesSeached] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
-  //shortMovie  состояние чекбокса
   const [shortMovie, setShortMovies] = useState(false);
-  //shortSaveMovie состояние чекбокса для сохранённых фильмов
   const [shortSaveMovie, setShortSaveMovie] = useState(false);
   const [query, setQuery] = useState("");
   const [querySavedMovie, setQuerySavedMovie] = useState("");
-
   const { pathname } = useLocation();
-
   const [newMovies, setNewMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
   const [countS, setCountS] = useState(7);
   const [countM, setCountM] = useState(10);
   const [countL, setCountL] = useState(16);
   const [isMore, setIsMore] = useState(false);
-  // const [isLiked, setIsLiked] = useState(false);
   const { width, isScreenSm, isScreenMd, isScreenLg } = useResize();
 
   // для отображения карточек в зависимости от разрешения
   useEffect(() => {
-    // console.log("эффект при изменении ширины или foundedMovies");
-    // console.log("foundedMovies:", foundedMovies);
-
     if (isScreenSm) {
       if (foundedMovies.length >= 6) {
         setIsMore(true);
@@ -115,12 +94,10 @@ function App() {
 
   //основной юзэффект при монтировании страницы
   useEffect(() => {
-    // console.log("юзэффект при монтировании страницы");
     tokenCheck();
     const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
     const isShortMovie = JSON.parse(localStorage.getItem("isShortMovie"));
     const isQuery = localStorage.getItem("query");
-    // console.log(isShortMovie);
 
     if (isFoundedMovies) {
       setFoundedMovies(isFoundedMovies);
@@ -133,15 +110,13 @@ function App() {
       setQuery(isQuery);
     }
   }, []);
-  //закидываем в локалсторедж данные сохранённых фильмов
+
   useEffect(() => {
-    // console.log("getSavedMovies");
     const token = localStorage.getItem("token");
     if (token) {
       apiMain
         .getSavedMovies({ token })
         .then((data) => {
-          // console.log(data);
           localStorage.setItem("savedMovies", JSON.stringify(data));
           setSavedMovies(data);
           setShowSavedMovies(data);
@@ -158,30 +133,14 @@ function App() {
       pathname === "/signup" ||
       pathname === "/profile"
     ) {
-      // console.log(pathname);
-      // setErrorLoginMessage("");
-      // setErrorRegisterMessage("");
       setErrorAuthMessage("");
     }
   }, [pathname]);
 
-  // function setFoundedMoviesDef() {
-  //   console.log("inside setFoundedMoviesDef");
-  //   const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
-  //   setFoundedMovies(isFoundedMovies);
-  // }
-
   function handleMoreClick() {
-    // console.log(foundedMovies.length);
-
-    // setIsLoading(!isLoading);
-    // if (isScreenMd) {
-    //   setNewMovies(foundedMovies.slice(0, 8));
-    // }
     if (isScreenSm) {
       setNewMovies(foundedMovies.slice(0, countS));
       setCountS(countS + 2);
-      // console.log("countS", countS);
       if (foundedMovies.length <= countS) {
         setIsMore(false);
         setCountS(7);
@@ -191,7 +150,6 @@ function App() {
     if (isScreenMd) {
       setNewMovies(foundedMovies.slice(0, countM));
       setCountM(countM + 2);
-      // console.log("countM", countM);
       if (foundedMovies.length <= countM) {
         setIsMore(false);
         setCountM(10);
@@ -201,7 +159,6 @@ function App() {
     if (isScreenLg) {
       setNewMovies(foundedMovies.slice(0, countL));
       setCountL(countL + 4);
-      // console.log("countL", countL);
       if (foundedMovies.length <= countL) {
         setIsMore(false);
         setCountL(16);
@@ -215,10 +172,8 @@ function App() {
         setErrorMessage(error.message);
         setIsError(true);
         setIsButtonDisabled(false);
-        // console.log("uuuuuu");
       });
     } catch {
-      // console.log(messageError);
       setErrorMessage(messageError);
       setIsError(true);
       setIsButtonDisabled(false);
@@ -226,11 +181,7 @@ function App() {
   }
 
   function handleLogin({ email, password }) {
-    // setIsPopupOpen(true);
-    // console.log(email, password);
     setIsAuthError(false);
-    // setIsLoginError(false);
-    // setErrorLoginMessage("");
     setErrorAuthMessage("");
     setIsButtonDisabled(true);
 
@@ -246,7 +197,6 @@ function App() {
       .then(() => {
         const token = localStorage.getItem("token");
 
-        // setIsLoginError(false);
         setIsAuthError(false);
 
         apiMain.checkToken(token).then((data) => {
@@ -254,104 +204,47 @@ function App() {
         });
       })
       .catch((error) => {
-        // console.log(error);
-        // console.log(typeof error);
-        // console.log(error.ok);
-        // if (!error.ok) {
-        // try {
-        //   error.json().then((error) => {
-        //     console.log(error);
-        //     // setErrorLoginMessage(error.message);
-        //     setErrorGMessage(error.message);
-        //     // setIsLoginError(true);
-        //     setGError(true);
-        //     console.log(error.message);
-        //   });
-        // } catch {
-        //   console.log("catch try");
-        //   setErrorGMessage(LOGIN_ERROR);
-        //   setGError(true);
-        // }
-        // });
-
-        // setIsButtonDisabled(false);
-
         checkErrorStatus(
           error,
           setErrorAuthMessage,
           setIsAuthError,
           LOGIN_ERROR
         );
-
-        // if (typeof error !== "object") {
-        //   error.json().then((error) => {
-        //     setErrorLoginMessage(error.message);
-        //     setIsLoginError(true);
-        //     setIsButtonDisabled(false);
-        //   });
-        // } else {
-        //   setErrorLoginMessage(LOGIN_ERROR);
-        //   setIsButtonDisabled(false);
-        // }
       });
-    // setIsButtonDisabled(false);
   }
 
   function handleRegister({ name, email, password }) {
-    // setErrorRegisterMessage("");
     setErrorAuthMessage("");
-    // setIsRegisterError(false);
     setIsAuthError(false);
     setIsButtonDisabled(true);
+
     apiMain
       .register(name, email, password)
-      .then((data) => {
-        // setIsRegisterError(false);
+      .then(() => {
         setIsAuthError(false);
         setIsButtonDisabled(false);
         handleLogin({ email, password });
       })
       .catch((error) => {
-        // if (typeof error !== "object") {
-        //   error.json().then((error) => {
-        //     setErrorRegisterMessage(error.message);
-        //     setIsRegisterError(true);
-        //     setIsButtonDisabled(false);
-        //   });
-        // } else {
-        //   console.log(REGISTER_ERROR);
-        //   setIsRegisterError(true);
-        //   setErrorRegisterMessage(REGISTER_ERROR);
-        //   setIsButtonDisabled(false);
-        // }
-
         checkErrorStatus(
           error,
           setErrorAuthMessage,
           setIsAuthError,
           REGISTER_ERROR
         );
-
-        // setErrorRegisterMessage(error);
-        // setIsRegisterError(true);
-        // setIsButtonDisabled(false);
       });
   }
 
   function tokenCheck() {
-    // console.log('login in token check:', loggedIn);
     const token = localStorage.getItem("token");
 
     if (token) {
       apiMain
         .checkToken(token)
         .then((data) => {
-          // console.log('inside tokenCheck api');
           setLoggedIn(true);
           setCurrentUser(data);
           navigate(pathname, { replace: true });
-          // setUserData({ email: data.email });
-          // setJwtToken({ token });
         })
         .catch((error) => console.log(`Ошибка: ${error}`))
         .finally(() => setIsDataLoading(false));
@@ -365,7 +258,6 @@ function App() {
     apiMain
       .setUserInfo({ name, email, token })
       .then((data) => {
-        // console.log(data);
         setCurrentUser(data);
         setIsProfileUpdated(true);
 
@@ -373,20 +265,19 @@ function App() {
       })
       .catch((error) => {
         setIsProfileUpdated(false);
-        // console.log(`Ошибка при обновлении профиля: ${error}`);
         checkErrorStatus(
           error,
           setErrorAuthMessage,
           setIsAuthError,
           PROFILE_ERROR
         );
-        // setCurrentUser(currentUser);
       });
   }
 
   function handleEditClick() {
     setErrorAuthMessage("");
   }
+
   function getSearchResult(text, query) {
     return text.toLowerCase().includes(query.toLowerCase());
   }
@@ -426,13 +317,9 @@ function App() {
   }
 
   function handleSearch({ searchMovies }) {
-    // console.log("pathname:", pathname);
-    //searchMovies - это значение из инпута
-    // setIsSearchMessage(false);
     setSearchMessageSettings();
 
     if (pathname === "/movies") {
-      // console.log("inside handleSearch movies");
       const isLocalMovies = localStorage.getItem("movies");
 
       if (!isLocalMovies) {
@@ -443,7 +330,7 @@ function App() {
             localStorage.setItem("movies", JSON.stringify(data));
             localStorage.setItem("query", searchMovies);
             localStorage.setItem("isShortMovie", shortMovie);
-            // localStorage.setItem("isShortMovie", checked);
+
             setIsLoading(false);
             const searchResult = handleSearchMovie(
               data,
@@ -451,9 +338,9 @@ function App() {
               shortMovie
             );
 
-            showSearchMessage(searchResult);
-
             localStorage.setItem("foundedMovies", JSON.stringify(searchResult));
+
+            showSearchMessage(searchResult);
             setFoundedMovies(searchResult);
             setQuery(searchMovies);
           })
@@ -466,31 +353,18 @@ function App() {
         localStorage.setItem("isShortMovie", shortMovie);
 
         setQuery(searchMovies);
-        // localStorage.setItem("isShortMovie", checked);
-
-        // const query = localStorage.getItem("query");
-        // const isShortMovie = localStorage.getItem("isShortMovie");
-
-        // const searchResult = handleSearchMovie(movies, searchMovies, checked);
         const searchResult = handleSearchMovie(
           movies,
           searchMovies,
           shortMovie
         );
 
-        showSearchMessage(searchResult);
-        // console.log(searchResult.length);
-        // if (searchResult.length === 0) {
-        //   setSearchMessage(NOT_FOUND);
-        //   setIsSearchMessage(true);
-        // }
-
         localStorage.setItem("foundedMovies", JSON.stringify(searchResult));
+
+        showSearchMessage(searchResult);
         setFoundedMovies(searchResult);
       }
     } else {
-      // console.log("saved movies search---");
-      // console.log(shortMovie);
       const savedLocalMovies = JSON.parse(localStorage.getItem("savedMovies"));
 
       const searchResult = handleSearchMovie(
@@ -500,25 +374,13 @@ function App() {
       );
 
       showSearchMessage(searchResult);
-
-      // if (searchResult.length === 0) {
-      //   setSearchMessage(NOT_FOUND);
-      //   setIsSearchMessage(true);
-      // }
-      // console.log(savedMovies);
-
-      // localStorage.setItem("foundedSavedMovies", JSON.stringify(searchResult));
-
       setQuerySavedMovie(searchMovies);
       setSavedMoviesSeached(searchResult);
-      //для отобржения резальтата поиска
       setShowSavedMovies(searchResult);
     }
   }
 
   function handleCheckbox() {
-    // localStorage.setItem("isShortMovie", !shortMovie);
-    // const isShortMovie = JSON.parse(localStorage.getItem("isShortMovie"));
     if (pathname === "/movies") {
       setShortMovies(!shortMovie);
 
@@ -530,14 +392,11 @@ function App() {
           query,
           !shortMovie
         );
+
         setFoundedMovies(searchInsideResult);
       }
     } else {
       setShortSaveMovie(!shortSaveMovie);
-      // console.log(
-      //   "setSavedMoviesSeached inside handleCheckbox",
-      //   savedMoviesSeached
-      // );
 
       if (savedMoviesSeached.length > 0) {
         const searchInsideResult = handleSearchMovie(
@@ -545,119 +404,64 @@ function App() {
           querySavedMovie,
           !shortSaveMovie
         );
+
         setShowSavedMovies(searchInsideResult);
       }
-
-      // const isFoundedSavedMovies = JSON.parse(
-      //   localStorage.getItem("foundedSavedMovies")
-      // );
-
-      // if (isFoundedSavedMovies) {
-      //   const searchInsideResult = handleSearchMovie(
-      //     isFoundedSavedMovies,
-      //     querySavedMovie,
-      //     !shortSaveMovie
-      //   );
-      //   setSavedMovies(searchInsideResult);
-      //   console.log(searchInsideResult);
-      // }
     }
   }
 
   function handleRemoveClick(card, isLiked, setIsLiked) {
     const token = localStorage.getItem("token");
-    // console.log(card);
-    // console.log(savedMovies);
     const copySavedMovies = [...savedMovies];
 
     const movieIndex = copySavedMovies.findIndex((item) => {
-      // console.log(item.movieId, card.id);
       return item.movieId === card.movieId;
     });
 
     const savedMoviesIndexSearched = savedMoviesSeached.findIndex((item) => {
-      // console.log(item.movieId, card.id);
       return item.movieId === card.movieId;
     });
 
-    // console.log(movieIndex);
-    // console.log("SavedMoviesSeached", savedMoviesSeached);
-    // console.log("movieIndexSearched", savedMoviesIndexSearched);
-
-    // console.log(isLiked);
     const movieId = card._id;
 
     apiMain
       .deleteMovie({ movieId, token })
-      .then((result) => {
-        // console.log("3)", result);
-        // const newSavedMovies = savedMovies.splice(movieIndex, 1);
-        // console.log("4) copySavedMovies before cut:", copySavedMovies);
-
-        // const cut = copySavedMovies.splice(movieIndex, 1);
+      .then(() => {
         copySavedMovies.splice(movieIndex, 1);
-        // savedMoviesSeached.splice(savedMoviesIndexSearched, 1);
-
-        // console.log("cut:", cut);
-        // console.log("4.1) copySavedMovies after cut:", copySavedMovies);
 
         localStorage.setItem("savedMovies", JSON.stringify(copySavedMovies));
-        // localStorage.setItem(
-        //   "foundedSavedMovies",
-        //   JSON.stringify(copySavedMovies)
-        // );
 
         setSavedMovies(copySavedMovies);
+
         if (savedMoviesIndexSearched !== -1) {
           savedMoviesSeached.splice(savedMoviesIndexSearched, 1);
+
           setShowSavedMovies(savedMoviesSeached);
           setShortSaveMovie(false);
         } else {
           setShowSavedMovies(copySavedMovies);
         }
-        // localStorage.setItem("savedMovie", JSON.stringify(copySavedMovies));
-        // console.log("5) savedMovie");
       })
       .catch((error) => console.log(`Ошибка снятия лайка: ${error}`));
   }
 
   function handleLikeClick(card, isLiked, setIsLiked) {
     const token = localStorage.getItem("token");
-    // const copySavedMovies = [...savedMovies];
-    // console.log("copySavedMovies", copySavedMovies);
-    // console.log(card);
 
     if (isLiked) {
       const copySavedMovies = [...savedMovies];
-      // console.log(copySavedMovies);
-
-      // console.log("0) SavedMovies", savedMovies);
-      // console.log("0) copySavedMovies", copySavedMovies);
 
       const movieIndex = copySavedMovies.findIndex((item) => {
-        // console.log(item.movieId, card.id);
         return item.movieId === card.id;
       });
       // console.log("1) movieIndex:", movieIndex);
       if (movieIndex !== -1) {
-        // const movieId = savedMovies[movieIndex]._id;
-        // const copyMovieId = copySavedMovies[movieIndex]._id;
         const movieId = copySavedMovies[movieIndex]._id;
-
-        // console.log("2) movieId", movieId);
-        // console.log("2.1) copyMovieId", copyMovieId);
 
         apiMain
           .deleteMovie({ movieId, token })
-          .then((result) => {
-            // console.log("3)", result);
-            // const newSavedMovies = savedMovies.splice(movieIndex, 1);
-            // console.log("4) copySavedMovies before cut:", copySavedMovies);
-
-            // const cut = copySavedMovies.splice(movieIndex, 1);
+          .then(() => {
             copySavedMovies.splice(movieIndex, 1);
-            // console.log("cut:", cut);
-            // console.log("4.1) copySavedMovies after cut:", copySavedMovies);
             localStorage.setItem(
               "savedMovies",
               JSON.stringify(copySavedMovies)
@@ -666,13 +470,10 @@ function App() {
             setShowSavedMovies(copySavedMovies);
             setIsLiked(!isLiked);
             localStorage.setItem("savedMovie", JSON.stringify(copySavedMovies));
-
-            // console.log("5) savedMovie");
           })
           .catch((error) => console.log(`Ошибка снятия лайка: ${error}`));
       }
     } else {
-      // console.log(card);
       const {
         country,
         director,
@@ -706,13 +507,9 @@ function App() {
             JSON.stringify([...savedMovies, data])
           );
           setSavedMovies([...savedMovies, data]);
-          // setFoundedSavedMovies([...foundedSavedMovies, data]);
-          // console.log("saveMovies:", savedMovies);
-          // console.log(data);
           setIsLiked(!isLiked);
         })
         .catch((error) => console.log(`Ошибка установки лайка: ${error}`));
-      // console.log("saveMovies3:", saveMovies);
     }
   }
 
@@ -735,10 +532,6 @@ function App() {
     setIsSearchMessage(false);
   }
 
-  // function handlePopupClose() {
-  //   setIsPopupOpen(false);
-  // }
-
   if (isDataLoading) return null;
 
   return (
@@ -756,10 +549,7 @@ function App() {
                 <Register
                   loggedIn={loggedIn}
                   handleRegister={handleRegister}
-                  // errorRegisterMessage={errorRegisterMessage}
-                  // isRegisterError={isRegisterError}
                   isButtonDisabled={isButtonDisabled}
-                  // setErrorRegisterMessage={setErrorRegisterMessage}
                   pathname={pathname}
                   errorAuthMessage={errorAuthMessage}
                   isAuthError={isAuthError}
@@ -777,10 +567,7 @@ function App() {
                 <Login
                   loggedIn={loggedIn}
                   handleLogin={handleLogin}
-                  // errorLoginMessage={errorLoginMessage}
-                  // isLoginError={isLoginError}
                   isButtonDisabled={isButtonDisabled}
-                  // setErrorLoginMessage={setErrorLoginMessage}
                   pathname={pathname}
                   errorAuthMessage={errorAuthMessage}
                   isAuthError={isAuthError}
@@ -797,7 +584,6 @@ function App() {
               <ProtectedRoute
                 component={Profile}
                 loggedIn={loggedIn}
-                // currentUser={currentUser}
                 handleProfile={handleProfile}
                 onSignoutClick={onSignoutClick}
                 errorAuthMessage={errorAuthMessage}
@@ -816,20 +602,17 @@ function App() {
                 handleSearch={handleSearch}
                 handleCheckbox={handleCheckbox}
                 isDataLoading={isDataLoading}
-                // foundedMovies={foundedMovies}
                 shortMovie={shortMovie}
                 handleMoreClick={handleMoreClick}
                 isMore={isMore}
                 newMovies={newMovies}
                 query={query}
-                // isLiked={isLiked}
                 handleLikeClick={handleLikeClick}
                 isSearchMessage={isSearchMessage}
                 searchMessage={searchMessage}
                 setSearchMessageSettings={setSearchMessageSettings}
                 showSearchMessage={showSearchMessage}
                 isLoading={isLoading}
-                // setFoundedMoviesDef={setFoundedMoviesDef}
               />
             }
           />
@@ -840,7 +623,6 @@ function App() {
               <ProtectedRoute
                 component={SavedMovies}
                 loggedIn={loggedIn}
-                // saveMovies={savedMovies}
                 showSavedMovies={showSavedMovies}
                 handleRemoveClick={handleRemoveClick}
                 handleSearch={handleSearch}
@@ -855,8 +637,6 @@ function App() {
                 searchMessage={searchMessage}
                 setSearchMessageSettings={setSearchMessageSettings}
                 showSearchMessage={showSearchMessage}
-                // setShortSaveMovie={setShortSaveMovie}
-                // setFoundedMoviesDef={setFoundedMoviesDef}
               />
             }
           />
@@ -865,8 +645,6 @@ function App() {
         </Routes>
 
         <Footer />
-
-        {/* <Popup isOpen={isPopupOpen} onClose={handlePopupClose} /> */}
       </CurrentUserContext.Provider>
     </div>
   );

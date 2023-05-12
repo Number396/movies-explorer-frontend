@@ -1,21 +1,13 @@
-// import React, { useCallback, useEffect, useState } from "react";
 import AuthPage from "../AuthPage/AuthPage";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
 function Login({
   loggedIn,
   handleLogin,
-  // errorLoginMessage,
-  // isLoginError,
   isButtonDisabled,
-  // setErrorLoginMessage,
   errorAuthMessage,
   isAuthError,
 }) {
-  // useEffect(() => {
-  //   setErrorLoginMessage("");
-  // }, [setErrorLoginMessage]);
-
   const { values, handleChange, errors, isValid } = useFormWithValidation();
 
   function handleSubmit(e) {
@@ -32,8 +24,6 @@ function Login({
       isRegister={false}
       onSubmit={handleSubmit}
       isValid={isValid}
-      // errorLoginMessage={errorLoginMessage}
-      // isLoginError={isLoginError}
       isButtonDisabled={isButtonDisabled}
       errorAuthMessage={errorAuthMessage}
       isAuthError={isAuthError}
@@ -54,15 +44,11 @@ function Login({
         value={values.email || ""}
         pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
         title="test@test.com"
-        // pattern=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0, 61}[a-zA-Z0-9])?)*$/
-        // value={email.value}
       />
       <span className="authpage__input-error authpage__input-error_type_login ">
         {errors.email}
       </span>
 
-      {/* `authpage__input-error authpage__input-error_type_login email-input-error
-                   ${email.minLengthError ? 'authpage__input-error_type_error' : ''}`}>hello</span> */}
       <label className="authpage__label" htmlFor="password">
         Пароль
       </label>
@@ -75,10 +61,8 @@ function Login({
         required
         minLength="2"
         maxLength="40"
-        // onChange={pass.handleChange}
         onChange={handleChange}
         value={values.password || ""}
-        // value={pass.value || ''}
       />
       <span className="authpage__input-error authpage__input-error_type_login">
         {errors.password}

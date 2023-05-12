@@ -1,39 +1,25 @@
 import { useEffect, useState } from "react";
 
-function MoviesCard({
-  img,
-  title,
-  time,
-  fav,
-  link,
-  // isLiked,
-  handleLikeClick,
-  card,
-}) {
+function MoviesCard({ img, title, time, fav, link, handleLikeClick, card }) {
   const [isLiked, setIsLiked] = useState(false);
   const savedMovies = JSON.parse(localStorage.getItem("savedMovies"));
 
   function checkIsLike() {
-    // const savedMovies = JSON.parse(localStorage.getItem("savedMovies"));
     const res = savedMovies.some((item) => {
       return item.movieId === card.id;
     });
-    // console.log(res);
     return res;
   }
 
   useEffect(() => {
     if (!fav) {
       const res = checkIsLike();
-      // console.log(res);
       setIsLiked(res);
     }
   }, []);
 
   function handleClick() {
-    // console.log("like click");
     handleLikeClick(card, isLiked, setIsLiked);
-    // setIsLiked(!isLiked);
   }
 
   return (

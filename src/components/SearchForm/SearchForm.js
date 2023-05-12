@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-// import { useForm } from "../../hooks/useForm";
 import searchIcon from "../../images/search-icon.svg";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
@@ -14,53 +13,27 @@ function SearchForm({
   searchMessage,
   setSearchMessageSettings,
   showSearchMessage,
-  // setFoundedMoviesDef,
 }) {
-  // const { values, handleChange, setValues } = useForm({});
   const { values, handleChange, setValues } = useFormWithValidation();
 
-  // const [checked, setChecked] = useState(false);
-
-  // function handleCheckbox() {
-  //   setChecked(!checked);
-  // }
-
   function handleSubmit(e) {
-    // console.log(values.searchMovies);
-    // console.log(errors.searchMovies);
     e.preventDefault();
 
     if (values.searchMovies !== "") {
-      // handleSearch(values, checked);
       handleSearch(values);
     } else {
-      // console.log("pusto");
       showSearchMessage(values.searchMovies);
     }
   }
 
   useEffect(() => {
-    // console.log("inside useEffect [] in SearchForm");
-    // console.log("inside useEffect [] in SearchForm. query:", query);
     setSearchMessageSettings();
 
     if (!fav) {
       setValues({ searchMovies: query });
     } else {
       setValues({ searchMovies: "" });
-      // setFoundedMoviesDef();
     }
-    // const query = localStorage.getItem("query");
-    // // const isShortMovie = localStorage.getItem("isShortMovie");
-    // if (query) {
-    //   setValues({ searchMovies: query });
-    // } else {
-    //   console.log("else");
-    //   setValues({ searchMovies: "" });
-    // }
-    // if (isShortMovie) {
-    //   setChecked(isShortMovie);
-    // }
   }, []);
 
   return (

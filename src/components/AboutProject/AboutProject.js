@@ -1,6 +1,4 @@
-// import About from "../About/About";
-
-function AboutProject({ about }) {
+function AboutProject() {
   return (
     <section className="aboutProject">
       <ul className="aboutProject__info">

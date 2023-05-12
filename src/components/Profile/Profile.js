@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import React from "react";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
-// import { json, useHref } from "react-router-dom";
 
 function Profile({
   handleProfile,
@@ -22,9 +21,7 @@ function Profile({
   function handleSubmit(e) {
     e.preventDefault();
     setIsEditPushed(false);
-    // console.log(values);
     handleProfile(values);
-    // resetForm();
   }
 
   function handleEdit() {
@@ -35,36 +32,15 @@ function Profile({
   }
 
   useEffect(() => {
-    // resetForm();
-    // console.log("first init values");
     setValues({ name: currentUser.name, email: currentUser.email });
     setInitialValue({ name: currentUser.name, email: currentUser.email });
   }, []);
 
-  // useEffect(() => {
-  //   // resetForm();
-  //   console.log("second init values");
-  //   // setValues({ name: currentUser.name, email: currentUser.email });
-  //   setInitialValue({ name: currentUser.name, email: currentUser.email });
-  // }, [isEditPushed]);
-
   useEffect(() => {
-    // console.log("----------------");
-    // console.log("isSame", isSame);
-    // console.log("isValid:", isValid);
-    // console.log("----------------");
-    // console.log('hello');
-    // console.log(JSON.stringify(initialValue) === JSON.stringify(values));
-    // console.log('initialValue:', initialValue);
-    // console.log('values:', values);
-
-    //сравнение одинаковости значений инпутов профиля
     if (JSON.stringify(initialValue) === JSON.stringify(values)) {
-      // console.log("setIsSame TRUE:");
       setIsSame(true);
     }
     if (JSON.stringify(initialValue) !== JSON.stringify(values)) {
-      // console.log("setIsSame FALSE:");
       setIsSame(false);
     }
   }, [values]);
