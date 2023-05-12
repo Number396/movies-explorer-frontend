@@ -51,7 +51,7 @@ function App() {
   const [isSearchMessage, setIsSearchMessage] = useState(false);
   const [searchMessage, setSearchMessage] = useState("");
   const [foundedMovies, setFoundedMovies] = useState([]);
-  const [foundedSavedMovies, setFoundedSavedMovies] = useState([]);
+  const [showSavedMovies, setShowSavedMovies] = useState([]);
   //массив для хранения резальтата поиска в сохранённых
   const [savedMoviesSeached, setSavedMoviesSeached] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
@@ -144,7 +144,7 @@ function App() {
           // console.log(data);
           localStorage.setItem("savedMovies", JSON.stringify(data));
           setSavedMovies(data);
-          setFoundedSavedMovies(data);
+          setShowSavedMovies(data);
         })
         .catch((error) =>
           console.log(`Ошибка получения сохр. фильмов: ${error}`)
@@ -506,12 +506,13 @@ function App() {
       //   setIsSearchMessage(true);
       // }
       // console.log(savedMovies);
-      localStorage.setItem("foundedSavedMovies", JSON.stringify(searchResult));
+
+      // localStorage.setItem("foundedSavedMovies", JSON.stringify(searchResult));
 
       setQuerySavedMovie(searchMovies);
       setSavedMoviesSeached(searchResult);
       //для отобржения резальтата поиска
-      setFoundedSavedMovies(searchResult);
+      setShowSavedMovies(searchResult);
     }
   }
 
@@ -544,7 +545,7 @@ function App() {
           querySavedMovie,
           !shortSaveMovie
         );
-        setFoundedSavedMovies(searchInsideResult);
+        setShowSavedMovies(searchInsideResult);
       }
 
       // const isFoundedSavedMovies = JSON.parse(
@@ -601,18 +602,18 @@ function App() {
         // console.log("4.1) copySavedMovies after cut:", copySavedMovies);
 
         localStorage.setItem("savedMovies", JSON.stringify(copySavedMovies));
-        localStorage.setItem(
-          "foundedSavedMovies",
-          JSON.stringify(copySavedMovies)
-        );
+        // localStorage.setItem(
+        //   "foundedSavedMovies",
+        //   JSON.stringify(copySavedMovies)
+        // );
 
         setSavedMovies(copySavedMovies);
         if (savedMoviesIndexSearched !== -1) {
           savedMoviesSeached.splice(savedMoviesIndexSearched, 1);
-          setFoundedSavedMovies(savedMoviesSeached);
+          setShowSavedMovies(savedMoviesSeached);
           setShortSaveMovie(false);
         } else {
-          setFoundedSavedMovies(copySavedMovies);
+          setShowSavedMovies(copySavedMovies);
         }
         // localStorage.setItem("savedMovie", JSON.stringify(copySavedMovies));
         // console.log("5) savedMovie");
@@ -662,7 +663,7 @@ function App() {
               JSON.stringify(copySavedMovies)
             );
             setSavedMovies(copySavedMovies);
-            setFoundedSavedMovies(copySavedMovies);
+            setShowSavedMovies(copySavedMovies);
             setIsLiked(!isLiked);
             localStorage.setItem("savedMovie", JSON.stringify(copySavedMovies));
 
@@ -705,7 +706,7 @@ function App() {
             JSON.stringify([...savedMovies, data])
           );
           setSavedMovies([...savedMovies, data]);
-          setFoundedSavedMovies([...foundedSavedMovies, data]);
+          // setFoundedSavedMovies([...foundedSavedMovies, data]);
           console.log("saveMovies:", savedMovies);
           // console.log(data);
           setIsLiked(!isLiked);
@@ -717,12 +718,12 @@ function App() {
 
   function onSignoutClick() {
     localStorage.clear();
-    setLoggedIn(false);
     navigate("/", { replace: true });
+    setLoggedIn(false);
     setCurrentUser({});
     setFoundedMovies([]);
     setSavedMovies([]);
-    setFoundedSavedMovies([]);
+    setShowSavedMovies([]);
     setSavedMoviesSeached([]);
     setQuerySavedMovie("");
     setQuery("");
@@ -840,14 +841,14 @@ function App() {
                 component={SavedMovies}
                 loggedIn={loggedIn}
                 // saveMovies={savedMovies}
-                foundedSavedMovies={foundedSavedMovies}
+                showSavedMovies={showSavedMovies}
                 handleRemoveClick={handleRemoveClick}
                 handleSearch={handleSearch}
                 setSavedMovies={setSavedMovies}
                 shortSaveMovie={shortSaveMovie}
                 handleCheckbox={handleCheckbox}
                 querySavedMovie={querySavedMovie}
-                setFoundedSavedMovies={setFoundedSavedMovies}
+                setShowSavedMovies={setShowSavedMovies}
                 setSavedMoviesSeached={setSavedMoviesSeached}
                 setShortSaveMovie={setShortSaveMovie}
                 isSearchMessage={isSearchMessage}

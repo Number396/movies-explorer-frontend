@@ -12,8 +12,8 @@ function SavedMovies({
   querySavedMovie,
   // setShortSaveMovie,
   // setFoundedMoviesDef,
-  foundedSavedMovies,
-  setFoundedSavedMovies,
+  showSavedMovies,
+  setShowSavedMovies,
   setSavedMoviesSeached,
   setShortSaveMovie,
   isSearchMessage,
@@ -23,12 +23,12 @@ function SavedMovies({
 }) {
   useEffect(() => {
     const savedLocalMovies = JSON.parse(localStorage.getItem("savedMovies"));
-    localStorage.setItem(
-      "foundedSavedMovies",
-      JSON.stringify(savedLocalMovies)
-    );
+    // localStorage.setItem(
+    //   "foundedSavedMovies",
+    //   JSON.stringify(savedLocalMovies)
+    // );
     setSavedMovies(savedLocalMovies);
-    setFoundedSavedMovies(savedLocalMovies);
+    setShowSavedMovies(savedLocalMovies);
     setSavedMoviesSeached([]);
     setShortSaveMovie(false);
 
@@ -51,7 +51,7 @@ function SavedMovies({
         // setFoundedMoviesDef={setFoundedMoviesDef}
       />
       <MoviesCardList
-        newMovies={foundedSavedMovies}
+        newMovies={showSavedMovies}
         handleLikeClick={handleRemoveClick}
         fav={true}
       />
