@@ -1,9 +1,9 @@
 // import { useEffect, useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import Preloader from "../Preloader/Preloader";
+// import Preloader from "../Preloader/Preloader";
 // import { useResize } from "../../hooks/useResize";
 import { getTimeFromMins } from "../../utils/getTimeFromMins";
-import { useState } from "react";
+// import { useState } from "react";
 
 function MoviesCardList({
   // images,

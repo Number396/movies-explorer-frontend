@@ -3,7 +3,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
 function SavedMovies({
-  saveMovies,
+  // saveMovies,
   handleRemoveClick,
   handleSearch,
   setSavedMovies,

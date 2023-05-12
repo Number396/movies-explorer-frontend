@@ -7,7 +7,7 @@ import Preloader from "../Preloader/Preloader";
 function Movies({
   handleSearch,
   handleCheckbox,
-  foundedMovies,
+  // foundedMovies,
   shortMovie,
   handleMoreClick,
   isMore,

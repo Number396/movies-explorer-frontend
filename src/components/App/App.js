@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import PageNotFound from "../PageNotFoud/PageNotFound";
 import Login from "../Login/Login";
 import Footer from "../Footer/Footer";
-import Popup from "../Popup/Popup";
+// import Popup from "../Popup/Popup";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { apiMain } from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -44,7 +44,7 @@ function App() {
   // const [errorLoginMessage, setErrorLoginMessage] = useState("");
 
   const [currentUser, setCurrentUser] = useState({});
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  // const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isDataLoading, setIsDataLoading] = useState(true);
 
   const [isProfileUpdated, setIsProfileUpdated] = useState(false);
@@ -76,7 +76,7 @@ function App() {
 
   // для отображения карточек в зависимости от разрешения
   useEffect(() => {
-    console.log("эффект при изменении ширины или foundedMovies");
+    // console.log("эффект при изменении ширины или foundedMovies");
     // console.log("foundedMovies:", foundedMovies);
 
     if (isScreenSm) {
@@ -115,7 +115,7 @@ function App() {
 
   //основной юзэффект при монтировании страницы
   useEffect(() => {
-    console.log("юзэффект при монтировании страницы");
+    // console.log("юзэффект при монтировании страницы");
     tokenCheck();
     const isFoundedMovies = JSON.parse(localStorage.getItem("foundedMovies"));
     const isShortMovie = JSON.parse(localStorage.getItem("isShortMovie"));
@@ -215,10 +215,10 @@ function App() {
         setErrorMessage(error.message);
         setIsError(true);
         setIsButtonDisabled(false);
-        console.log("uuuuuu");
+        // console.log("uuuuuu");
       });
     } catch {
-      console.log(messageError);
+      // console.log(messageError);
       setErrorMessage(messageError);
       setIsError(true);
       setIsButtonDisabled(false);
@@ -365,7 +365,7 @@ function App() {
     apiMain
       .setUserInfo({ name, email, token })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setCurrentUser(data);
         setIsProfileUpdated(true);
 
@@ -426,13 +426,13 @@ function App() {
   }
 
   function handleSearch({ searchMovies }) {
-    console.log("pathname:", pathname);
+    // console.log("pathname:", pathname);
     //searchMovies - это значение из инпута
     // setIsSearchMessage(false);
     setSearchMessageSettings();
 
     if (pathname === "/movies") {
-      console.log("inside handleSearch movies");
+      // console.log("inside handleSearch movies");
       const isLocalMovies = localStorage.getItem("movies");
 
       if (!isLocalMovies) {
@@ -489,7 +489,7 @@ function App() {
         setFoundedMovies(searchResult);
       }
     } else {
-      console.log("saved movies search---");
+      // console.log("saved movies search---");
       // console.log(shortMovie);
       const savedLocalMovies = JSON.parse(localStorage.getItem("savedMovies"));
 
@@ -534,10 +534,10 @@ function App() {
       }
     } else {
       setShortSaveMovie(!shortSaveMovie);
-      console.log(
-        "setSavedMoviesSeached inside handleCheckbox",
-        savedMoviesSeached
-      );
+      // console.log(
+      //   "setSavedMoviesSeached inside handleCheckbox",
+      //   savedMoviesSeached
+      // );
 
       if (savedMoviesSeached.length > 0) {
         const searchInsideResult = handleSearchMovie(
@@ -566,7 +566,7 @@ function App() {
 
   function handleRemoveClick(card, isLiked, setIsLiked) {
     const token = localStorage.getItem("token");
-    console.log(card);
+    // console.log(card);
     // console.log(savedMovies);
     const copySavedMovies = [...savedMovies];
 
@@ -581,8 +581,8 @@ function App() {
     });
 
     // console.log(movieIndex);
-    console.log("SavedMoviesSeached", savedMoviesSeached);
-    console.log("movieIndexSearched", savedMoviesIndexSearched);
+    // console.log("SavedMoviesSeached", savedMoviesSeached);
+    // console.log("movieIndexSearched", savedMoviesIndexSearched);
 
     // console.log(isLiked);
     const movieId = card._id;
@@ -625,7 +625,7 @@ function App() {
     const token = localStorage.getItem("token");
     // const copySavedMovies = [...savedMovies];
     // console.log("copySavedMovies", copySavedMovies);
-    console.log(card);
+    // console.log(card);
 
     if (isLiked) {
       const copySavedMovies = [...savedMovies];
@@ -707,7 +707,7 @@ function App() {
           );
           setSavedMovies([...savedMovies, data]);
           // setFoundedSavedMovies([...foundedSavedMovies, data]);
-          console.log("saveMovies:", savedMovies);
+          // console.log("saveMovies:", savedMovies);
           // console.log(data);
           setIsLiked(!isLiked);
         })
@@ -735,9 +735,9 @@ function App() {
     setIsSearchMessage(false);
   }
 
-  function handlePopupClose() {
-    setIsPopupOpen(false);
-  }
+  // function handlePopupClose() {
+  //   setIsPopupOpen(false);
+  // }
 
   if (isDataLoading) return null;
 
@@ -866,7 +866,7 @@ function App() {
 
         <Footer />
 
-        <Popup isOpen={isPopupOpen} onClose={handlePopupClose} />
+        {/* <Popup isOpen={isPopupOpen} onClose={handlePopupClose} /> */}
       </CurrentUserContext.Provider>
     </div>
   );

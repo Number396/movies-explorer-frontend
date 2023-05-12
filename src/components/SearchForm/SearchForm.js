@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useForm } from "../../hooks/useForm";
+import { useEffect } from "react";
+// import { useForm } from "../../hooks/useForm";
 import searchIcon from "../../images/search-icon.svg";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
@@ -17,7 +17,7 @@ function SearchForm({
   // setFoundedMoviesDef,
 }) {
   // const { values, handleChange, setValues } = useForm({});
-  const { values, handleChange, setValues, errors } = useFormWithValidation();
+  const { values, handleChange, setValues } = useFormWithValidation();
 
   // const [checked, setChecked] = useState(false);
 
@@ -34,14 +34,14 @@ function SearchForm({
       // handleSearch(values, checked);
       handleSearch(values);
     } else {
-      console.log("pusto");
+      // console.log("pusto");
       showSearchMessage(values.searchMovies);
     }
   }
 
   useEffect(() => {
-    console.log("inside useEffect [] in SearchForm");
-    console.log("inside useEffect [] in SearchForm. query:", query);
+    // console.log("inside useEffect [] in SearchForm");
+    // console.log("inside useEffect [] in SearchForm. query:", query);
     setSearchMessageSettings();
 
     if (!fav) {

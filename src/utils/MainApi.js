@@ -12,7 +12,6 @@ class MainApi {
 
   _checkUserResponse(response) {
     if (response.ok) {
-      // console.log(response);
       return response.json();
     } else {
       return Promise.reject(response);
@@ -113,7 +112,6 @@ class MainApi {
   }
 
   deleteMovie({ movieId, token }) {
-    console.log(movieId, token);
     return this._request(`${this._movieUrl}/${movieId}`, {
       method: "DELETE",
       headers: {
