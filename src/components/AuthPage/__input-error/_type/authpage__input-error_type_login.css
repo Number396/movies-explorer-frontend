@@ -1,9 +1,9 @@
 .authpage__input-error_type_login:last-of-type {
-  margin: 6px 0 203px;
+  margin: 6px 0 183px;
 }
 
 @media screen and (max-width: 428px) {
   .authpage__input-error_type_login:last-of-type {
-    margin: 6px 0 291px;
+    margin: 6px 0 247px;
   }
 }

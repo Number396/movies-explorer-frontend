@@ -17,6 +17,11 @@
   opacity: 0.8;
 }
 
+.authpage__submit-button:disabled {
+  background-color: #f8f8f8;
+  color: #c2c2c2;
+}
+
 @media screen and (max-width: 428px) {
   .authpage__submit-button {
     font-size: 12px;

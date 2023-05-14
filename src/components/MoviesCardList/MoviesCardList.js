@@ -1,45 +1,51 @@
-import { useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import Preloader from "../Preloader/Preloader";
+import { getTimeFromMins } from "../../utils/getTimeFromMins";
 
-function MoviesCardList({ images, fav }) {
-
-    const [isLoading, setIsLoading] = useState(false);
-
-    function handleMoreClick() {
-        setIsLoading(!isLoading);
-    }
-
-    return (
-        <section className="moviesCardList">
-            <ul className="moviesCardList__items">
-                {images.map((items, index) => (
-                    <MoviesCard
-                        img={items.img}
-                        title={items.title}
-                        time={items.time}
-                        fav={fav}
-                        key={index}
-                    />
-                ))}
-            </ul>
-            <button
-                className={` moviesCardList__more-button
-                ${fav
-                        ? "moviesCardList__more-button_type_movie-safe"
-                        : "moviesCardList__more-button_type_movie"
-                    }
-                    `}
-                type="button"
-                onClick={handleMoreClick}
-            >
-                Ещё
-            </button>
-            {
-                isLoading && <Preloader />
+function MoviesCardList({
+  fav,
+  isMore,
+  handleMoreClick,
+  newMovies,
+  handleLikeClick,
+}) {
+  return (
+    <section className="moviesCardList">
+      <ul className="moviesCardList__items">
+        {newMovies.map((item) => (
+          <MoviesCard
+            card={item}
+            img={
+              fav
+                ? item.image
+                : `https://api.nomoreparties.co/${item.image.url}`
             }
-        </section >
-    );
+            title={item.nameRU}
+            time={getTimeFromMins(item.duration)}
+            link={item.trailerLink}
+            fav={fav}
+            key={fav ? item._id : item.id}
+            handleLikeClick={handleLikeClick}
+          />
+        ))}
+      </ul>
+
+      {isMore && (
+        <button
+          className={` moviesCardList__more-button
+      ${
+        fav
+          ? "moviesCardList__more-button_type_movie-safe"
+          : "moviesCardList__more-button_type_movie"
+      }
+      `}
+          type="button"
+          onClick={handleMoreClick}
+        >
+          Ещё
+        </button>
+      )}
+    </section>
+  );
 }
 
 export default MoviesCardList;
