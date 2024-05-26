@@ -4,6 +4,8 @@
 
 Ссылка на сайт - https://movies.number396.nomoredomains.monster<br />
 Ссылка на репозиторий с бэкендом  - https://github.com/Number396/movies-explorer-api
+Ссылка на чекслист для верстки - https://disk.yandex.ru/i/_FEgMymJo3MIJA
+Ссылка на чеклист для функционала - https://disk.yandex.ru/i/Kh2XrBQKS9LKYg
 
 ## ⚙️ Функционал:
 
