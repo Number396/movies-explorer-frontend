@@ -3,8 +3,8 @@
   Сервис, в котором можно найти фильмы по запросу и сохранить в личном кабинетеs c возможностью аутентификации пользователей, сохранения фильмов в избранном и поиском по ключевым словам. Была реализована в рамках дипломной работы на платформе [Яндекс.Практикум](https://praktikum.yandex.ru/web/)
 
 Ссылка на сайт - https://movies.number396.nomoredomains.monster<br />
-Ссылка на репозиторий с бэкендом  - https://github.com/Number396/movies-explorer-api
-Ссылка на чекслист для верстки - https://disk.yandex.ru/i/_FEgMymJo3MIJA
+Ссылка на репозиторий с бэкендом  - https://github.com/Number396/movies-explorer-api<br />
+Ссылка на чекслист для верстки - https://disk.yandex.ru/i/_FEgMymJo3MIJA<br />
 Ссылка на чеклист для функционала - https://disk.yandex.ru/i/Kh2XrBQKS9LKYg
 
 ## ⚙️ Функционал:
